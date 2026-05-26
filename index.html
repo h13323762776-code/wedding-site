@@ -1,0 +1,4274 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>胡泽洲  王雨 · 婚礼森友会</title>
+
+  <!-- Open Graph / 微信分享预览 -->
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="胡泽洲  王雨 · 婚礼森友会">
+  <meta property="og:description" content="2026年6月20日 · 信阳竹溪庄园 · 我们要结婚啦！诚邀你搭乘Dodo Airlines航班，来岛上参加我们的婚礼森友会~">
+  <meta property="og:url" content="https://www.liamhzz.me/">
+  <meta property="og:image" content="https://www.liamhzz.me/assets/og-cover.jpg">
+  <meta property="og:image:width" content="2848">
+  <meta property="og:image:height" content="1600">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="胡泽洲  王雨 · 婚礼森友会">
+  <meta name="twitter:description" content="2026年6月20日 · 信阳竹溪庄园 · 诚邀你来岛上参加婚礼森友会~">
+  <meta name="twitter:image" content="https://www.liamhzz.me/assets/og-cover.jpg">
+
+  <link rel="preconnect" href="https://fonts.loli.net">
+  <link rel="preconnect" href="https://fonts.loli.net/gstatic" crossorigin>
+  <link href="https://fonts.loli.net/css2?family=Nunito:wght@400;600;700;800;900&family=ZCOOL+KuaiLe&family=Noto+Sans+SC:wght@400;500;700;900&display=swap" rel="stylesheet">
+  
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2" defer></script>
+  <style>
+    :root {
+      --ac-primary: #2abaaa;
+      --ac-primary-dark: #1f9489;
+      --ac-primary-light: #6dd5c8;
+      --ac-cream: #f7f3e7;
+      --ac-cream-dark: #ece6d4;
+      --ac-sand: #ddd6c0;
+      --ac-text: #877358;
+      --ac-text-light: #a69580;
+      --ac-text-dark: #6b5c48;
+      --ac-green: #8bc34a;
+      --ac-pink: #f48fb1;
+      --ac-yellow: #fff176;
+      --ac-orange: #ffb74d;
+      --ac-brown: #8d6e63;
+      --ac-app-pink: #f8a6b2;
+      --ac-purple: #b77dee;
+      --ac-app-blue: #889df0;
+      --ac-app-yellow: #f7cd67;
+      --ac-app-orange: #e59266;
+      --ac-app-teal: #82d5bb;
+      --ac-app-green: #8ac68a;
+      --ac-app-red: #fc736d;
+      --ac-btn-shadow: #bdaea0;
+      --ac-input-shadow: #d4c9b4;
+      --ac-focus: #ffcc00;
+      --night-bg: #374063;
+      --night-surface: #2d3554;
+      --night-text: #e2d6c8;
+    }
+
+    [data-theme="night"] {
+      --ac-cream: var(--night-bg);
+      --ac-cream-dark: var(--night-surface);
+      --ac-sand: #4a5380;
+      --ac-text: var(--night-text);
+      --ac-text-light: #b8c4d8;
+      --ac-text-dark: var(--night-text);
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'ZCOOL KuaiLe', 'Noto Sans SC', 'Nunito', sans-serif;
+      background-color: var(--ac-cream);
+      color: var(--ac-text);
+      line-height: 1.6;
+      padding-bottom: 80px;
+      scroll-behavior: smooth;
+      transition: background-color 0.3s, color 0.3s;
+    }
+
+    body::before {
+      content: '';
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background-image: url("assets/bg.jpg");
+      background-size: 100% auto;
+      background-repeat: repeat-y;
+      background-position: top center;
+      pointer-events: none;
+      z-index: -1;
+      opacity: 0.25;
+    }
+
+    .section {
+      padding: 2rem 1rem;
+      max-width: 600px;
+      margin: 0 auto;
+      opacity: 1;
+      transform: translateY(0);
+      transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+
+    .section.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* Phone 装饰框 */
+    .phone-frame {
+      display: flex;
+      justify-content: center;
+      margin: 1rem 0;
+    }
+    .phone-frame-inner {
+      background: linear-gradient(135deg, #2d3554, #374063);
+      border-radius: 20px;
+      padding: 15px 25px;
+      text-align: center;
+      border: 3px solid #4a5380;
+      box-shadow: 0 4px 15px rgba(55, 64, 99, 0.3);
+    }
+    .phone-frame-inner .icon {
+      font-size: 2.5rem;
+      margin-bottom: 5px;
+    }
+    .phone-frame-inner .title {
+      color: #82d5bb;
+      font-weight: 700;
+      font-size: 1rem;
+    }
+    .phone-frame-inner .date {
+      color: rgba(226, 214, 200, 0.7);
+      font-size: 0.8rem;
+      margin-top: 3px;
+    }
+
+    /* Switch 容器 */
+    #switch-mount {
+      position: fixed;
+      bottom: 100px;
+      right: 18px;
+      z-index: 998;
+    }
+    .theme-switch {
+      position: relative;
+      width: 50px;
+      height: 28px;
+      background: var(--ac-sand);
+      border-radius: 14px;
+      cursor: pointer;
+      border: 2px solid var(--ac-btn-shadow);
+      transition: background 0.3s;
+    }
+    .theme-switch.night {
+      background: var(--ac-primary);
+    }
+    .theme-switch::after {
+      content: '';
+      position: absolute;
+      top: 2px;
+      left: 2px;
+      width: 20px;
+      height: 20px;
+      background: #fff;
+      border-radius: 50%;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+      transition: transform 0.3s;
+    }
+    .theme-switch.night::after {
+      transform: translateX(22px);
+    }
+    .theme-switch-text {
+      position: absolute;
+      top: -22px;
+      left: 50%;
+      transform: translateX(-50%);
+      font-size: 1.2rem;
+      white-space: nowrap;
+    }
+
+    /* Loading 动画 */
+    #loading-mount {
+      position: fixed;
+      inset: 0;
+      z-index: 99999;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: var(--ac-cream);
+      transition: opacity 0.3s ease;
+    }
+    #loading-mount.hidden {
+      opacity: 0;
+      pointer-events: none;
+    }
+    .loading-content {
+      text-align: center;
+    }
+    .loading-island {
+      font-size: 4rem;
+      animation: islandFloat 1.5s ease-in-out infinite;
+    }
+    @keyframes islandFloat {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-15px); }
+    }
+    .loading-text {
+      font-size: 1.2rem;
+      color: var(--ac-text);
+      margin-top: 1rem;
+      font-weight: 600;
+    }
+    .loading-dots {
+      display: inline-flex;
+      gap: 6px;
+      margin-top: 0.8rem;
+    }
+    .loading-dots span {
+      width: 8px;
+      height: 8px;
+      background: var(--ac-primary);
+      border-radius: 50%;
+      animation: dotPulse 1.4s ease-in-out infinite;
+    }
+    .loading-dots span:nth-child(2) { animation-delay: 0.2s; }
+    .loading-dots span:nth-child(3) { animation-delay: 0.4s; }
+    @keyframes dotPulse {
+      0%, 80%, 100% { transform: scale(0.6); opacity: 0.5; }
+      40% { transform: scale(1); opacity: 1; }
+    }
+
+    /* Cursor 样式 */
+    .ac-cursor {
+      cursor: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24'%3E%3Cpath fill='%23ffcc00' stroke='%23877358' stroke-width='1' d='M4 4l16 6-6 2-2 6z'/%3E%3C/svg%3E"), auto;
+    }
+    
+    .ac-cursor-pointer {
+      cursor: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24'%3E%3Cpath fill='%23ffcc00' stroke='%23877358' stroke-width='1' d='M4 4l16 6-6 2-2 6z'/%3E%3C/svg%3E"), pointer;
+    }
+
+    /* NookPhone Bottom Navigation */
+    .nookphone-nav {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      background: var(--ac-cream-dark);
+      display: flex;
+      justify-content: space-around;
+      align-items: center;
+      padding: 8px 4px;
+      z-index: 999;
+      border-top: 3px solid var(--ac-sand);
+      box-shadow: 0 -4px 15px rgba(107, 92, 67, 0.2);
+    }
+
+    .nav-item {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-decoration: none;
+      color: var(--ac-text-light);
+      padding: 6px 10px;
+      border-radius: 12px;
+      transition: all 0.2s ease;
+      min-width: 60px;
+    }
+
+    .nav-item span:first-child {
+      font-size: 1.5rem;
+      margin-bottom: 2px;
+    }
+
+    .nav-item span:last-child {
+      font-size: 0.65rem;
+      font-weight: 600;
+    }
+
+    .nav-item.active {
+      background: var(--ac-primary);
+      color: #fff;
+      transform: translateY(-2px);
+    }
+
+    .nav-item.active::before {
+      content: '🍃';
+      position: absolute;
+      top: -8px;
+      animation: leafSwing 0.6s ease-in-out infinite;
+    }
+
+    @keyframes leafSwing {
+      0%, 100% { transform: rotate(-10deg); }
+      50% { transform: rotate(10deg); }
+    }
+
+    /* Theme Toggle Button - 隐藏，使用Switch */
+    .theme-toggle {
+      position: fixed;
+      bottom: 100px;
+      right: 18px;
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      background: var(--ac-primary);
+      border: 3px solid var(--ac-primary-dark);
+      box-shadow: 0 4px 0 var(--ac-primary-dark);
+      cursor: pointer;
+      font-size: 1.4rem;
+      z-index: 998;
+      transition: all 0.1s ease;
+      display: none;
+    }
+
+    .theme-toggle:hover { transform: translateY(-2px); box-shadow: 0 6px 0 var(--ac-primary-dark); }
+    .theme-toggle:active { transform: translateY(2px); box-shadow: 0 2px 0 var(--ac-primary-dark); }
+
+    /* BGM 音乐按钮 */
+    .bgm-toggle {
+      position: fixed;
+      bottom: 20px;
+      right: 16px;
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      border: 3px solid var(--ac-primary);
+      background: var(--ac-cream);
+      color: var(--ac-text);
+      font-size: 1.2rem;
+      cursor: pointer;
+      box-shadow: 0 4px 0 var(--ac-primary-dark);
+      z-index: 999;
+      transition: transform 0.15s, box-shadow 0.15s;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .bgm-toggle:hover { transform: translateY(-2px); box-shadow: 0 6px 0 var(--ac-primary-dark); }
+    .bgm-toggle:active { transform: translateY(2px); box-shadow: 0 2px 0 var(--ac-primary-dark); }
+    .bgm-toggle.playing .bgm-icon { animation: bgm-bounce 0.6s ease-in-out infinite alternate; }
+    @keyframes bgm-bounce {
+      0% { transform: scale(1) rotate(-5deg); }
+      100% { transform: scale(1.15) rotate(5deg); }
+    }
+
+    /* Animal Character Decorations */
+    .animal-char {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: var(--ac-text);
+      opacity: 0.9;
+    }
+
+    .animal-char .emoji { font-size: 1.3rem; }
+
+    .float-deco {
+      position: absolute;
+      font-size: 2rem;
+      opacity: 0.15;
+      animation: float 4s ease-in-out infinite;
+    }
+
+    @keyframes float {
+      0%, 100% { transform: translateY(0) rotate(-5deg); }
+      50% { transform: translateY(-10px) rotate(5deg); }
+    }
+
+    /* Hero Section - Dodo Airlines Card */
+    .hero-section {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .boarding-pass {
+      background: linear-gradient(135deg, #fff 0%, #f7f3e7 100%);
+      border-radius: 20px;
+      padding: 2rem;
+      max-width: 380px;
+      width: 100%;
+      box-shadow: 0 8px 30px rgba(107, 92, 67, 0.3);
+      position: relative;
+      border: 3px solid var(--ac-sand);
+    }
+
+    .boarding-pass::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 50px;
+      background: linear-gradient(90deg, #82d5bb, #6dd5c8, #82d5bb);
+      border-radius: 17px 17px 0 0;
+    }
+
+    .dodo-airlines {
+      position: relative;
+      text-align: center;
+      margin-bottom: 1.5rem;
+    }
+
+    .dodo-airlines h1 {
+      font-size: 1.6rem;
+      font-weight: 800;
+      color: var(--ac-primary-dark);
+      margin-bottom: 0.3rem;
+    }
+
+    .dodo-airlines .subtitle {
+      font-size: 0.75rem;
+      color: var(--ac-text-light);
+      letter-spacing: 2px;
+      text-transform: uppercase;
+    }
+
+    .invite-title {
+      text-align: center;
+      margin: 1.5rem 0;
+    }
+
+    .invite-title h2 {
+      font-size: 1.8rem;
+      font-weight: 800;
+      color: var(--ac-text-dark);
+      margin-bottom: 0.5rem;
+    }
+
+    .couple-names {
+      font-size: 2.2rem;
+      font-weight: 900;
+      color: var(--ac-primary);
+      margin: 0.8rem 0;
+    }
+
+    .wedding-info {
+      background: var(--ac-cream);
+      border-radius: 12px;
+      padding: 1rem;
+      margin: 1rem 0;
+      border: 2px dashed var(--ac-sand);
+    }
+
+    .wedding-info p {
+      margin: 0.4rem 0;
+      font-size: 0.95rem;
+    }
+
+    .wedding-info .date {
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: var(--ac-text-dark);
+    }
+
+    /* Countdown Timer */
+    .countdown {
+      display: flex;
+      justify-content: center;
+      gap: 0.8rem;
+      margin: 1.5rem 0;
+    }
+
+    .countdown-item {
+      background: #fdfdf5;
+      color: #725d42;
+      border-radius: 50px;
+      padding: 0.5rem 0.7rem;
+      min-width: 52px;
+      text-align: center;
+      border: 2px solid rgba(114, 93, 66, 0.25);
+      box-shadow: 0 3px 0 rgba(114, 93, 66, 0.15);
+    }
+
+    .countdown-item .num {
+      font-size: 0.9rem;
+      font-weight: 800;
+      display: block;
+      letter-spacing: 1px;
+    }
+
+    .countdown-item .label {
+      font-size: 0.5rem;
+      color: #9a835a;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+    }
+
+    /* Isabelle Speech Bubble */
+    .speech-bubble {
+      background: #fff;
+      border-radius: 18px;
+      padding: 1rem 1.2rem;
+      position: relative;
+      box-shadow: 0 4px 10px rgba(107, 92, 67, 0.15);
+      border: 2px solid var(--ac-sand);
+      margin-top: 1rem;
+    }
+
+    .speech-bubble::before {
+      content: '';
+      position: absolute;
+      top: -10px;
+      left: 30px;
+      width: 20px;
+      height: 20px;
+      background: #fff;
+      border-left: 2px solid var(--ac-sand);
+      border-top: 2px solid var(--ac-sand);
+      transform: rotate(45deg);
+    }
+
+    /* Flight Section */
+    .flight-card {
+      background: #fff;
+      border-radius: 20px;
+      overflow: hidden;
+      box-shadow: 0 4px 15px rgba(107, 92, 67, 0.2);
+      border: 3px solid var(--ac-sand);
+    }
+
+    .flight-header {
+      background: linear-gradient(90deg, #82d5bb, #6dd5c8, #82d5bb);
+      padding: 1rem 1.5rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .flight-header h3 {
+      color: #fff;
+      font-size: 1.2rem;
+      font-weight: 800;
+      text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
+    }
+
+    .flight-number {
+      background: rgba(255,255,255,0.3);
+      padding: 0.3rem 0.8rem;
+      border-radius: 20px;
+      color: #fff;
+      font-weight: 700;
+      font-size: 0.85rem;
+    }
+
+    .flight-body {
+      padding: 1.5rem;
+    }
+
+    .flight-route {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 1.5rem;
+    }
+
+    .route-point {
+      text-align: center;
+    }
+
+    .route-point .city {
+      font-size: 1rem;
+      font-weight: 700;
+      color: var(--ac-text-dark);
+    }
+
+    .route-point .label {
+      font-size: 0.7rem;
+      color: var(--ac-text-light);
+      text-transform: uppercase;
+    }
+
+    .route-line {
+      flex: 1;
+      height: 2px;
+      background: repeating-linear-gradient(90deg, var(--ac-primary) 0, var(--ac-primary) 8px, transparent 8px, transparent 12px);
+      margin: 0 1rem;
+      position: relative;
+    }
+
+    .route-line::before {
+      content: '✈️';
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      font-size: 1.2rem;
+    }
+
+    .timeline {
+      border-left: 3px solid var(--ac-primary-light);
+      padding-left: 1.5rem;
+      margin: 1rem 0;
+    }
+
+    .timeline-item {
+      position: relative;
+      padding: 0.8rem 0;
+    }
+
+    .timeline-item::before {
+      content: '';
+      position: absolute;
+      left: -1.7rem;
+      top: 1rem;
+      width: 14px;
+      height: 14px;
+      background: var(--ac-primary);
+      border-radius: 50%;
+      border: 3px solid #fff;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.15);
+    }
+
+    .timeline-item .time {
+      font-weight: 800;
+      color: var(--ac-primary-dark);
+    }
+
+    .timeline-item .desc {
+      font-size: 0.9rem;
+      color: var(--ac-text);
+    }
+
+    .ticket-tear {
+      border-top: 2px dashed var(--ac-sand);
+      margin-top: 1rem;
+      padding-top: 1rem;
+      text-align: center;
+      position: relative;
+    }
+
+    .ticket-tear::before, .ticket-tear::after {
+      content: '';
+      position: absolute;
+      top: -10px;
+      width: 20px;
+      height: 20px;
+      background: var(--ac-cream);
+      border-radius: 50%;
+    }
+
+    .ticket-tear::before { left: 30%; }
+    .ticket-tear::after { right: 30%; }
+
+    .barcode {
+      display: flex;
+      justify-content: center;
+      gap: 2px;
+      margin-top: 0.5rem;
+    }
+
+    .barcode span {
+      width: 3px;
+      height: 30px;
+      background: var(--ac-text);
+      border-radius: 1px;
+    }
+
+    /* Video Section */
+    .video-card {
+      background: #fff;
+      border-radius: 20px;
+      overflow: hidden;
+      box-shadow: 0 4px 15px rgba(107, 92, 67, 0.2);
+      border: 3px solid var(--ac-sand);
+    }
+    .video-embed-wrapper {
+      position: relative; width: 100%; aspect-ratio: 16/9;
+      overflow: hidden; background: #000;
+    }
+    .video-embed-wrapper iframe {
+      position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: none;
+    }
+    .video-placeholder {
+      aspect-ratio: 16/9;
+      background: linear-gradient(135deg, #2d3554 0%, #374063 100%);
+      display: flex; flex-direction: column; justify-content: center; align-items: center;
+      position: relative; overflow: hidden; cursor: pointer;
+    }
+    .video-placeholder::before {
+      content: ''; position: absolute; top: 0; left: 0; right: 0; bottom: 0;
+      background: repeating-linear-gradient(0deg, transparent, transparent 2px, rgba(255,255,255,0.03) 2px, rgba(255,255,255,0.03) 4px);
+    }
+    .video-placeholder::after {
+      content: ''; position: absolute; top: 0; left: 0; right: 0; bottom: 0;
+      border: 4px solid rgba(255,200,0,0.25);
+      pointer-events: none; box-shadow: inset 0 0 60px rgba(0,0,0,0.3);
+    }
+    .film-perfs { position: absolute; top: 0; left: 0; right: 0; bottom: 0; pointer-events: none; z-index: 1; }
+    .film-perfs::before, .film-perfs::after {
+      content: ''; position: absolute; left: 8px; right: 8px; height: 14px;
+      background: repeating-linear-gradient(90deg, rgba(255,255,255,0.12) 0px, rgba(255,255,255,0.12) 8px, transparent 8px, transparent 18px);
+    }
+    .film-perfs::before { top: 6px; }
+    .film-perfs::after { bottom: 6px; }
+    .play-icon {
+      width: 80px; height: 80px; background: var(--ac-primary); border-radius: 50%;
+      display: flex; justify-content: center; align-items: center;
+      font-size: 2.5rem; color: #fff; border: 4px solid #fff;
+      box-shadow: 0 4px 20px rgba(42, 186, 170, 0.5);
+      cursor: pointer; transition: transform 0.2s, box-shadow 0.2s; z-index: 2;
+      animation: playPulse 2s ease-in-out infinite;
+    }
+    @keyframes playPulse {
+      0%, 100% { box-shadow: 0 4px 20px rgba(42, 186, 170, 0.5); }
+      50% { box-shadow: 0 4px 35px rgba(42, 186, 170, 0.8); }
+    }
+    .play-icon:hover { transform: scale(1.1); box-shadow: 0 6px 25px rgba(42, 186, 170, 0.6); }
+    .video-placeholder .play-label { color: #e2d6c8; margin-top: 1rem; font-size: 1rem; font-weight: 600; z-index: 2; }
+    .video-placeholder .play-sub { color: rgba(226,214,200,0.6); margin-top: 0.3rem; font-size: 0.8rem; z-index: 2; }
+    .video-body { padding: 1.5rem; }
+    .video-title { font-size: 1.3rem; font-weight: 700; color: var(--ac-text-dark); margin-bottom: 0.5rem; }
+    .video-desc { font-size: 0.9rem; color: var(--ac-text-light); margin-bottom: 1rem; }
+    .video-actions { display: flex; gap: 12px; flex-wrap: wrap; }
+    .video-actions .btn-ac { flex: 0 0 auto; }
+
+    /* Location Section */
+    .location-card {
+      background: #fff;
+      border-radius: 20px;
+      padding: 1.5rem;
+      box-shadow: 0 4px 15px rgba(107, 92, 67, 0.2);
+      border: 3px solid var(--ac-sand);
+    }
+
+    .location-header {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      margin-bottom: 1rem;
+    }
+
+    .location-icon {
+      width: 60px;
+      height: 60px;
+      background: var(--ac-primary);
+      border-radius: 15px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 1.8rem;
+      border: 3px solid var(--ac-primary-dark);
+      box-shadow: 0 4px 0 var(--ac-primary-dark);
+    }
+
+    .location-info h3 {
+      font-size: 1.2rem;
+      font-weight: 700;
+      color: var(--ac-text-dark);
+    }
+
+    .location-info p {
+      font-size: 0.85rem;
+      color: var(--ac-text-light);
+    }
+
+    .info-list {
+      background: var(--ac-cream);
+      border-radius: 12px;
+      padding: 1rem;
+      margin: 1rem 0;
+    }
+
+    .info-item {
+      display: flex;
+      align-items: center;
+      gap: 0.8rem;
+      padding: 0.6rem 0;
+      border-bottom: 1px dashed var(--ac-sand);
+    }
+
+    .info-item:last-child {
+      border-bottom: none;
+    }
+
+    .info-item .icon {
+      font-size: 1.2rem;
+    }
+
+    .info-item .text {
+      flex: 1;
+    }
+
+    .info-item .text .label {
+      font-size: 0.75rem;
+      color: var(--ac-text-light);
+    }
+
+    .info-item .text .value {
+      font-weight: 600;
+      color: var(--ac-text-dark);
+    }
+
+    .info-item a {
+      color: var(--ac-primary);
+      text-decoration: none;
+      font-weight: 600;
+    }
+
+    .info-item a:hover {
+      text-decoration: underline;
+    }
+
+    .map-placeholder {
+      height: 150px;
+      background: linear-gradient(135deg, var(--ac-cream-dark) 0%, var(--ac-sand) 100%);
+      border-radius: 12px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      border: 2px dashed var(--ac-sand);
+      margin-top: 1rem;
+    }
+
+    .map-placeholder span {
+      color: var(--ac-text-light);
+      font-size: 0.9rem;
+    }
+
+    /* Tabs 样式 */
+    .location-tabs {
+      margin-top: 1rem;
+    }
+    .tabs-nav {
+      display: flex;
+      background: var(--ac-cream-dark);
+      border-radius: 12px;
+      padding: 4px;
+      gap: 4px;
+    }
+    .tabs-tab {
+      flex: 1;
+      padding: 0.6rem 0.8rem;
+      text-align: center;
+      font-weight: 600;
+      font-size: 0.85rem;
+      color: var(--ac-text);
+      background: transparent;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+    .tabs-tab.active {
+      background: var(--ac-primary);
+      color: #fff;
+    }
+    .tabs-content {
+      background: var(--ac-cream);
+      border-radius: 12px;
+      padding: 1rem;
+      margin-top: 0.8rem;
+      font-size: 0.9rem;
+      line-height: 1.7;
+      white-space: pre-line;
+    }
+
+    /* Lottery Ticket Section */
+    .lottery-card {
+      background: linear-gradient(135deg, #fff9e6 0%, #fff3cc 100%);
+      border-radius: 20px;
+      padding: 1.5rem;
+      border: 4px solid var(--ac-app-yellow);
+      position: relative;
+      overflow: hidden;
+      box-shadow: 0 4px 15px rgba(247, 205, 103, 0.4);
+    }
+
+    .lottery-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background-image: url("data:image/svg+xml,%3Csvg width='40' height='40' viewBox='0 0 40 40' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M20 5c-1 4-4 6-4 10 0 3 2 5 4 5s4-2 4-5c0-4-3-6-4-10z' fill='%23f7cd67' fill-opacity='0.15'/%3E%3C/svg%3E");
+      pointer-events: none;
+    }
+
+    .lottery-header {
+      text-align: center;
+      margin-bottom: 1rem;
+      position: relative;
+    }
+
+    .lottery-header h3 {
+      font-size: 1.3rem;
+      font-weight: 800;
+      color: var(--ac-text-dark);
+    }
+
+    .lottery-header .stars {
+      font-size: 1.5rem;
+      margin-top: 0.3rem;
+    }
+
+    .lottery-number {
+      background: var(--ac-text-dark);
+      color: var(--ac-app-yellow);
+      border-radius: 12px;
+      padding: 1rem;
+      text-align: center;
+      margin: 1rem 0;
+      font-family: monospace;
+      font-size: 1.1rem;
+      letter-spacing: 3px;
+    }
+
+    .lottery-number .label {
+      font-size: 0.75rem;
+      opacity: 0.8;
+      display: block;
+      margin-bottom: 0.3rem;
+    }
+
+    .lottery-info {
+      text-align: center;
+      font-size: 0.9rem;
+      color: var(--ac-text);
+      margin: 1rem 0;
+    }
+
+    .lottery-cut {
+      border-top: 2px dashed var(--ac-app-yellow);
+      margin-top: 1rem;
+      padding-top: 1rem;
+      text-align: center;
+      position: relative;
+    }
+
+    .lottery-cut::before, .lottery-cut::after {
+      content: '✂️';
+      position: absolute;
+      top: -12px;
+      font-size: 1.2rem;
+    }
+
+    .lottery-cut::before { left: 20%; }
+    .lottery-cut::after { right: 20%; }
+
+    /* RSVP Section */
+    .rsvp-card {
+      background: #fff;
+      border-radius: 20px;
+      padding: 1.5rem;
+      box-shadow: 0 4px 15px rgba(107, 92, 67, 0.2);
+      border: 3px solid var(--ac-sand);
+    }
+
+    .rsvp-form {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+
+    .form-group {
+      display: flex;
+      flex-direction: column;
+      gap: 0.4rem;
+    }
+
+    .form-group label {
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: var(--ac-text-dark);
+    }
+
+    .form-input {
+      padding: 0.8rem 1rem;
+      border: 2.5px solid #c4b89e;
+      border-radius: 50px;
+      background: var(--ac-cream);
+      font-family: inherit;
+      font-size: 1rem;
+      color: var(--ac-text);
+      box-shadow: 0 3px 0 var(--ac-input-shadow);
+      transition: all 0.2s;
+    }
+
+    .form-input:focus {
+      outline: none;
+      border-color: var(--ac-focus);
+      box-shadow: 0 3px 0 #e0b800;
+    }
+
+    .form-input::placeholder {
+      color: var(--ac-text-light);
+    }
+
+    .form-select {
+      padding: 0.8rem 1rem;
+      border: 2.5px solid #c4b89e;
+      border-radius: 50px;
+      background: var(--ac-cream);
+      font-family: inherit;
+      font-size: 1rem;
+      color: var(--ac-text);
+      box-shadow: 0 3px 0 var(--ac-input-shadow);
+      cursor: pointer;
+      appearance: none;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='%23877358' stroke-width='2'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
+      background-repeat: no-repeat;
+      background-position: right 12px center;
+      background-size: 18px;
+    }
+
+    .form-select:focus {
+      outline: none;
+      border-color: var(--ac-focus);
+      box-shadow: 0 3px 0 #e0b800;
+    }
+
+    textarea.form-input {
+      border-radius: 18px;
+      min-height: 80px;
+      resize: vertical;
+    }
+
+    .btn-ac {
+      background: var(--ac-primary);
+      color: #fff;
+      border: 3px solid var(--ac-primary-dark);
+      border-radius: 14px;
+      box-shadow: 0 4px 0 var(--ac-primary-dark);
+      transition: all 0.1s ease;
+      padding: 0.8rem 1.5rem;
+      font-weight: 700;
+      font-family: inherit;
+      font-size: 1rem;
+      cursor: pointer;
+    }
+
+    .btn-ac:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 0 var(--ac-primary-dark);
+    }
+
+    .btn-ac:active {
+      transform: translateY(3px);
+      box-shadow: 0 1px 0 var(--ac-primary-dark);
+    }
+
+    /* Checkbox */
+    .checkbox-group {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .checkbox-group input[type="checkbox"] {
+      width: 20px;
+      height: 20px;
+      border: 2px solid var(--ac-sand);
+      border-radius: 6px;
+      cursor: pointer;
+      accent-color: var(--ac-primary);
+    }
+    .checkbox-group label {
+      font-size: 0.9rem;
+      color: var(--ac-text);
+      cursor: pointer;
+    }
+
+    /* Gallery Section */
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 10px;
+    }
+
+    .gallery-item {
+      aspect-ratio: 1;
+      background: var(--ac-cream-dark);
+      border-radius: 12px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      border: 2px solid var(--ac-sand);
+      transition: transform 0.2s;
+    }
+
+    .gallery-item:hover {
+      transform: translateY(-4px);
+    }
+
+    .gallery-item .icon {
+      font-size: 2rem;
+      margin-bottom: 0.3rem;
+    }
+
+    .gallery-item .text {
+      font-size: 0.7rem;
+      color: var(--ac-text-light);
+    }
+
+    /* Gallery Image Mode */
+    .gallery-item.has-img {
+      cursor: pointer;
+      overflow: hidden;
+      padding: 0;
+      border: 2px solid var(--ac-sand);
+    }
+    .gallery-item.has-img img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border-radius: 10px;
+      transition: transform 0.3s;
+    }
+    .gallery-item.has-img:hover img {
+      transform: scale(1.08);
+    }
+    .gallery-item.has-img .img-overlay {
+      position: absolute;
+      inset: 0;
+      background: rgba(0,0,0,0.3);
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      opacity: 0;
+      transition: opacity 0.2s;
+    }
+    .gallery-item.has-img:hover .img-overlay {
+      opacity: 1;
+    }
+    .gallery-item.has-img .img-overlay span {
+      color: #fff;
+      font-size: 1.8rem;
+    }
+
+    /* Lightbox */
+    .lightbox-overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.92);
+      z-index: 9999;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      animation: fadeInLightbox 0.25s ease;
+    }
+    .lightbox-overlay.active {
+      display: flex;
+    }
+    @keyframes fadeInLightbox {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+    .lightbox-overlay img {
+      max-width: 92vw;
+      max-height: 72vh;
+      border-radius: 12px;
+      object-fit: contain;
+      box-shadow: 0 8px 40px rgba(0,0,0,0.5);
+    }
+    .lightbox-close {
+      position: absolute;
+      top: 16px;
+      right: 16px;
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.15);
+      border: none;
+      color: #fff;
+      font-size: 1.3rem;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      backdrop-filter: blur(4px);
+      transition: background 0.2s;
+    }
+    .lightbox-close:hover {
+      background: rgba(255,255,255,0.3);
+    }
+    .lightbox-actions {
+      margin-top: 16px;
+      display: flex;
+      gap: 12px;
+    }
+    .lightbox-actions .btn-ac {
+      font-size: 0.85rem;
+      padding: 8px 18px;
+    }
+    .lightbox-counter {
+      color: rgba(255,255,255,0.5);
+      font-size: 0.8rem;
+      margin-top: 10px;
+    }
+    .lightbox-nav {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.12);
+      border: none;
+      color: #fff;
+      font-size: 1.2rem;
+      cursor: pointer;
+      backdrop-filter: blur(4px);
+      transition: background 0.2s;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .lightbox-nav:hover { background: rgba(255,255,255,0.25); }
+    .lightbox-nav.prev { left: 12px; }
+    .lightbox-nav.next { right: 12px; }
+
+    /* Comments Section */
+    .comment-card {
+      background: #fff;
+      border-radius: 16px;
+      padding: 1rem;
+      margin-bottom: 1rem;
+      box-shadow: 0 4px 10px rgba(107, 92, 67, 0.15);
+      border: 2px solid var(--ac-sand);
+      animation: fadeUp 0.3s ease;
+    }
+
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .comment-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 0.5rem;
+    }
+
+    .comment-author {
+      font-weight: 700;
+      color: var(--ac-text-dark);
+    }
+
+    .comment-date {
+      font-size: 0.75rem;
+      color: var(--ac-text-light);
+    }
+
+    .comment-content {
+      font-size: 0.9rem;
+      color: var(--ac-text);
+      line-height: 1.5;
+    }
+
+    .comments-list {
+      max-height: 400px;
+      overflow-y: auto;
+      margin-bottom: 1rem;
+    }
+
+    /* Section Titles */
+    .section-title {
+      text-align: center;
+      margin-bottom: 1.5rem;
+    }
+
+    .section-title h2 {
+      font-size: 1.5rem;
+      font-weight: 800;
+      color: var(--ac-text-dark);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+    }
+
+    .section-title p {
+      font-size: 0.9rem;
+      color: var(--ac-text-light);
+      margin-top: 0.3rem;
+    }
+
+    .animal-banner {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.8rem;
+      background: var(--ac-cream-dark);
+      padding: 0.8rem 1.5rem;
+      border-radius: 50px;
+      margin-bottom: 1rem;
+      border: 2px solid var(--ac-sand);
+    }
+
+    .animal-banner .emoji {
+      font-size: 1.8rem;
+    }
+
+    .animal-banner .info {
+      text-align: left;
+    }
+
+    .animal-banner .name {
+      font-weight: 700;
+      color: var(--ac-text-dark);
+      font-size: 0.9rem;
+    }
+
+    .animal-banner .role {
+      font-size: 0.75rem;
+      color: var(--ac-text-light);
+    }
+
+    /* FAQ Section */
+    .faq-section {
+      padding: 2rem 1rem;
+      max-width: 600px;
+      margin: 0 auto;
+    }
+
+    /* Collapse FAQ 样式 */
+    .faq-list {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+    .faq-item {
+      border: 2px solid var(--ac-sand);
+      border-radius: 12px;
+      overflow: hidden;
+    }
+    .faq-header {
+      background: var(--ac-cream-dark);
+      padding: 0.8rem 1rem;
+      font-weight: 600;
+      color: var(--ac-text-dark);
+      cursor: pointer;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      transition: background 0.2s;
+    }
+    .faq-header:hover {
+      background: var(--ac-sand);
+    }
+    .faq-header .faq-icon {
+      font-size: 1.2rem;
+      transition: transform 0.3s;
+    }
+    .faq-item.open .faq-header .faq-icon {
+      transform: rotate(45deg);
+    }
+    .faq-content {
+      background: #fff;
+      padding: 0;
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.3s, padding 0.3s;
+    }
+    .faq-item.open .faq-content {
+      padding: 1rem;
+      max-height: 300px;
+    }
+
+    /* Divider 装饰 */
+    .leaf-divider {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 1.5rem 0;
+      opacity: 0.6;
+    }
+    .leaf-divider::before,
+    .leaf-divider::after {
+      content: '';
+      flex: 1;
+      height: 2px;
+      background: repeating-linear-gradient(90deg, var(--ac-primary-light) 0, var(--ac-primary-light) 8px, transparent 8px, transparent 16px);
+    }
+    .leaf-divider span {
+      padding: 0 1rem;
+      font-size: 1.5rem;
+    }
+
+    /* Responsive */
+    @media (max-width: 480px) {
+      .couple-names {
+        font-size: 1.8rem;
+      }
+      
+      .countdown-item {
+        min-width: 46px;
+        padding: 0.4rem 0.5rem;
+      }
+      
+      .countdown-item .num {
+        font-size: 0.75rem;
+      }
+      
+      .boarding-pass {
+        padding: 1.5rem;
+      }
+      
+      .gallery-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    /* Empty State */
+    .empty-state {
+      text-align: center;
+      padding: 2rem;
+      color: var(--ac-text-light);
+    }
+
+    .empty-state .icon {
+      font-size: 3rem;
+      margin-bottom: 0.5rem;
+      opacity: 0.5;
+    }
+
+    /* Scrollbar */
+    ::-webkit-scrollbar {
+      width: 8px;
+    }
+
+    ::-webkit-scrollbar-track {
+      background: var(--ac-cream-dark);
+    }
+
+    ::-webkit-scrollbar-thumb {
+      background: var(--ac-sand);
+      border-radius: 4px;
+    }
+
+    ::-webkit-scrollbar-thumb:hover {
+      background: var(--ac-text-light);
+    }
+
+    /* 按钮区域样式 */
+    .btn-group {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+
+    /* Typewriter 样式 */
+    .typewriter-title {
+      font-size: 1.8rem;
+      font-weight: 800;
+      color: var(--ac-text-dark);
+      margin-bottom: 0.5rem;
+      min-height: 2rem;
+    }
+
+    /* Modal 样式 */
+    .modal-overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.6);
+      backdrop-filter: blur(4px);
+      z-index: 9998;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 1rem;
+    }
+    .modal-overlay.active {
+      display: flex;
+    }
+    .modal-content {
+      background: #fff;
+      border-radius: 20px;
+      border: 3px solid var(--ac-sand);
+      box-shadow: 0 8px 30px rgba(107, 92, 67, 0.4);
+      max-width: 400px;
+      width: 100%;
+      max-height: 80vh;
+      overflow-y: auto;
+      animation: modalSlideIn 0.25s ease;
+    }
+    @keyframes modalSlideIn {
+      from { transform: translateY(20px); opacity: 0; }
+      to { transform: translateY(0); opacity: 1; }
+    }
+    .modal-header {
+      background: linear-gradient(90deg, #82d5bb, #6dd5c8, #82d5bb);
+      border-radius: 17px 17px 0 0;
+      padding: 1rem 1.5rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .modal-header h3 {
+      color: #fff;
+      font-weight: 800;
+      font-size: 1.1rem;
+    }
+    .modal-close {
+      background: none;
+      border: none;
+      color: #fff;
+      font-size: 1.5rem;
+      cursor: pointer;
+      padding: 0;
+      line-height: 1;
+    }
+    .modal-body {
+      padding: 1.5rem;
+    }
+    .modal-footer {
+      padding: 1rem 1.5rem;
+      border-top: 2px dashed var(--ac-sand);
+      text-align: center;
+    }
+
+    /* Character Card */
+    .character-card {
+      text-align: center;
+      padding: 1rem;
+    }
+    .character-card .emoji {
+      font-size: 4rem;
+      margin-bottom: 1rem;
+    }
+    .character-card .name {
+      font-size: 1.3rem;
+      font-weight: 700;
+      color: var(--ac-primary-dark);
+      margin-bottom: 0.5rem;
+    }
+    .character-card .role {
+      font-size: 0.9rem;
+      color: var(--ac-text-light);
+      margin-bottom: 1rem;
+    }
+    .character-card .message {
+      background: var(--ac-cream);
+      border-radius: 12px;
+      padding: 1rem;
+      line-height: 1.6;
+    }
+
+    /* Footer */
+    .footer-content {
+      background: var(--ac-cream-dark);
+      padding: 1.5rem;
+      text-align: center;
+      color: var(--ac-text);
+      font-family: 'ZCOOL KuaiLe', 'Noto Sans SC', sans-serif;
+    }
+    .footer-content .made-with {
+      font-size: 0.8rem;
+      margin-bottom: 10px;
+    }
+    .tech-stack {
+      background: #1a1a2e;
+      border-radius: 12px;
+      padding: 1rem;
+      font-family: 'Courier New', monospace;
+      font-size: 0.8rem;
+      color: #8ac68a;
+      overflow-x: auto;
+    }
+    .tech-stack .keyword {
+      color: #f8a6b2;
+    }
+    .tech-stack .string {
+      color: #f7cd67;
+    }
+    .tech-stack .comment {
+      color: #6c7a89;
+    }
+
+    /* ========== 宾客上传区域样式 ========== */
+    .upload-card {
+      background: var(--ac-cream);
+      border-radius: 16px;
+      padding: 1.2rem;
+      margin-top: 1rem;
+      border: 2px solid var(--ac-sand);
+      box-shadow: 0 4px 12px rgba(107, 92, 67, 0.15);
+    }
+    .upload-card .upload-title {
+      font-size: 1rem;
+      font-weight: 700;
+      color: var(--ac-text-dark);
+      margin-bottom: 0.8rem;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .upload-dropzone {
+      border: 2px dashed var(--ac-sand);
+      border-radius: 12px;
+      padding: 1.5rem 1rem;
+      text-align: center;
+      background: var(--ac-cream-dark);
+      transition: all 0.2s;
+      cursor: pointer;
+    }
+    .upload-dropzone:hover,
+    .upload-dropzone.dragover {
+      border-color: var(--ac-primary);
+      background: rgba(42, 186, 170, 0.08);
+    }
+    .upload-dropzone .drop-icon {
+      font-size: 2.5rem;
+      margin-bottom: 0.5rem;
+    }
+    .upload-dropzone .drop-text {
+      font-size: 0.9rem;
+      color: var(--ac-text-light);
+      margin-bottom: 0.3rem;
+    }
+    .upload-dropzone .drop-hint {
+      font-size: 0.75rem;
+      color: var(--ac-text-light);
+      opacity: 0.7;
+    }
+    .upload-input {
+      display: none;
+    }
+    .upload-name-input {
+      margin-top: 0.8rem;
+    }
+    .upload-name-input input {
+      width: 100%;
+      padding: 0.6rem 0.8rem;
+      border: 2px solid var(--ac-sand);
+      border-radius: 10px;
+      font-size: 0.85rem;
+      background: var(--ac-cream);
+      color: var(--ac-text);
+      font-family: inherit;
+    }
+    .upload-name-input input:focus {
+      outline: none;
+      border-color: var(--ac-primary);
+    }
+    .upload-name-input input::placeholder {
+      color: var(--ac-text-light);
+    }
+    .upload-btn {
+      margin-top: 0.8rem;
+      width: 100%;
+      padding: 0.7rem 1rem;
+      background: var(--ac-primary);
+      color: #fff;
+      border: 3px solid var(--ac-primary-dark);
+      border-radius: 12px;
+      font-size: 0.9rem;
+      font-weight: 700;
+      font-family: inherit;
+      cursor: pointer;
+      box-shadow: 0 4px 0 var(--ac-primary-dark);
+      transition: all 0.1s;
+    }
+    .upload-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 0 var(--ac-primary-dark);
+    }
+    .upload-btn:active {
+      transform: translateY(2px);
+      box-shadow: 0 2px 0 var(--ac-primary-dark);
+    }
+    .upload-btn:disabled {
+      opacity: 0.6;
+      cursor: not-allowed;
+      transform: none;
+    }
+    .upload-progress {
+      margin-top: 0.8rem;
+      display: none;
+    }
+    .upload-progress.active {
+      display: block;
+    }
+    .upload-progress-bar {
+      height: 8px;
+      background: var(--ac-sand);
+      border-radius: 4px;
+      overflow: hidden;
+    }
+    .upload-progress-fill {
+      height: 100%;
+      background: linear-gradient(90deg, var(--ac-primary), var(--ac-primary-light));
+      border-radius: 4px;
+      transition: width 0.3s;
+      width: 0%;
+    }
+    .upload-progress-text {
+      font-size: 0.75rem;
+      color: var(--ac-text-light);
+      margin-top: 0.3rem;
+      text-align: center;
+    }
+    .upload-preview {
+      margin-top: 0.8rem;
+      display: none;
+    }
+    .upload-preview.active {
+      display: block;
+    }
+    .upload-preview img,
+    .upload-preview video {
+      width: 100%;
+      max-height: 200px;
+      object-fit: cover;
+      border-radius: 10px;
+      border: 2px solid var(--ac-sand);
+    }
+    .upload-preview .preview-remove {
+      margin-top: 0.5rem;
+      width: 100%;
+      padding: 0.5rem;
+      background: var(--ac-app-red);
+      color: #fff;
+      border: 2px solid #d45550;
+      border-radius: 8px;
+      font-size: 0.8rem;
+      font-family: inherit;
+      cursor: pointer;
+    }
+
+    /* 照片墙样式 */
+    .guest-photo-wall {
+      margin-top: 1rem;
+    }
+    .photo-wall-header {
+      font-size: 0.85rem;
+      color: var(--ac-text-light);
+      margin-bottom: 0.8rem;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .photo-wall-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 8px;
+    }
+    .photo-wall-item {
+      aspect-ratio: 1;
+      border-radius: 10px;
+      overflow: hidden;
+      border: 2px solid var(--ac-sand);
+      cursor: pointer;
+      position: relative;
+      background: var(--ac-cream-dark);
+    }
+    .photo-wall-item img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.3s;
+    }
+    .photo-wall-item:hover img {
+      transform: scale(1.08);
+    }
+    .photo-wall-item .photo-uploader {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      background: linear-gradient(transparent, rgba(0,0,0,0.7));
+      color: #fff;
+      font-size: 0.6rem;
+      padding: 1rem 0.4rem 0.3rem;
+      text-overflow: ellipsis;
+      overflow: hidden;
+      white-space: nowrap;
+    }
+    .photo-wall-empty {
+      grid-column: 1 / -1;
+      text-align: center;
+      padding: 2rem 1rem;
+      color: var(--ac-text-light);
+      font-size: 0.85rem;
+    }
+    .photo-wall-empty .icon {
+      font-size: 2rem;
+      margin-bottom: 0.5rem;
+      opacity: 0.5;
+    }
+
+    /* 视频展示区样式 */
+    .guest-video-wall {
+      margin-top: 1rem;
+    }
+    .video-wall-header {
+      font-size: 0.85rem;
+      color: var(--ac-text-light);
+      margin-bottom: 0.8rem;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .video-wall-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 10px;
+    }
+    .video-wall-item {
+      aspect-ratio: 16/9;
+      border-radius: 12px;
+      overflow: hidden;
+      border: 2px solid var(--ac-sand);
+      cursor: pointer;
+      position: relative;
+      background: var(--ac-cream-dark);
+    }
+    .video-wall-item img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    .video-wall-item .play-btn {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 40px;
+      height: 40px;
+      background: rgba(42, 186, 170, 0.9);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.2rem;
+      color: #fff;
+      box-shadow: 0 3px 10px rgba(0,0,0,0.3);
+    }
+    .video-wall-item .video-uploader {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      background: linear-gradient(transparent, rgba(0,0,0,0.7));
+      color: #fff;
+      font-size: 0.6rem;
+      padding: 1rem 0.4rem 0.3rem;
+      text-overflow: ellipsis;
+      overflow: hidden;
+      white-space: nowrap;
+    }
+    .video-wall-empty {
+      grid-column: 1 / -1;
+      text-align: center;
+      padding: 2rem 1rem;
+      color: var(--ac-text-light);
+      font-size: 0.85rem;
+    }
+    .video-wall-empty .icon {
+      font-size: 2rem;
+      margin-bottom: 0.5rem;
+      opacity: 0.5;
+    }
+
+    /* 视频播放 Modal */
+    .video-modal-overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.92);
+      z-index: 99999;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 1rem;
+    }
+    .video-modal-overlay.active {
+      display: flex;
+    }
+    .video-modal-content {
+      width: 100%;
+      max-width: 800px;
+      background: #000;
+      border-radius: 16px;
+      overflow: hidden;
+      position: relative;
+    }
+    .video-modal-content video {
+      width: 100%;
+      display: block;
+    }
+    .video-modal-close {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      width: 36px;
+      height: 36px;
+      background: rgba(0,0,0,0.6);
+      border: none;
+      border-radius: 50%;
+      color: #fff;
+      font-size: 1.2rem;
+      cursor: pointer;
+      z-index: 10;
+    }
+    .video-modal-close:hover {
+      background: rgba(0,0,0,0.8);
+    }
+
+    /* Toast 提示 */
+    .toast {
+      position: fixed;
+      top: 20px;
+      left: 50%;
+      transform: translateX(-50%) translateY(-100px);
+      background: var(--ac-text-dark);
+      color: #fff;
+      padding: 0.8rem 1.5rem;
+      border-radius: 25px;
+      font-size: 0.9rem;
+      z-index: 999999;
+      transition: transform 0.3s ease;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+      max-width: 90vw;
+      text-align: center;
+    }
+    .toast.show {
+      transform: translateX(-50%) translateY(0);
+    }
+    .toast.success {
+      background: var(--ac-primary);
+    }
+    .toast.error {
+      background: var(--ac-app-red);
+    }
+
+    @media (max-width: 400px) {
+      .photo-wall-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+      .video-wall-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    /* ====== Animal Island UI 效果 ====== */
+
+    /* 1. 自定义光标 - 动森白手套 */
+    .ac-cursor,
+    .ac-cursor * {
+      cursor: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24'%3E%3Cpath d='M5 2c1 0 2 1 2 2v6h1V5c0-1 1-2 2-2s2 1 2 2v5h1V6c0-1 1-2 2-2s2 1 2 2v8l1.5-2.5c.5-1 1.8-1.3 2.7-.7.8.5 1 1.5.6 2.3l-4 7A5 5 0 0113 23h-2a5 5 0 01-4.2-2.3L5 17V4c0-1 1-2 2-2H5z' fill='%23fff' stroke='%23725d42' stroke-width='1.5' stroke-linejoin='round'/%3E%3C/svg%3E") 4 0, default !important;
+    }
+    .ac-cursor a[href],
+    .ac-cursor button,
+    .ac-cursor [role='button'],
+    .ac-cursor input[type='submit'],
+    .ac-cursor .btn-ac,
+    .ac-cursor .upload-btn,
+    .ac-cursor .bgm-toggle,
+    .ac-cursor .theme-switch {
+      cursor: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='28' height='28' viewBox='0 0 28 28'%3E%3Cpath d='M6 3c1.2 0 2.2 1 2.2 2.2v6.6h1V6.2c0-1.2 1-2.2 2.2-2.2s2.2 1 2.2 2.2v5.6h1V7.2c0-1.2 1-2.2 2.2-2.2s2.2 1 2.2 2.2v8.8l1.6-2.8c.6-1.1 2-1.5 3-.8.9.6 1.1 1.7.7 2.6l-4.4 7.7A5.5 5.5 0 0114.5 26h-2.2a5.5 5.5 0 01-4.6-2.5L6 19.8V5.2C6 4 7 3 8.2 3H6z' fill='%23fff5e0' stroke='%23725d42' stroke-width='1.5' stroke-linejoin='round'/%3E%3C/svg%3E") 4 0, pointer !important;
+    }
+    .ac-cursor input[type='text'],
+    .ac-cursor textarea {
+      cursor: text !important;
+    }
+
+    /* 2. Typewriter 打字机效果 */
+    .typewriter-text {
+      display: inline;
+    }
+    .typewriter-text .tw-cursor {
+      display: inline-block;
+      width: 2px;
+      height: 1em;
+      background: var(--ac-primary, #19c8b9);
+      margin-left: 2px;
+      vertical-align: text-bottom;
+      animation: tw-blink 0.8s step-end infinite;
+    }
+    @keyframes tw-blink {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0; }
+    }
+
+    /* 3. Collapse FAQ 升级 - Animal Island 风格 */
+    .faq-item {
+      position: relative;
+      background: var(--ac-cream, #fdfdf5);
+      border-radius: 18px;
+      border: 2px solid rgba(114, 93, 66, 0.25);
+      overflow: hidden;
+      transition: border-color 0.3s ease;
+      margin-bottom: 10px;
+    }
+    .faq-item:hover {
+      border-color: rgba(114, 93, 66, 0.45);
+    }
+    .faq-header {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      width: 100%;
+      padding: 14px 18px;
+      background: transparent;
+      border: none;
+      cursor: pointer;
+      text-align: left;
+      font-size: 0.95rem;
+      font-weight: 600;
+      color: var(--ac-text-dark, #725d42);
+      font-family: inherit;
+    }
+    .faq-header .faq-icon-circle {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 26px;
+      height: 26px;
+      background: var(--ac-primary, #19c8b9);
+      color: #fff;
+      border-radius: 50%;
+      font-size: 15px;
+      font-weight: 700;
+      line-height: 1;
+      flex-shrink: 0;
+      transition: transform 0.3s ease, background 0.3s ease;
+      box-shadow: 0 2px 4px rgba(25, 200, 185, 0.3);
+    }
+    .faq-item.open .faq-icon-circle {
+      background: #f7cd67;
+      transform: rotate(45deg);
+    }
+    .faq-header .faq-leaf {
+      color: var(--ac-primary, #19c8b9);
+      opacity: 0.5;
+      transition: opacity 0.3s, transform 0.3s;
+      margin-left: auto;
+      flex-shrink: 0;
+    }
+    .faq-item.open .faq-leaf {
+      opacity: 1;
+      transform: rotate(45deg);
+    }
+    .faq-content {
+      display: grid;
+      grid-template-rows: 0fr;
+      transition: grid-template-rows 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    .faq-item.open .faq-content {
+      grid-template-rows: 1fr;
+    }
+    .faq-content-inner {
+      overflow: hidden;
+      padding: 0 18px;
+      color: var(--ac-text-light, #9a835a);
+      font-size: 0.88rem;
+      line-height: 1.7;
+      transition: padding 0.3s ease;
+    }
+    .faq-item.open .faq-content-inner {
+      padding-bottom: 16px;
+    }
+
+    /* 4. 有机形状 Modal - SVG clip-path */
+    .ac-modal-overlay {
+      position: fixed;
+      inset: 0;
+      z-index: 2000;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: rgba(0, 0, 0, 0.4);
+      animation: acFadeIn 0.25s ease;
+    }
+    .ac-modal-container {
+      position: relative;
+      max-width: calc(100vw - 32px);
+      max-height: calc(100vh - 64px);
+      animation: acZoomIn 0.3s ease;
+    }
+    .ac-modal-clipped {
+      width: 100%;
+      height: 100%;
+      clip-path: url(#animal-modal-clip);
+      padding: 36px 32px 28px;
+      background: rgb(247, 243, 223);
+      color: rgb(128, 115, 89);
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+    }
+    .ac-modal-title {
+      font-size: 1.3rem;
+      font-weight: 700;
+      color: rgba(114, 93, 66, 1);
+      margin-bottom: 12px;
+      text-align: center;
+    }
+    .ac-modal-body {
+      flex: 1;
+      overflow-y: auto;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .ac-modal-body img {
+      max-width: 100%;
+      max-height: 60vh;
+      border-radius: 12px;
+    }
+    .ac-modal-close {
+      position: absolute;
+      top: 12px;
+      right: 20px;
+      width: 30px;
+      height: 30px;
+      border: none;
+      background: rgba(114, 93, 66, 0.1);
+      color: rgba(114, 93, 66, 0.7);
+      border-radius: 50%;
+      font-size: 18px;
+      cursor: pointer;
+      transition: all 0.2s;
+      z-index: 10;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .ac-modal-close:hover {
+      background: rgba(114, 93, 66, 0.2);
+      color: rgba(114, 93, 66, 1);
+    }
+    @keyframes acFadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+    @keyframes acZoomIn {
+      from { opacity: 0; transform: scale(0.92); }
+      to { opacity: 1; transform: scale(1); }
+    }
+
+    /* 5. SVG 装饰分隔线 */
+    .ac-divider {
+      width: 100%;
+      height: 20px;
+      margin: 0.5rem 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .ac-divider svg {
+      width: 80%;
+      max-width: 320px;
+      height: auto;
+    }
+
+    /* 6. Animal Island Footer */
+    .ac-footer {
+      position: relative;
+      width: 100%;
+      height: 100px;
+      margin-top: 2rem;
+      overflow: hidden;
+    }
+    .ac-footer svg {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+    }
+    .ac-footer-text {
+      position: absolute;
+      bottom: 18px;
+      left: 0;
+      right: 0;
+      text-align: center;
+      font-size: 0.75rem;
+      color: rgba(114, 93, 66, 0.6);
+      letter-spacing: 2px;
+      z-index: 2;
+    }
+    [data-theme="night"] .ac-footer-text {
+      color: rgba(200, 200, 200, 0.5);
+    }
+  </style>
+</head>
+<body class="ac-cursor">
+  <!-- SVG clip-path 定义 (Animal Island Modal) -->
+  <svg style="position:absolute;width:0;height:0" aria-hidden="true">
+    <defs>
+      <clipPath id="animal-modal-clip" clipPathUnits="objectBoundingBox">
+        <path d="M0.501,0.005 L0.501,0.005 L0.523,0.005 L0.549,0.006 C0.704,0.01,0.796,0.017,0.825,0.027 L0.827,0.028 C0.872,0.045,0.939,0.044,0.978,0.17 C1,0.254,1,0.365,0.99,0.505 L0.988,0.513 C0.979,0.558,0.971,0.598,0.965,0.633 C0.956,0.689,0.979,0.77,0.964,0.865 C0.953,0.928,0.921,0.966,0.869,0.979 C0.821,0.986,0.773,0.992,0.726,0.995 L0.712,0.996 L0.694,0.997 C0.648,1,0.586,1,0.507,1 L0.501,1 L0.464,1 C0.385,1,0.325,0.998,0.283,0.995 C0.234,0.992,0.184,0.987,0.133,0.979 C0.081,0.966,0.05,0.928,0.039,0.865 C0.023,0.77,0.047,0.689,0.037,0.633 C0.031,0.595,0.023,0.552,0.013,0.505 C-0.006,0.365,-0.002,0.254,0.024,0.17 C0.064,0.045,0.13,0.045,0.174,0.028 L0.175,0.028 C0.204,0.017,0.303,0.009,0.474,0.005 L0.501,0.005"/>
+      </clipPath>
+    </defs>
+  </svg>
+  <!-- Loading 动画 -->
+  <div id="loading-mount">
+    <div class="loading-content">
+      <div class="loading-island">🏝️</div>
+      <div class="loading-text">正在登机...</div>
+      <div class="loading-dots">
+        <span></span><span></span><span></span>
+      </div>
+    </div>
+  </div>
+  <!-- 保底：1.5秒后强制隐藏加载画面，不依赖任何外部脚本 -->
+  <script>
+    setTimeout(function(){
+      var lm=document.getElementById('loading-mount');
+      if(lm){lm.classList.add('hidden');setTimeout(function(){lm.style.display='none';},500);}
+    },1000);
+  </script>
+  
+  <!-- 主题Switch -->
+  <div id="switch-mount">
+    <div class="theme-switch" id="themeSwitch" onclick="toggleTheme()">
+      <span class="theme-switch-text" id="themeIcon">☀️</span>
+    </div>
+  </div>
+
+  <!-- Section 1: Hero / Invitation -->
+  <section id="invite" class="section hero-section">
+    <div class="float-deco" style="top: 8%; left: 8%;">🍃</div>
+    <div class="float-deco" style="top: 15%; right: 10%; animation-delay: 1s;">🌿</div>
+    <div class="float-deco" style="bottom: 15%; left: 15%; animation-delay: 2s;">🐚</div>
+    <div class="float-deco" style="bottom: 25%; right: 8%; animation-delay: 0.5s;">🌴</div>
+    
+    <div class="boarding-pass">
+      <div class="dodo-airlines">
+        <h1>🛫 Dodo Airlines</h1>
+        <span class="subtitle">Wedding Invitation</span>
+      </div>
+      
+      <div class="invite-title">
+        <h2 id="typewriter-title" class="typewriter-title"></h2>
+        <div class="couple-names">胡泽洲  王雨</div>
+      </div>
+      
+      <div class="countdown" id="countdown">
+        <div class="countdown-item">
+          <span class="num" id="days">00</span>
+          <span class="label">天</span>
+        </div>
+        <div class="countdown-item">
+          <span class="num" id="hours">00</span>
+          <span class="label">时</span>
+        </div>
+        <div class="countdown-item">
+          <span class="num" id="minutes">00</span>
+          <span class="label">分</span>
+        </div>
+        <div class="countdown-item">
+          <span class="num" id="seconds">00</span>
+          <span class="label">秒</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- NookPhone 装饰框 - Animal Island UI风格 -->
+    <div style="position:relative; max-width:380px; margin:1.5rem auto 0; padding:32px 28px 24px; background:linear-gradient(135deg,#fdfdf5 0%,#f7f3e7 100%); border-radius:20px; border:2px solid rgba(114,93,66,0.2); box-shadow:0 6px 20px rgba(114,93,66,0.15); text-align:center;">
+      <!-- 顶部装饰线 -->
+      <div style="display:flex;align-items:center;justify-content:center;gap:10px;margin-bottom:12px;">
+        <div style="height:2px;width:48px;background:linear-gradient(to right,transparent,#725d42,transparent);"></div>
+        <span style="color:#f7cd67;font-size:14px;">★</span>
+        <div style="height:2px;width:48px;background:linear-gradient(to right,transparent,#725d42,transparent);"></div>
+      </div>
+      <div style="font-size:12px;letter-spacing:4px;color:#9a835a;font-weight:700;margin-bottom:2px;">WELCOME TO</div>
+      <div style="font-size:22px;font-weight:900;color:#725d42;letter-spacing:3px;margin-bottom:14px;">🏝️ 无人岛</div>
+      <div style="font-size:13px;color:#794f27;line-height:1.8;font-weight:500;">
+        欢迎登机！请系好安全带<br>我们即将飞往幸福的彼岸～✈️
+      </div>
+      <!-- 底部装饰 -->
+      <div style="margin-top:14px;display:flex;align-items:center;justify-content:center;gap:8px;">
+        <span style="font-size:16px;">🌿</span>
+        <span style="font-size:11px;color:#9a835a;letter-spacing:2px;font-weight:600;">2026.06.20 · 星期六 · 9:00</span>
+        <span style="font-size:16px;">🌿</span>
+      </div>
+      <!-- 内描边 -->
+      <div style="position:absolute;inset:10px;border:1.5px dashed rgba(114,93,66,0.2);border-radius:16px;pointer-events:none;"></div>
+    </div>
+
+    <!-- 婚礼邀请函图片 - 可点击查看大图 -->
+    <div style="margin: 1.5rem 0;">
+      <div style="background: #f7f3e7; border-radius: 16px; padding: 12px; box-shadow: 0 6px 20px rgba(0,0,0,0.1);">
+        <img src="assets/invite.jpg" alt="婚礼邀请函" style="width: 100%; border-radius: 12px; display: block; cursor: pointer;" onclick="openInviteModal()" />
+      </div>
+    </div>
+
+    <!-- 婚礼视频 -->
+    <div style="margin: 1.5rem 0;">
+      <div style="background: #2a2420; border-radius: 16px; padding: 12px; box-shadow: 0 6px 20px rgba(0,0,0,0.15); position: relative; overflow: hidden;">
+        <div style="display:flex; justify-content:space-between; padding: 4px 8px; margin-bottom: 8px;">
+          <div style="display:flex; gap:6px;">
+            <div style="width:8px;height:8px;border-radius:2px;background:#4a4035;"></div>
+            <div style="width:8px;height:8px;border-radius:2px;background:#4a4035;"></div>
+            <div style="width:8px;height:8px;border-radius:2px;background:#4a4035;"></div>
+          </div>
+          <span style="color:#8a7a6a;font-size:0.7rem;font-family:'Nunito',sans-serif;">REC ●</span>
+          <div style="display:flex; gap:6px;">
+            <div style="width:8px;height:8px;border-radius:2px;background:#4a4035;"></div>
+            <div style="width:8px;height:8px;border-radius:2px;background:#4a4035;"></div>
+            <div style="width:8px;height:8px;border-radius:2px;background:#4a4035;"></div>
+          </div>
+        </div>
+        <div onclick="openHeroVideo()" style="cursor:pointer; border-radius:12px; overflow:hidden; position:relative; background:linear-gradient(135deg,#1a1a2e,#16213e,#0f3460); aspect-ratio:16/9; display:flex; align-items:center; justify-content:center;">
+          <div style="text-align:center; color:#fff;">
+            <div style="font-size:3rem; margin-bottom:0.5rem; animation: pulse 2s ease-in-out infinite;">▶</div>
+            <div style="font-size:1rem; font-weight:600;">来自无人岛的视频信</div>
+            <div style="font-size:0.75rem; opacity:0.7; margin-top:4px;">点击播放</div>
+          </div>
+        </div>
+        <div style="display:flex; justify-content:space-between; padding: 4px 8px; margin-top: 8px;">
+          <div style="display:flex; gap:6px;">
+            <div style="width:8px;height:8px;border-radius:2px;background:#4a4035;"></div>
+            <div style="width:8px;height:8px;border-radius:2px;background:#4a4035;"></div>
+            <div style="width:8px;height:8px;border-radius:2px;background:#4a4035;"></div>
+          </div>
+          <span style="color:#8a7a6a;font-size:0.65rem;font-family:'Nunito',sans-serif;">2026.06.20</span>
+          <div style="display:flex; gap:6px;">
+            <div style="width:8px;height:8px;border-radius:2px;background:#4a4035;"></div>
+            <div style="width:8px;height:8px;border-radius:2px;background:#4a4035;"></div>
+            <div style="width:8px;height:8px;border-radius:2px;background:#4a4035;"></div>
+          </div>
+        </div>
+      </div>
+      <!-- 视频操作按钮 -->
+      <div style="margin-top: 12px; display: flex; gap: 10px; flex-wrap: wrap;">
+        <a href="https://weixin.qq.com/sph/AoDJybFr0L" target="_blank" class="btn-ac" style="display: inline-flex; text-decoration: none; align-items: center; gap: 6px; font-size: 0.85rem; padding: 8px 14px;">
+          📺 前往视频号观看
+        </a>
+        <button class="btn-ac" style="background: var(--ac-app-orange); border-color: #c47030; box-shadow: 0 4px 0 #c47030; display: inline-flex; align-items: center; gap: 6px; font-size: 0.85rem; padding: 8px 14px;" onclick="copyVideoLink()">
+          📋 复制视频号链接
+        </button>
+      </div>
+      <p style="margin-top: 0.6rem; font-size: 0.8rem; color: var(--ac-text-light);">💡 提示：在微信中打开链接可直接播放视频</p>
+    </div>
+
+    <!-- Divider -->
+    <div class="ac-divider"><svg viewBox="0 0 400 20" preserveAspectRatio="xMidYMid meet"><path d="M0 10 Q25 2 50 10 T100 10 T150 10 T200 10 T250 10 T300 10 T350 10 T400 10" fill="none" stroke="rgba(114,93,66,0.25)" stroke-width="2"/><circle cx="200" cy="10" r="4" fill="rgba(114,93,66,0.2)"/><circle cx="175" cy="10" r="2.5" fill="rgba(25,200,185,0.3)"/><circle cx="225" cy="10" r="2.5" fill="rgba(25,200,185,0.3)"/></svg></div>
+
+    <div class="speech-bubble" style="margin-top:1rem;">
+      <div class="animal-char" style="cursor: pointer;" onclick="openCharacterModal('isabelle')">
+        <span class="emoji">🐕</span>
+        <span>西施惠 Isabelle</span>
+      </div>
+      <p style="margin-top: 0.5rem;">亲爱的岛民们～婚礼邀请函来啦！快来参加胡泽洲  王雨的婚礼吧，期待在无人岛上见到你们哦！🍃</p>
+    </div>
+  </section>
+
+  <!-- Section 2: Flight / Timeline -->
+  <section id="flight" class="section">
+    <div class="animal-banner" style="cursor: pointer;" onclick="openCharacterModal('wilbur')">
+      <span class="emoji">🦫</span>
+      <div class="info">
+        <span class="name">渡渡鸟 Wilbur</span>
+        <span class="role">Dodo Airlines</span>
+      </div>
+    </div>
+    
+    <div class="flight-card">
+      <div class="flight-header">
+        <h3>✈️ Dodo Airlines</h3>
+        <span class="flight-number">AC-2026-0620</span>
+      </div>
+      <div class="flight-body">
+        <div class="flight-route">
+          <div class="route-point">
+            <span class="label">出发地</span>
+            <span class="city">你所在城市</span>
+          </div>
+          <div class="route-line"></div>
+          <div class="route-point">
+            <span class="label">目的地</span>
+            <span class="city">信阳市</span>
+          </div>
+        </div>
+        
+        <div class="timeline">
+          <div class="timeline-item">
+            <span class="time">09:00</span>
+            <span class="desc">🏠 签到入场</span>
+          </div>
+          <div class="timeline-item">
+            <span class="time">11:00</span>
+            <span class="desc">💒 婚礼仪式</span>
+          </div>
+          <div class="timeline-item">
+            <span class="time">11:30</span>
+            <span class="desc">📸 合照时间</span>
+          </div>
+          <div class="timeline-item">
+            <span class="time">12:00</span>
+            <span class="desc">🍽️ 午宴开始</span>
+          </div>
+        </div>
+        
+        <div class="speech-bubble" style="margin-top: 1rem;">
+          <div class="animal-char">
+            <span class="emoji">🦫</span>
+            <span>渡渡鸟 Wilbur</span>
+          </div>
+
+        </div>
+        
+        <div class="ticket-tear">
+          <div class="barcode">
+            <span></span><span></span><span></span><span></span><span></span>
+            <span></span><span></span><span></span><span></span><span></span>
+            <span></span><span></span><span></span><span></span><span></span>
+            <span></span><span></span><span></span><span></span><span></span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Divider -->
+  <div class="ac-divider"><svg viewBox="0 0 400 20" preserveAspectRatio="xMidYMid meet"><path d="M0 10 Q25 2 50 10 T100 10 T150 10 T200 10 T250 10 T300 10 T350 10 T400 10" fill="none" stroke="rgba(114,93,66,0.25)" stroke-width="2"/><circle cx="200" cy="10" r="4" fill="rgba(114,93,66,0.2)"/><circle cx="175" cy="10" r="2.5" fill="rgba(25,200,185,0.3)"/><circle cx="225" cy="10" r="2.5" fill="rgba(25,200,185,0.3)"/></svg></div>
+
+  <!-- Section 3: Video -->
+  <section id="video" class="section">
+    <div class="animal-banner">
+      <span class="emoji">🎸</span>
+      <div class="info">
+        <span class="name">K.K. Slider</span>
+        <span class="role">Music Island</span>
+      </div>
+    </div>
+    
+    <div class="video-card">
+      <div style="aspect-ratio: 16/9; display: flex; align-items: center; justify-content: center; border-radius: 12px; background: var(--ac-cream-dark); border: 2px dashed var(--ac-sand);">
+        <div style="text-align: center; color: var(--ac-text-light);">
+          <div style="font-size: 3rem; margin-bottom: 0.5rem;">🎬</div>
+          <div style="font-size: 1rem; font-weight: 600;">婚礼视频</div>
+          <div style="font-size: 0.85rem; margin-top: 0.3rem; opacity: 0.7;">婚礼后由新人补充</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 视频上传区域 -->
+    <div class="upload-card" id="videoUploadCard">
+      <div class="upload-title">🎬 上传你的婚礼视频</div>
+      <div class="upload-dropzone" id="videoDropzone" onclick="document.getElementById('videoInput').click()">
+        <div class="drop-icon">🎥</div>
+        <div class="drop-text">点击或拖拽上传视频</div>
+        <div class="drop-hint">支持 MP4/AVI/MOV，最大 200MB</div>
+      </div>
+      <input type="file" id="videoInput" class="upload-input" accept="video/*">
+      <div class="upload-preview" id="videoPreview">
+        <video id="videoPreviewVideo" controls></video>
+        <button class="preview-remove" onclick="removeVideoPreview()">✕ 移除视频</button>
+      </div>
+      <div class="upload-name-input">
+        <input type="text" id="videoUploaderName" placeholder="你的名字（选填，默认"匿名岛民"）">
+      </div>
+      <button class="upload-btn" id="videoUploadBtn" onclick="uploadVideo()">📤 上传视频</button>
+      <div class="upload-progress" id="videoProgress">
+        <div class="upload-progress-bar">
+          <div class="upload-progress-fill" id="videoProgressFill"></div>
+        </div>
+        <div class="upload-progress-text" id="videoProgressText">上传中...</div>
+      </div>
+    </div>
+
+    <!-- 宾客视频展示区 -->
+    <div class="guest-video-wall" id="guestVideoWall">
+      <div class="video-wall-header">📹 宾客视频 · <span id="videoCount">0</span> 个</div>
+      <div class="video-wall-grid" id="videoWallGrid">
+        <div class="video-wall-empty">
+          <div class="icon">⏳</div>
+          <div>等待宾客上传...</div>
+        </div>
+      </div>
+      <div id="videoLoadMore" style="display:none; text-align:center; padding:0.8rem;">
+        <button onclick="loadMoreVideos()" style="background:#2abaaa;color:#fff;border:none;border-radius:20px;padding:8px 24px;font-size:14px;cursor:pointer;font-family:inherit;">🍃 加载更多视频</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- Divider -->
+  <div class="ac-divider"><svg viewBox="0 0 400 20" preserveAspectRatio="xMidYMid meet"><path d="M0 10 Q25 2 50 10 T100 10 T150 10 T200 10 T250 10 T300 10 T350 10 T400 10" fill="none" stroke="rgba(114,93,66,0.25)" stroke-width="2"/><circle cx="200" cy="10" r="4" fill="rgba(114,93,66,0.2)"/><circle cx="175" cy="10" r="2.5" fill="rgba(25,200,185,0.3)"/><circle cx="225" cy="10" r="2.5" fill="rgba(25,200,185,0.3)"/></svg></div>
+
+  <!-- Section 4: Location -->
+  <section id="location" class="section">
+    <div class="animal-banner">
+      <span class="emoji">🦉</span>
+      <div class="info">
+        <span class="name">博物馆馆长 Blathers</span>
+        <span class="role">Museum Director</span>
+      </div>
+    </div>
+    
+    <div class="location-card">
+      <div class="location-header">
+        <div class="location-icon">🏡</div>
+        <div class="location-info">
+          <h3>竹溪庄园木亭</h3>
+          <p>信阳市 · 户外婚礼场地</p>
+        </div>
+      </div>
+      
+      <!-- Tabs 导航 -->
+      <div class="location-tabs">
+        <div class="tabs-nav">
+          <button class="tabs-tab active" data-tab="交通" onclick="switchTab(this)">🚌 交通</button>
+          <button class="tabs-tab" data-tab="住宿" onclick="switchTab(this)">🏨 住宿</button>
+          <button class="tabs-tab" data-tab="流程" onclick="switchTab(this)">📋 流程</button>
+        </div>
+        <div class="tabs-content" id="tabsContent">
+🚗 自驾：导航至"信阳市竹溪庄园"，场地有免费停车位
+🚄 高铁：到达信阳东站后打车约30分钟</div>
+      </div>
+      
+      <div class="info-list">
+        <div class="info-item">
+          <span class="icon">💒</span>
+          <div class="text">
+            <span class="label">婚礼仪式</span>
+            <span class="value">信阳市竹溪庄园 · 木亭区</span>
+          </div>
+        </div>
+        <div class="info-item">
+          <span class="icon">🕐</span>
+          <div class="text">
+            <span class="label">仪式时间</span>
+            <span class="value">2026年6月20日 周六 09:00~14:00</span>
+          </div>
+        </div>
+        <div class="info-item">
+          <span class="icon">🏨</span>
+          <div class="text">
+            <span class="label">住宿</span>
+            <span class="value">信阳毛尖酒店</span>
+          </div>
+        </div>
+        <div class="info-item">
+          <span class="icon">📍</span>
+          <div class="text">
+            <span class="label">酒店地址</span>
+            <span class="value">河南省信阳市平桥区新七大道与新十四街交叉口百花之声东门</span>
+          </div>
+        </div>
+        <div class="info-item">
+          <span class="icon">📞</span>
+          <div class="text">
+            <span class="label">联系电话</span>
+            <span class="value"><a href="tel:18860304685">18860304685</a></span>
+          </div>
+        </div>
+      </div>
+      
+      <!-- 婚礼场地导航 -->
+      <div style="margin-top: 1rem;">
+        <div style="background: var(--ac-cream-dark); border-radius: 12px; padding: 12px; margin-bottom: 10px;">
+          <div style="font-weight: 700; font-size: 0.85rem; color: var(--ac-text-dark); margin-bottom: 6px;">💒 婚礼仪式 — 竹溪庄园木亭</div>
+          <div style="font-size: 0.8rem; color: var(--ac-text-light); margin-bottom: 8px;">信阳市竹溪庄园</div>
+          <div style="display: flex; gap: 8px; flex-wrap: wrap;">
+            <a href="javascript:void(0)" onclick="openMapApp('32.13','114.06','信阳市竹溪庄园','amap')" class="btn-ac" style="display: inline-flex; text-decoration: none; align-items: center; gap: 6px; font-size: 0.8rem; padding: 7px 12px;">🧭 高德导航</a>
+            <a href="javascript:void(0)" onclick="openMapApp('32.13','114.06','信阳市竹溪庄园','tencent')" class="btn-ac" style="display: inline-flex; text-decoration: none; align-items: center; gap: 6px; font-size: 0.8rem; padding: 7px 12px; background: var(--ac-app-blue); border-color: #5a7ab8; box-shadow: 0 4px 0 #5a7ab8;">📍 腾讯导航</a>
+          </div>
+        </div>
+        <div style="background: var(--ac-cream-dark); border-radius: 12px; padding: 12px;">
+          <div style="font-weight: 700; font-size: 0.85rem; color: var(--ac-text-dark); margin-bottom: 6px;">🏨 住宿 — 信阳毛尖酒店</div>
+          <div style="font-size: 0.8rem; color: var(--ac-text-light); margin-bottom: 8px;">河南省信阳市平桥区新七大道与新十四街交叉口百花之声东门</div>
+          <div style="display: flex; gap: 8px; flex-wrap: wrap;">
+            <a href="javascript:void(0)" onclick="openMapApp('32.15','114.05','河南省信阳市平桥区新七大道与新十四街交叉口百花之声东门','amap')" class="btn-ac" style="display: inline-flex; text-decoration: none; align-items: center; gap: 6px; font-size: 0.8rem; padding: 7px 12px;">🧭 高德导航</a>
+            <a href="javascript:void(0)" onclick="openMapApp('32.15','114.05','河南省信阳市平桥区新七大道与新十四街交叉口百花之声东门','tencent')" class="btn-ac" style="display: inline-flex; text-decoration: none; align-items: center; gap: 6px; font-size: 0.8rem; padding: 7px 12px; background: var(--ac-app-blue); border-color: #5a7ab8; box-shadow: 0 4px 0 #5a7ab8;">📍 腾讯导航</a>
+          </div>
+        </div>
+        <div id="wechatMapTip" style="display:none; margin-top: 10px; background: #fff3cd; border-radius: 12px; padding: 10px; font-size: 0.8rem; color: #856404; text-align: center;">
+          💡 微信内点右上角 ··· → 在浏览器中打开，可调起地图APP导航
+        </div>
+      </div>
+      
+      <div class="speech-bubble" style="margin-top: 1rem;">
+        <div class="animal-char" style="cursor: pointer;" onclick="openCharacterModal('blathers')">
+          <span class="emoji">🦉</span>
+          <span>博物馆馆长 Blathers</span>
+        </div>
+        <p style="margin-top: 0.5rem;">哎呀！让我为你指引方向～请务必准时到达，我会亲自在门口迎接你的！ww.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Divider -->
+  <div class="ac-divider"><svg viewBox="0 0 400 20" preserveAspectRatio="xMidYMid meet"><path d="M0 10 Q25 2 50 10 T100 10 T150 10 T200 10 T250 10 T300 10 T350 10 T400 10" fill="none" stroke="rgba(114,93,66,0.25)" stroke-width="2"/><circle cx="200" cy="10" r="4" fill="rgba(114,93,66,0.2)"/><circle cx="175" cy="10" r="2.5" fill="rgba(25,200,185,0.3)"/><circle cx="225" cy="10" r="2.5" fill="rgba(25,200,185,0.3)"/></svg></div>
+
+  <!-- Section 5: Gallery -->
+  <section id="gallery" class="section">
+    <div class="animal-banner">
+      <span class="emoji">🐱</span>
+      <div class="info">
+        <span class="name">Marshal</span>
+        <span class="role">Photography</span>
+      </div>
+    </div>
+    
+    <div class="section-title">
+      <h2>📸 婚礼记忆</h2>
+      <p>美好的瞬间将被记录</p>
+    </div>
+    
+    <div class="gallery-grid">
+      <div class="gallery-item">
+        <span class="icon">🍃</span>
+        <span class="text">照片即将上传</span>
+      </div>
+      <div class="gallery-item">
+        <span class="icon">🍃</span>
+        <span class="text">照片即将上传</span>
+      </div>
+      <div class="gallery-item">
+        <span class="icon">🍃</span>
+        <span class="text">照片即将上传</span>
+      </div>
+      <div class="gallery-item">
+        <span class="icon">🍃</span>
+        <span class="text">照片即将上传</span>
+      </div>
+      <div class="gallery-item">
+        <span class="icon">🍃</span>
+        <span class="text">照片即将上传</span>
+      </div>
+      <div class="gallery-item">
+        <span class="icon">🍃</span>
+        <span class="text">照片即将上传</span>
+      </div>
+    </div>
+
+    <!-- 照片上传区域 -->
+    <div class="upload-card" id="photoUploadCard">
+      <div class="upload-title">📷 上传你的婚礼照片</div>
+      <div class="upload-dropzone" id="photoDropzone" onclick="document.getElementById('photoInput').click()">
+        <div class="drop-icon">📸</div>
+        <div class="drop-text">点击或拖拽上传照片</div>
+        <div class="drop-hint">支持 JPG/PNG/GIF，最大 5MB</div>
+      </div>
+      <input type="file" id="photoInput" class="upload-input" accept="image/*">
+      <div class="upload-preview" id="photoPreview">
+        <img id="photoPreviewImg" src="" alt="预览">
+        <button class="preview-remove" onclick="removePhotoPreview()">✕ 移除照片</button>
+      </div>
+      <div class="upload-name-input">
+        <input type="text" id="photoUploaderName" placeholder="你的名字（选填，默认"匿名岛民"）">
+      </div>
+      <button class="upload-btn" id="photoUploadBtn" onclick="uploadPhoto()">📤 上传照片</button>
+      <div class="upload-progress" id="photoProgress">
+        <div class="upload-progress-bar">
+          <div class="upload-progress-fill" id="photoProgressFill"></div>
+        </div>
+        <div class="upload-progress-text" id="photoProgressText">上传中...</div>
+      </div>
+    </div>
+
+    <!-- 宾客照片墙 -->
+    <div class="guest-photo-wall" id="guestPhotoWall">
+      <div class="photo-wall-header">📸 宾客照片墙 · <span id="photoCount">0</span> 张</div>
+      <div class="photo-wall-grid" id="photoWallGrid">
+        <div class="photo-wall-empty">
+          <div class="icon">⏳</div>
+          <div>等待宾客上传...</div>
+        </div>
+      </div>
+      <div id="photoLoadMore" style="display:none; text-align:center; padding:0.8rem;">
+        <button onclick="loadMorePhotos()" style="background:#2abaaa;color:#fff;border:none;border-radius:20px;padding:8px 24px;font-size:14px;cursor:pointer;font-family:inherit;">🍃 加载更多照片</button>
+      </div>
+    </div>
+    
+    <div style="text-align: center; margin-top: 1rem;">
+      <div class="animal-char" style="display: inline-flex;">
+        <span class="emoji">🐱</span>
+        <span>🐱 Marshal</span>
+        <span style="margin-left: 0.5rem; opacity: 0.7;">🐱 Marshal</span>
+        <span style="margin-left: 0.5rem; opacity: 0.7;">🦌 Fauna</span>
+      </div>
+      <p style="font-size: 0.85rem; color: var(--ac-text-light); margin-top: 0.5rem;">婚礼后由新人上传精彩照片～</p>
+    </div>
+  </section>
+
+  <!-- Divider -->
+  <div class="ac-divider"><svg viewBox="0 0 400 20" preserveAspectRatio="xMidYMid meet"><path d="M0 10 Q25 2 50 10 T100 10 T150 10 T200 10 T250 10 T300 10 T350 10 T400 10" fill="none" stroke="rgba(114,93,66,0.25)" stroke-width="2"/><circle cx="200" cy="10" r="4" fill="rgba(114,93,66,0.2)"/><circle cx="175" cy="10" r="2.5" fill="rgba(25,200,185,0.3)"/><circle cx="225" cy="10" r="2.5" fill="rgba(25,200,185,0.3)"/></svg></div>
+
+  <!-- Section 6: FAQ -->
+  <section id="faq" class="section">
+    <div class="animal-banner">
+      <span class="emoji">🦆</span>
+      <div class="info">
+        <span class="name">小鸭子 CSS</span>
+        <span class="role">Help Desk</span>
+      </div>
+    </div>
+    
+    <div class="section-title">
+      <h2>❓ 常见问题</h2>
+      <p>有问题？来这里找答案～</p>
+    </div>
+    
+    <!-- FAQ 折叠面板 -->
+    <div class="faq-list" id="faqList">
+      <div class="faq-item">
+        <div class="faq-header" onclick="toggleFaq(this)">
+          <span class="faq-icon-circle">+</span>
+          <span>🌸 着装要求是什么？</span>
+          <span class="faq-leaf"><svg viewBox="0 0 24 24" width="18" height="18"><path fill="currentColor" d="M17,8C8,10 5.9,16.17 3.82,21.34L5.71,22L6.66,19.7C7.14,19.87 7.64,20 8,20C19,20 22,3 22,3C21,5 14,5.25 9,6.25C4,7.25 2,11.5 2,13.5C2,15.5 3.75,17.25 3.75,17.25C7,8 17,8 17,8Z"/></svg></span>
+        </div>
+        <div class="faq-content"><div class="faq-content-inner">
+          建议穿着舒适整洁的休闲装或正装，避免穿白色礼服（新娘专属）。可以带上你的动森岛风穿搭哦～
+        </div></div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-header" onclick="toggleFaq(this)">
+          <span class="faq-icon-circle">+</span>
+          <span>👶 可以带小孩吗？</span>
+          <span class="faq-leaf"><svg viewBox="0 0 24 24" width="18" height="18"><path fill="currentColor" d="M17,8C8,10 5.9,16.17 3.82,21.34L5.71,22L6.66,19.7C7.14,19.87 7.64,20 8,20C19,20 22,3 22,3C21,5 14,5.25 9,6.25C4,7.25 2,11.5 2,13.5C2,15.5 3.75,17.25 3.75,17.25C7,8 17,8 17,8Z"/></svg></span>
+        </div>
+        <div class="faq-content"><div class="faq-content-inner">
+          当然欢迎！小朋友可以一起参加婚礼仪式和午宴。如果需要儿童座椅或特殊餐食，请提前告知我们。
+        </div></div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-header" onclick="toggleFaq(this)">
+          <span class="faq-icon-circle">+</span>
+          <span>🚗 有停车位吗？</span>
+          <span class="faq-leaf"><svg viewBox="0 0 24 24" width="18" height="18"><path fill="currentColor" d="M17,8C8,10 5.9,16.17 3.82,21.34L5.71,22L6.66,19.7C7.14,19.87 7.64,20 8,20C19,20 22,3 22,3C21,5 14,5.25 9,6.25C4,7.25 2,11.5 2,13.5C2,15.5 3.75,17.25 3.75,17.25C7,8 17,8 17,8Z"/></svg></span>
+        </div>
+        <div class="faq-content"><div class="faq-content-inner">
+          竹溪庄园有免费停车场，请按照现场指引停放车辆。婚礼当天会有工作人员引导您到签到区。
+        </div></div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-header" onclick="toggleFaq(this)">
+          <span class="faq-icon-circle">+</span>
+          <span>🏨 住宿怎么安排？</span>
+          <span class="faq-leaf"><svg viewBox="0 0 24 24" width="18" height="18"><path fill="currentColor" d="M17,8C8,10 5.9,16.17 3.82,21.34L5.71,22L6.66,19.7C7.14,19.87 7.64,20 8,20C19,20 22,3 22,3C21,5 14,5.25 9,6.25C4,7.25 2,11.5 2,13.5C2,15.5 3.75,17.25 3.75,17.25C7,8 17,8 17,8Z"/></svg></span>
+        </div>
+        <div class="faq-content"><div class="faq-content-inner">
+          我们为外地宾客准备了协议酒店"信阳毛尖酒店"，报新人名字可享受优惠价。如需拼房请提前告知。
+        </div></div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-header" onclick="toggleFaq(this)">
+          <span class="faq-icon-circle">+</span>
+          <span>🎁 可以送礼物吗？</span>
+          <span class="faq-leaf"><svg viewBox="0 0 24 24" width="18" height="18"><path fill="currentColor" d="M17,8C8,10 5.9,16.17 3.82,21.34L5.71,22L6.66,19.7C7.14,19.87 7.64,20 8,20C19,20 22,3 22,3C21,5 14,5.25 9,6.25C4,7.25 2,11.5 2,13.5C2,15.5 3.75,17.25 3.75,17.25C7,8 17,8 17,8Z"/></svg></span>
+        </div>
+        <div class="faq-content"><div class="faq-content-inner">
+          你们能来就是最好的礼物！如需送礼，礼金请在新郎处登记，或直接微信转账给新人。感谢祝福！
+        </div></div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-header" onclick="toggleFaq(this)">
+          <span class="faq-icon-circle">+</span>
+          <span>🌧️ 如果下雨怎么办？</span>
+          <span class="faq-leaf"><svg viewBox="0 0 24 24" width="18" height="18"><path fill="currentColor" d="M17,8C8,10 5.9,16.17 3.82,21.34L5.71,22L6.66,19.7C7.14,19.87 7.64,20 8,20C19,20 22,3 22,3C21,5 14,5.25 9,6.25C4,7.25 2,11.5 2,13.5C2,15.5 3.75,17.25 3.75,17.25C7,8 17,8 17,8Z"/></svg></span>
+        </div>
+        <div class="faq-content"><div class="faq-content-inner">
+          放心！竹溪庄园有室内备用场地，婚礼仪式会在木亭或室内举行，不会影响婚礼进行～
+        </div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Divider -->
+  <div class="ac-divider"><svg viewBox="0 0 400 20" preserveAspectRatio="xMidYMid meet"><path d="M0 10 Q25 2 50 10 T100 10 T150 10 T200 10 T250 10 T300 10 T350 10 T400 10" fill="none" stroke="rgba(114,93,66,0.25)" stroke-width="2"/><circle cx="200" cy="10" r="4" fill="rgba(114,93,66,0.2)"/><circle cx="175" cy="10" r="2.5" fill="rgba(25,200,185,0.3)"/><circle cx="225" cy="10" r="2.5" fill="rgba(25,200,185,0.3)"/></svg></div>
+
+  <!-- Section 7: Comments -->
+  <section id="comments" class="section">
+    <div class="animal-banner">
+      <span class="emoji">🐕</span>
+      <div class="info">
+        <span class="name">西施惠 Isabelle</span>
+        <span class="role">Message Board</span>
+      </div>
+    </div>
+    
+    <div class="section-title">
+      <h2>💬 祝福留言</h2>
+      <p>写下你的祝福吧～</p>
+    </div>
+    
+    <div class="rsvp-card">
+      <form class="rsvp-form" id="commentForm">
+        <div class="form-group">
+          <label for="commentName">您的姓名</label>
+          <input type="text" id="commentName" class="form-input" placeholder="请输入您的姓名" required>
+        </div>
+        
+        <div class="form-group">
+          <label for="commentContent">祝福语</label>
+          <textarea id="commentContent" class="form-input" placeholder="写下对新人的祝福..." required></textarea>
+        </div>
+        
+        <button type="submit" class="btn-ac" style="width: 100%;">🍃 发送祝福</button>
+      </form>
+      
+      <div class="speech-bubble" style="margin-top: 1rem;">
+        <div class="animal-char">
+          <span class="emoji">🐕</span>
+          <span>西施惠 Isabelle</span>
+        </div>
+        <p style="margin-top: 0.5rem;">写点祝福吧～新人会很开心的哦！🍃</p>
+      </div>
+    </div>
+    
+    <div class="comments-list" id="commentsList">
+      <!-- Comments will be loaded here -->
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <div class="ac-footer">
+    <svg viewBox="0 0 1200 100" preserveAspectRatio="none">
+      <!-- 海洋波浪 -->
+      <path d="M0 60 Q50 40 100 55 T200 55 T300 55 T400 55 T500 55 T600 55 T700 55 T800 55 T900 55 T1000 55 T1100 55 T1200 55 L1200 100 L0 100 Z" fill="rgba(25,200,185,0.12)"/>
+      <path d="M0 70 Q60 55 120 68 T240 68 T360 68 T480 68 T600 68 T720 68 T840 68 T960 68 T1080 68 T1200 68 L1200 100 L0 100 Z" fill="rgba(25,200,185,0.08)"/>
+      <!-- 树木轮廓 -->
+      <path d="M80 55 L85 35 Q90 20 95 35 L100 55 Z" fill="rgba(114,93,66,0.15)"/>
+      <path d="M200 55 L208 25 Q215 8 222 25 L230 55 Z" fill="rgba(114,93,66,0.12)"/>
+      <path d="M950 55 L958 22 Q965 5 972 22 L980 55 Z" fill="rgba(114,93,66,0.12)"/>
+      <path d="M1100 55 L1105 38 Q1110 22 1115 38 L1120 55 Z" fill="rgba(114,93,66,0.15)"/>
+      <!-- 叶子装饰 -->
+      <circle cx="95" cy="22" r="8" fill="rgba(25,200,185,0.1)"/>
+      <circle cx="215" cy="10" r="10" fill="rgba(25,200,185,0.08)"/>
+      <circle cx="965" cy="8" r="11" fill="rgba(25,200,185,0.08)"/>
+      <circle cx="1110" cy="28" r="7" fill="rgba(25,200,185,0.1)"/>
+    </svg>
+    <div class="ac-footer-text">🏝️ 胡泽洲 & 王雨 · 2026.06.20 · Made with 💛 Animal Island</div>
+  </div>
+
+  <!-- Modal -->
+  <div class="modal-overlay" id="modalOverlay" onclick="closeModal(event)">
+    <div class="modal-content" onclick="event.stopPropagation()">
+      <div class="modal-header">
+        <h3 id="modalTitle">🍃 标题</h3>
+        <button class="modal-close" onclick="closeModal()">✕</button>
+      </div>
+      <div class="modal-body" id="modalBody">
+        <!-- 内容 -->
+      </div>
+      <div class="modal-footer">
+        <button class="btn-ac" onclick="closeModal()" style="background: var(--ac-app-red); border-color: #d45550; box-shadow: 0 4px 0 #d45550;">✕ 关闭</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Bottom Navigation -->
+  <nav class="nookphone-nav" id="bottomNav">
+    <a href="#invite" class="nav-item active" data-section="invite">
+      <span>✈️</span>
+      <span>邀请</span>
+    </a>
+    <a href="#video" class="nav-item" data-section="video">
+      <span>🎬</span>
+      <span>视频</span>
+    </a>
+    <a href="#location" class="nav-item" data-section="location">
+      <span>📍</span>
+      <span>指引</span>
+    </a>
+    <a href="#gallery" class="nav-item" data-section="gallery">
+      <span>📸</span>
+      <span>相册</span>
+    </a>
+    <a href="#comments" class="nav-item" data-section="comments">
+      <span>💬</span>
+      <span>留言</span>
+    </a>
+  </nav>
+  <script>
+    // 导航点击 - 直接内联确保执行
+    document.querySelectorAll('.nav-item').forEach(function(item) {
+      item.addEventListener('click', function(e) {
+        e.preventDefault();
+        var sectionId = this.getAttribute('data-section');
+        var section = document.getElementById(sectionId);
+        if (section) {
+          section.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+        // 更新active状态
+        document.querySelectorAll('.nav-item').forEach(function(n) { n.classList.remove('active'); });
+        this.classList.add('active');
+      });
+    });
+  </script>
+
+  <!-- 背景音乐 - 动森BGM -->
+  <button class="bgm-toggle" id="bgmToggle" title="背景音乐">
+    <span class="bgm-icon" id="bgmIcon">🎵</span>
+  </button>
+  <audio id="bgmAudio" loop autoplay preload="auto">
+    <source src="assets/bgm.mp3" type="audio/mpeg">
+  </audio>
+
+  <script>
+    // ========== Supabase 配置 ==========
+    const SUPABASE_URL = 'https://pefbwpausoavvuwyaabf.supabase.co';
+    const SUPABASE_ANON_KEY = 'sb_publishable_fsURzYizU3Qx07IKjR0cGg_n8H0j0Ba';
+    let supabaseClient = null;
+    let useGuestTable = false; // 是否使用 guest_uploads 表
+    let useStorage = false; // 是否使用 Supabase Storage
+    if (SUPABASE_URL && SUPABASE_ANON_KEY && window.supabase) {
+      try { 
+        supabaseClient = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY); 
+        // 尝试检查 guest_uploads 表是否存在
+        checkGuestUploadsTable();
+      } catch(e) { console.warn('Supabase init failed:', e); }
+    }
+
+    // 检查 guest_uploads 表是否存在
+    async function checkGuestUploadsTable() {
+      if (!supabaseClient) return;
+      try {
+        const { data, error } = await supabaseClient
+          .from('guest_uploads')
+          .select('id')
+          .limit(1);
+        if (error && error.code === '42P01') {
+          console.log('guest_uploads 表不存在，将使用 comments 表作为临时存储');
+          useGuestTable = false;
+        } else {
+          useGuestTable = true;
+          console.log('guest_uploads 表已存在');
+        }
+      } catch(e) {
+        useGuestTable = false;
+        console.log('使用 comments 表作为临时存储');
+      }
+      // 检查 Storage bucket
+      try {
+        const { data, error } = await supabaseClient.storage.getBucket('guest-uploads');
+        if (!error && data) {
+          useStorage = true;
+          console.log('guest-uploads Storage bucket 已就绪');
+        } else {
+          useStorage = false;
+          console.log('Storage bucket 不可用，将使用数据库存储');
+        }
+      } catch(e) {
+        useStorage = false;
+      }
+    }
+
+    // ========== Toast 提示 ==========
+    function showToast(msg, type = '') {
+      var toast = document.getElementById('toast');
+      toast.textContent = msg;
+      toast.className = 'toast' + (type ? ' ' + type : '');
+      toast.classList.add('show');
+      setTimeout(function() { toast.classList.remove('show'); }, 3000);
+    }
+
+    // ========== 图片压缩 ==========
+    function compressImage(file, maxWidth, quality, callback) {
+      var reader = new FileReader();
+      reader.onload = function(e) {
+        var img = new Image();
+        img.onload = function() {
+          var canvas = document.createElement('canvas');
+          var width = img.width;
+          var height = img.height;
+          if (width > maxWidth) {
+            height = (height * maxWidth) / width;
+            width = maxWidth;
+          }
+          canvas.width = width;
+          canvas.height = height;
+          var ctx = canvas.getContext('2d');
+          ctx.drawImage(img, 0, 0, width, height);
+          var dataUrl = canvas.toDataURL('image/jpeg', quality);
+          callback(dataUrl);
+        };
+        img.src = e.target.result;
+      };
+      reader.readAsDataURL(file);
+    }
+
+    // ========== 照片上传 ==========
+    var selectedPhotoFile = null;
+
+    document.getElementById('photoInput').addEventListener('change', function(e) {
+      var file = e.target.files[0];
+      if (!file) return;
+      if (!file.type.startsWith('image/')) {
+        showToast('请选择图片文件', 'error');
+        return;
+      }
+      if (file.size > 5 * 1024 * 1024) {
+        showToast('图片太大，请选择 5MB 以内的图片', 'error');
+        return;
+      }
+      selectedPhotoFile = file;
+      // 预览
+      var reader = new FileReader();
+      reader.onload = function(e) {
+        document.getElementById('photoPreviewImg').src = e.target.result;
+        document.getElementById('photoPreview').classList.add('active');
+      };
+      reader.readAsDataURL(file);
+    });
+
+    function removePhotoPreview() {
+      selectedPhotoFile = null;
+      document.getElementById('photoInput').value = '';
+      document.getElementById('photoPreview').classList.remove('active');
+    }
+
+    async function uploadPhoto() {
+      if (!selectedPhotoFile) {
+        showToast('请先选择要上传的照片', 'error');
+        return;
+      }
+      var name = document.getElementById('photoUploaderName').value.trim() || '匿名岛民';
+      
+      var btn = document.getElementById('photoUploadBtn');
+      var progress = document.getElementById('photoProgress');
+      var progressFill = document.getElementById('photoProgressFill');
+      var progressText = document.getElementById('photoProgressText');
+      
+      btn.disabled = true;
+      progress.classList.add('active');
+      progressFill.style.width = '20%';
+      progressText.textContent = '压缩图片中...';
+      
+      // 压缩图片
+      compressImage(selectedPhotoFile, 800, 0.6, async function(base64Data) {
+        progressFill.style.width = '50%';
+        progressText.textContent = '上传中...';
+        
+        var uploadData = {
+          type: 'photo',
+          name: name,
+          data: base64Data,
+          timestamp: new Date().toISOString()
+        };
+        
+        var success = false;
+        
+        if (supabaseClient) {
+          try {
+            progressFill.style.width = '70%';
+            progressText.textContent = '保存到服务器...';
+            
+            if (useGuestTable) {
+              const { error } = await supabaseClient
+                .from('guest_uploads')
+                .insert([{ type: 'photo', name: name, content: base64Data }]);
+              if (!error) {
+                success = true;
+                localStorage.setItem('guest_photos_' + Date.now(), JSON.stringify(uploadData));
+              }
+            } else {
+              // 使用 comments 表存储
+              const { error } = await supabaseClient
+                .from('comments')
+                .insert([{ name: name, content: '[UPLOAD:PHOTO]' + base64Data }]);
+              if (!error) {
+                success = true;
+                localStorage.setItem('guest_photos_' + Date.now(), JSON.stringify(uploadData));
+              }
+            }
+          } catch(err) {
+            console.error('Upload error:', err);
+            // fallback 到本地存储
+            localStorage.setItem('guest_photos_' + Date.now(), JSON.stringify(uploadData));
+            success = true;
+          }
+        } else {
+          // 无网络，完全使用本地存储
+          localStorage.setItem('guest_photos_' + Date.now(), JSON.stringify(uploadData));
+          success = true;
+        }
+        
+        progressFill.style.width = '100%';
+        progressText.textContent = '完成！';
+        
+        setTimeout(function() {
+          progress.classList.remove('active');
+          progressFill.style.width = '0%';
+          btn.disabled = false;
+          removePhotoPreview();
+          
+          if (success) {
+            showToast('✅ 照片上传成功！', 'success');
+            loadGuestPhotos();
+          } else {
+            showToast('❌ 上传失败，请重试', 'error');
+          }
+        }, 500);
+      });
+    }
+
+    // 加载宾客照片
+    // ========== 照片分页加载 ==========
+    var photoPage = 0;
+    var photoPageSize = 6;
+    var photoTotal = -1; // -1表示未知
+    var photoLoading = false;
+
+    async function loadGuestPhotos() {
+      photoPage = 0;
+      photoTotal = -1;
+      var grid = document.getElementById('photoWallGrid');
+      grid.innerHTML = '';
+      await loadMorePhotos();
+    }
+
+    async function loadMorePhotos() {
+      if (photoLoading) return;
+      if (photoTotal >= 0 && photoPage * photoPageSize >= photoTotal) return;
+      photoLoading = true;
+
+      var grid = document.getElementById('photoWallGrid');
+      var countEl = document.getElementById('photoCount');
+      var loadMoreBtn = document.getElementById('photoLoadMore');
+      var photos = [];
+
+      // 本地存储的照片（只加载一次）
+      if (photoPage === 0) {
+        for (var i = 0; i < localStorage.length; i++) {
+          var key = localStorage.key(i);
+          if (key && key.startsWith('guest_photos_')) {
+            try {
+              var photo = JSON.parse(localStorage.getItem(key));
+              if (photo && photo.type === 'photo') photos.push(photo);
+            } catch(e) {}
+          }
+        }
+      }
+
+      // 从 Supabase 分页加载
+      if (supabaseClient) {
+        try {
+          var from = photoPage * photoPageSize;
+          var to = from + photoPageSize - 1;
+          if (useGuestTable) {
+            const { data, count } = await supabaseClient
+              .from('guest_uploads')
+              .select('*', { count: 'exact' })
+              .eq('type', 'photo')
+              .order('id', { ascending: false })
+              .range(from, to);
+            if (count !== null && count !== undefined) photoTotal = count;
+            if (data) data.forEach(function(item) {
+              photos.push({ type:'photo', name:item.name, data:item.content, timestamp:item.created_at });
+            });
+          } else {
+            const { data, count } = await supabaseClient
+              .from('comments')
+              .select('*', { count: 'exact' })
+              .like('content', '[UPLOAD:PHOTO]%')
+              .order('id', { ascending: false })
+              .range(from, to);
+            if (count !== null && count !== undefined) photoTotal = count;
+            if (data) data.forEach(function(item) {
+              var base64 = item.content.replace('[UPLOAD:PHOTO]', '');
+              photos.push({ type:'photo', name:item.name, data:base64, timestamp:item.created_at });
+            });
+          }
+        } catch(e) { console.error('Load photos error:', e); }
+      }
+
+      photoPage++;
+      countEl.textContent = photoTotal >= 0 ? photoTotal : photos.length;
+
+      if (photos.length === 0 && photoPage === 1) {
+        grid.innerHTML = '<div class="photo-wall-empty"><div class="icon">⏳</div><div>等待宾客上传...</div></div>';
+        loadMoreBtn.style.display = 'none';
+        photoLoading = false;
+        return;
+      }
+
+      // 如果第一页且grid有empty占位，清空
+      if (photoPage === 1) grid.innerHTML = '';
+
+      photos.forEach(function(photo) {
+        var item = document.createElement('div');
+        item.className = 'photo-wall-item';
+        item.innerHTML = '<img src="' + photo.data + '" alt="宾客照片" loading="lazy" onclick="openLightboxFromWall(this.src, \'photo\')"><div class="photo-uploader">📷 ' + escapeHtml(photo.name) + '</div>';
+        grid.appendChild(item);
+      });
+
+      updateLightboxFromWall();
+
+      // 显示/隐藏加载更多
+      if (photoTotal >= 0 && photoPage * photoPageSize < photoTotal) {
+        loadMoreBtn.style.display = 'block';
+      } else {
+        loadMoreBtn.style.display = 'none';
+      }
+      photoLoading = false;
+    }
+
+    // 更新 Lightbox 支持宾客照片
+    var wallImages = [];
+
+    function updateLightboxFromWall() {
+      wallImages = [];
+      var items = document.querySelectorAll('.photo-wall-item img');
+      items.forEach(function(img) {
+        wallImages.push(img.src);
+      });
+    }
+
+    function openLightboxFromWall(src, type) {
+      if (type === 'photo') {
+        initLightbox();
+        var idx = wallImages.indexOf(src);
+        lightboxIndex = idx >= 0 ? idx : 0;
+        showLightboxImage();
+        document.getElementById('lightbox').classList.add('active');
+        document.body.style.overflow = 'hidden';
+      }
+    }
+
+    // ========== 视频上传 ==========
+    var selectedVideoFile = null;
+
+    document.getElementById('videoInput').addEventListener('change', function(e) {
+      var file = e.target.files[0];
+      if (!file) return;
+      if (!file.type.startsWith('video/')) {
+        showToast('请选择视频文件', 'error');
+        return;
+      }
+      if (file.size > 200 * 1024 * 1024) {
+        showToast('视频太大，请选择 200MB 以内的视频', 'error');
+        return;
+      }
+      selectedVideoFile = file;
+      // 预览
+      var url = URL.createObjectURL(file);
+      var video = document.getElementById('videoPreviewVideo');
+      video.src = url;
+      document.getElementById('videoPreview').classList.add('active');
+    });
+
+    function removeVideoPreview() {
+      selectedVideoFile = null;
+      document.getElementById('videoInput').value = '';
+      document.getElementById('videoPreview').classList.remove('active');
+      var video = document.getElementById('videoPreviewVideo');
+      video.src = '';
+    }
+
+    async function uploadVideo() {
+      if (!selectedVideoFile) {
+        showToast('请先选择要上传的视频', 'error');
+        return;
+      }
+      var name = document.getElementById('videoUploaderName').value.trim() || '匿名岛民';
+      
+      var btn = document.getElementById('videoUploadBtn');
+      var progress = document.getElementById('videoProgress');
+      var progressFill = document.getElementById('videoProgressFill');
+      var progressText = document.getElementById('videoProgressText');
+      
+      btn.disabled = true;
+      progress.classList.add('active');
+      progressFill.style.width = '10%';
+      progressText.textContent = '准备上传...';
+
+      var fileName = 'video_' + Date.now() + '_' + Math.random().toString(36).substr(2,6) + '.' + (selectedVideoFile.name.split('.').pop() || 'mp4');
+      var thumbnailData = '';
+      var success = false;
+
+      // 生成缩略图
+      try {
+        progressFill.style.width = '20%';
+        progressText.textContent = '生成缩略图...';
+        var videoUrl = URL.createObjectURL(selectedVideoFile);
+        var videoEl = document.createElement('video');
+        videoEl.src = videoUrl;
+        videoEl.currentTime = 0.5;
+        videoEl.muted = true;
+        await new Promise(function(resolve) { videoEl.onloadeddata = resolve; setTimeout(resolve, 3000); });
+        var canvas = document.createElement('canvas');
+        canvas.width = 320;
+        canvas.height = 180;
+        canvas.getContext('2d').drawImage(videoEl, 0, 0, canvas.width, canvas.height);
+        thumbnailData = canvas.toDataURL('image/jpeg', 0.5);
+        URL.revokeObjectURL(videoUrl);
+      } catch(thumbErr) {
+        thumbnailData = 'data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 180"%3E%3Crect fill="%23ddd" width="320" height="180"/%3E%3Ctext x="50%25" y="50%25" fill="%23999" text-anchor="middle" dy=".3em" font-size="48"%3E🎬%3C/text%3E%3C/svg%3E';
+      }
+
+      if (useStorage && supabaseClient) {
+        // 走 Supabase Storage 上传文件
+        try {
+          progressFill.style.width = '40%';
+          progressText.textContent = '上传视频中...';
+
+          const { data: uploadData, error: uploadError } = await supabaseClient.storage
+            .from('guest-uploads')
+            .upload('videos/' + fileName, selectedVideoFile, {
+              cacheControl: '3600',
+              upsert: false,
+              contentType: selectedVideoFile.type
+            });
+
+          if (uploadError) {
+            console.error('Storage upload error:', uploadError);
+            showToast('❌ 上传失败: ' + uploadError.message, 'error');
+            progress.classList.remove('active');
+            progressFill.style.width = '0%';
+            btn.disabled = false;
+            return;
+          }
+
+          progressFill.style.width = '80%';
+          progressText.textContent = '保存记录...';
+
+          // 获取公开URL
+          var fileUrl = SUPABASE_URL + '/storage/v1/object/public/guest-uploads/videos/' + fileName;
+
+          // 数据库存记录（只存URL和缩略图，不存文件内容）
+          if (useGuestTable) {
+            const { error } = await supabaseClient
+              .from('guest_uploads')
+              .insert([{ type: 'video', name: name, content: fileUrl, thumbnail: thumbnailData }]);
+            if (!error) success = true;
+          } else {
+            var storageData = JSON.stringify({ thumbnail: thumbnailData, url: fileUrl });
+            const { error } = await supabaseClient
+              .from('comments')
+              .insert([{ name: name, content: '[UPLOAD:VIDEO]' + storageData }]);
+            if (!error) success = true;
+          }
+
+          // 缩略图也存Storage
+          try {
+            var thumbBlob = await (await fetch(thumbnailData)).blob();
+            var thumbName = 'thumbs/video_' + Date.now() + '.jpg';
+            await supabaseClient.storage.from('guest-uploads').upload(thumbName, thumbBlob, { contentType: 'image/jpeg' });
+          } catch(e) {}
+
+        } catch(err) {
+          console.error('Upload error:', err);
+        }
+      } else if (supabaseClient) {
+        // 无Storage，base64存数据库（大视频可能失败）
+        progressFill.style.width = '30%';
+        progressText.textContent = '读取视频中...';
+        
+        var reader = new FileReader();
+        var base64Result = await new Promise(function(resolve) {
+          reader.onload = function(e) { resolve(e.target.result); };
+          reader.readAsDataURL(selectedVideoFile);
+        });
+
+        progressFill.style.width = '60%';
+        progressText.textContent = '保存中...';
+
+        try {
+          if (useGuestTable) {
+            const { error } = await supabaseClient
+              .from('guest_uploads')
+              .insert([{ type: 'video', name: name, content: base64Result, thumbnail: thumbnailData }]);
+            if (!error) success = true;
+          } else {
+            var storageData = JSON.stringify({ thumbnail: thumbnailData });
+            const { error } = await supabaseClient
+              .from('comments')
+              .insert([{ name: name, content: '[UPLOAD:VIDEO]' + storageData + '|||' + base64Result }]);
+            if (!error) success = true;
+          }
+        } catch(err) {
+          console.error('Upload error:', err);
+        }
+      } else {
+        // 无网络，本地存储（仅小视频）
+        var reader = new FileReader();
+        var base64Result = await new Promise(function(resolve) {
+          reader.onload = function(e) { resolve(e.target.result); };
+          reader.readAsDataURL(selectedVideoFile);
+        });
+        localStorage.setItem('guest_videos_' + Date.now(), JSON.stringify({
+          type: 'video', name: name, data: base64Result, thumbnail: thumbnailData, timestamp: new Date().toISOString()
+        }));
+        success = true;
+      }
+      
+      progressFill.style.width = '100%';
+      progressText.textContent = '完成！';
+      
+      setTimeout(function() {
+        progress.classList.remove('active');
+        progressFill.style.width = '0%';
+        btn.disabled = false;
+        removeVideoPreview();
+        
+        if (success) {
+          showToast('✅ 视频上传成功！', 'success');
+          loadGuestVideos();
+        } else {
+          showToast('❌ 上传失败，请重试', 'error');
+        }
+      }, 500);
+    }
+
+    // 加载宾客视频
+    // ========== 视频分页加载 ==========
+    var videoPage = 0;
+    var videoPageSize = 6;
+    var videoTotal = -1;
+    var videoLoading = false;
+    var allVideoData = []; // 保存视频数据用于播放
+
+    async function loadGuestVideos() {
+      videoPage = 0;
+      videoTotal = -1;
+      allVideoData = [];
+      var grid = document.getElementById('videoWallGrid');
+      grid.innerHTML = '';
+      await loadMoreVideos();
+    }
+
+    async function loadMoreVideos() {
+      if (videoLoading) return;
+      if (videoTotal >= 0 && videoPage * videoPageSize >= videoTotal) return;
+      videoLoading = true;
+
+      var grid = document.getElementById('videoWallGrid');
+      var countEl = document.getElementById('videoCount');
+      var loadMoreBtn = document.getElementById('videoLoadMore');
+      var videos = [];
+
+      // 本地存储的视频（只加载一次）
+      if (videoPage === 0) {
+        for (var i = 0; i < localStorage.length; i++) {
+          var key = localStorage.key(i);
+          if (key && key.startsWith('guest_videos_')) {
+            try {
+              var video = JSON.parse(localStorage.getItem(key));
+              if (video && video.type === 'video') videos.push(video);
+            } catch(e) {}
+          }
+        }
+      }
+
+      // 从 Supabase 分页加载
+      if (supabaseClient) {
+        try {
+          var from = videoPage * videoPageSize;
+          var to = from + videoPageSize - 1;
+          if (useGuestTable) {
+            const { data, count } = await supabaseClient
+              .from('guest_uploads')
+              .select('*', { count: 'exact' })
+              .eq('type', 'video')
+              .order('id', { ascending: false })
+              .range(from, to);
+            if (count !== null && count !== undefined) videoTotal = count;
+            if (data) data.forEach(function(item) {
+              videos.push({ type:'video', name:item.name, data:item.content, thumbnail:item.thumbnail||'', timestamp:item.created_at });
+            });
+          } else {
+            const { data, count } = await supabaseClient
+              .from('comments')
+              .select('*', { count: 'exact' })
+              .like('content', '[UPLOAD:VIDEO]%')
+              .order('id', { ascending: false })
+              .range(from, to);
+            if (count !== null && count !== undefined) videoTotal = count;
+            if (data) data.forEach(function(item) {
+              var rawContent = item.content.replace('[UPLOAD:VIDEO]', '');
+              // 新格式：JSON含url字段（Storage上传）
+              // 旧格式：JSON|||base64（数据库存储）
+              var parts = rawContent.split('|||');
+              try {
+                var meta = JSON.parse(parts[0]);
+                if (meta.url) {
+                  // Storage URL格式
+                  videos.push({ type:'video', name:item.name, data:meta.url, thumbnail:meta.thumbnail||'', timestamp:item.created_at });
+                } else if (parts.length >= 2) {
+                  // 旧base64格式
+                  videos.push({ type:'video', name:item.name, data:parts[1], thumbnail:meta.thumbnail||'', timestamp:item.created_at });
+                }
+              } catch(e) {
+                // 纯base64 fallback
+                if (parts.length >= 2) {
+                  videos.push({ type:'video', name:item.name, data:parts[1], thumbnail:'', timestamp:item.created_at });
+                }
+              }
+            });
+          }
+        } catch(e) { console.error('Load videos error:', e); }
+      }
+
+      videoPage++;
+      countEl.textContent = videoTotal >= 0 ? videoTotal : videos.length;
+
+      if (videos.length === 0 && videoPage === 1) {
+        grid.innerHTML = '<div class="video-wall-empty"><div class="icon">⏳</div><div>等待宾客上传...</div></div>';
+        loadMoreBtn.style.display = 'none';
+        videoLoading = false;
+        return;
+      }
+
+      if (videoPage === 1) grid.innerHTML = '';
+
+      videos.forEach(function(video) {
+        var idx = allVideoData.length;
+        allVideoData.push(video.data);
+        var item = document.createElement('div');
+        item.className = 'video-wall-item';
+        item.innerHTML = '<img src="' + (video.thumbnail || 'data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 180"%3E%3Crect fill="%23ddd" width="320" height="180"/%3E%3Ctext x="50%25" y="50%25" fill="%23999" text-anchor="middle" dy=".3em" font-size="48"%3E🎬%3C/text%3E%3C/svg%3E') + '" alt="视频缩略图" loading="lazy"><div class="play-btn">▶</div><div class="video-uploader">🎬 ' + escapeHtml(video.name) + '</div>';
+        item.onclick = (function(i) { return function() { playVideo(allVideoData[i]); }; })(idx);
+        grid.appendChild(item);
+      });
+
+      // 显示/隐藏加载更多
+      if (videoTotal >= 0 && videoPage * videoPageSize < videoTotal) {
+        loadMoreBtn.style.display = 'block';
+      } else {
+        loadMoreBtn.style.display = 'none';
+      }
+      videoLoading = false;
+    }
+
+    // 播放视频
+    function playVideo(src) {
+      var modal = document.getElementById('videoModal');
+      var player = document.getElementById('videoModalPlayer');
+      player.src = src;
+      modal.classList.add('active');
+      document.body.style.overflow = 'hidden';
+      player.play();
+    }
+
+    function closeVideoModal() {
+      var modal = document.getElementById('videoModal');
+      var player = document.getElementById('videoModalPlayer');
+      player.pause();
+      player.src = '';
+      modal.classList.remove('active');
+      document.body.style.overflow = '';
+    }
+
+    // ESC 关闭视频 Modal
+    document.addEventListener('keydown', function(e) {
+      if (e.key === 'Escape') {
+        closeVideoModal();
+      }
+    });
+
+    // ========== 拖拽上传支持 ==========
+    function setupDragDrop(dropzoneId, inputId) {
+      var dropzone = document.getElementById(dropzoneId);
+      var input = document.getElementById(inputId);
+      
+      ['dragenter', 'dragover', 'dragleave', 'drop'].forEach(function(eventName) {
+        dropzone.addEventListener(eventName, function(e) {
+          e.preventDefault();
+          e.stopPropagation();
+        });
+      });
+      
+      ['dragenter', 'dragover'].forEach(function(eventName) {
+        dropzone.addEventListener(eventName, function() {
+          dropzone.classList.add('dragover');
+        });
+      });
+      
+      ['dragleave', 'drop'].forEach(function(eventName) {
+        dropzone.addEventListener(eventName, function() {
+          dropzone.classList.remove('dragover');
+        });
+      });
+      
+      dropzone.addEventListener('drop', function(e) {
+        var files = e.dataTransfer.files;
+        if (files.length > 0) {
+          input.files = files;
+          input.dispatchEvent(new Event('change'));
+        }
+      });
+    }
+
+    setupDragDrop('photoDropzone', 'photoInput');
+    setupDragDrop('videoDropzone', 'videoInput');
+
+    // ========== 初始化上传数据 ==========
+    function initGuestUploads() {
+      loadGuestPhotos();
+      loadGuestVideos();
+    }
+
+    // 延迟初始化
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', function() { setTimeout(initGuestUploads, 500); });
+    } else {
+      setTimeout(initGuestUploads, 500);
+    }
+
+    // ========== 辅助函数 ==========
+    function escapeHtml(text) {
+      var div = document.createElement('div');
+      div.textContent = text;
+      return div.innerHTML;
+    }
+
+    // ========== 页面加载完成后隐藏 Loading ==========
+    function hideLoading() {
+      var loadingMount = document.getElementById('loading-mount');
+      if (loadingMount && !loadingMount.classList.contains('hidden')) {
+        loadingMount.classList.add('hidden');
+        setTimeout(function() {
+          if (loadingMount) loadingMount.style.display = 'none';
+        }, 500);
+      }
+    }
+    // load事件也触发一次（如果内联保底已执行则跳过）
+    window.addEventListener('load', function() {
+      setTimeout(hideLoading, 800);
+    });
+
+    // ========== 打字机效果 ==========
+    function typewriterEffect(el, text, speed) {
+      el.textContent = '';
+      var i = 0;
+      var timer = setInterval(function() {
+        if (i < text.length) {
+          el.textContent += text[i];
+          i++;
+        } else {
+          clearInterval(timer);
+        }
+      }, speed || 100);
+    }
+    
+    // 启动打字机
+    document.addEventListener('DOMContentLoaded', function() {
+      var titleEl = document.getElementById('typewriter-title');
+      if (titleEl) {
+        setTimeout(function() {
+          typewriterEffect(titleEl, '集合啦！婚礼森友会', 120);
+        }, 800);
+      }
+    });
+
+    // ========== 主题切换 ==========
+    var themeSwitch = document.getElementById('themeSwitch');
+    var themeIcon = document.getElementById('themeIcon');
+    
+    function initTheme() {
+      var savedTheme = localStorage.getItem('theme');
+      if (savedTheme === 'night') {
+        document.body.setAttribute('data-theme', 'night');
+        themeSwitch.classList.add('night');
+        themeIcon.textContent = '🌙';
+      } else {
+        document.body.removeAttribute('data-theme');
+        themeSwitch.classList.remove('night');
+        themeIcon.textContent = '☀️';
+      }
+    }
+    
+    function toggleTheme() {
+      var isNight = themeSwitch.classList.contains('night');
+      if (isNight) {
+        document.body.removeAttribute('data-theme');
+        themeSwitch.classList.remove('night');
+        themeIcon.textContent = '☀️';
+        localStorage.setItem('theme', 'day');
+      } else {
+        document.body.setAttribute('data-theme', 'night');
+        themeSwitch.classList.add('night');
+        themeIcon.textContent = '🌙';
+        localStorage.setItem('theme', 'night');
+      }
+    }
+    
+    initTheme();
+
+    // ========== Tabs 切换 ==========
+    var tabContents = {
+      '交通': '🚗 自驾：导航至"信阳市竹溪庄园"，场地有免费停车位\n🚄 高铁：到达信阳东站后打车约30分钟',
+      '住宿': '🏨 信阳毛尖酒店\n📍 河南省信阳市平桥区新七大道与新十四街交叉口百花之声东门\n☎️ 联系电话：18860304685',
+      '流程': '⏰ 09:00 签到入场\n⏰ 11:00 婚礼仪式\n⏰ 11:30 合照时间\n⏰ 12:00 午宴开始'
+    };
+    
+    function switchTab(btn) {
+      var tabs = document.querySelectorAll('.tabs-tab');
+      tabs.forEach(function(t) { t.classList.remove('active'); });
+      btn.classList.add('active');
+      document.getElementById('tabsContent').innerText = tabContents[btn.dataset.tab] || '';
+    }
+
+    // ========== FAQ 折叠 ==========
+    function toggleFaq(header) {
+      var item = header.parentElement;
+      var wasOpen = item.classList.contains('open');
+      
+      // 关闭所有
+      document.querySelectorAll('.faq-item').forEach(function(i) {
+        i.classList.remove('open');
+      });
+      
+      // 如果之前是关闭的，则打开当前
+      if (!wasOpen) {
+        item.classList.add('open');
+      }
+    }
+
+    // ========== Modal ==========
+    var characterMessages = {
+      isabelle: {
+        emoji: '🐕',
+        name: '西施惠 Isabelle',
+        role: '村长秘书',
+        message: '哇～新人邀请我来参加婚礼！真的太开心了！胡泽洲和王雨，你们一定要幸福哦！我会为你们加油的！'
+      },
+      wilbur: {
+        emoji: '🦫',
+        name: '渡渡鸟 Wilbur',
+        role: 'Dodo Airlines 机长',
+        message: '欢迎乘坐Dodo Airlines！本次航班将带您飞往幸福的彼岸。祝你们新婚快乐，永结同心！'
+      },
+      blathers: {
+        emoji: '🦉',
+        name: '博物馆馆长 Blathers',
+        role: '博物馆馆长',
+        message: '啊...这次不是来鉴定艺术品的！是来祝福新人的！祝胡泽洲和王雨爱情长久，像艺术品一样珍贵！'
+      }
+    };
+
+    function openCharacterModal(character) {
+      var char = characterMessages[character];
+      if (!char) return;
+      
+      document.getElementById('modalTitle').textContent = '🍃 ' + char.name;
+      document.getElementById('modalBody').innerHTML = 
+        '<div class="character-card">' +
+          '<div class="emoji">' + char.emoji + '</div>' +
+          '<div class="name">' + char.name + '</div>' +
+          '<div class="role">' + char.role + '</div>' +
+          '<div class="message">' + char.message + '</div>' +
+        '</div>';
+      
+      document.getElementById('modalOverlay').classList.add('active');
+      document.body.style.overflow = 'hidden';
+    }
+
+    function openInviteModal() {
+      document.getElementById('modalTitle').textContent = '📜 婚礼邀请函';
+      document.getElementById('modalBody').innerHTML = 
+        '<div style="text-align: center;">' +
+          '<img src="assets/invite.jpg" alt="婚礼邀请函" style="width: 100%; border-radius: 12px;">' +
+        '</div>';
+      
+      document.getElementById('modalOverlay').classList.add('active');
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeModal(e) {
+      if (e && e.target !== e.currentTarget) return;
+      document.getElementById('modalOverlay').classList.remove('active');
+      document.body.style.overflow = '';
+    }
+
+    document.addEventListener('keydown', function(e) {
+      if (e.key === 'Escape') closeModal();
+    });
+
+    // ========== Hero Video ==========
+    function openHeroVideo() {
+      var url = 'https://weixin.qq.com/sph/AoDJybFr0L';
+      try {
+        if (/MicroMessenger/i.test(navigator.userAgent)) {
+          window.location.href = url;
+        } else {
+          window.open(url, '_blank');
+        }
+      } catch(e) {
+        window.open(url, '_blank');
+      }
+    }
+
+    // ========== 复制视频链接 ==========
+    function copyVideoLink() {
+      var url = 'https://weixin.qq.com/sph/AoDJybFr0L';
+      if (navigator.clipboard) {
+        navigator.clipboard.writeText(url).then(function() {
+          alert('✅ 链接已复制！请在微信中粘贴打开');
+        });
+      } else {
+        var ta = document.createElement('textarea');
+        ta.value = url;
+        document.body.appendChild(ta);
+        ta.select();
+        document.execCommand('copy');
+        document.body.removeChild(ta);
+        alert('✅ 链接已复制！请在微信中粘贴打开');
+      }
+    }
+
+    // ========== 地图导航 ==========
+    function openMapApp(lat, lng, name, type) {
+      var isWechat = /MicroMessenger/i.test(navigator.userAgent);
+      var isIOS = /iPhone|iPad|iPod/i.test(navigator.userAgent);
+
+      if (type === 'amap') {
+        if (isIOS) {
+          location.href = 'iosamap://path?sourceApplication=wedding&dlat=' + lat + '&dlon=' + lng + '&dname=' + encodeURIComponent(name) + '&dev=0&t=0';
+        } else {
+          location.href = 'androidamap://route/plan/?sourceApplication=wedding&dlat=' + lat + '&dlon=' + lng + '&dname=' + encodeURIComponent(name) + '&dev=0&t=0';
+        }
+        setTimeout(function() {
+          location.href = 'https://uri.amap.com/navigation?to=' + lng + ',' + lat + ',' + encodeURIComponent(name) + '&callnative=1';
+        }, 1500);
+      } else if (type === 'tencent') {
+        if (isWechat) {
+          location.href = 'https://apis.map.qq.com/uri/v1/routeplan?type=drive&to=' + encodeURIComponent(name) + '&tocoord=' + lat + ',' + lng + '&referer=wedding';
+        } else {
+          location.href = 'qqmap://route/plan?type=drive&to=' + encodeURIComponent(name) + '&tocoord=' + lat + ',' + lng + '&referer=wedding';
+          setTimeout(function() {
+            location.href = 'https://apis.map.qq.com/uri/v1/routeplan?type=drive&to=' + encodeURIComponent(name) + '&tocoord=' + lat + ',' + lng + '&referer=wedding';
+          }, 1500);
+        }
+      }
+
+      if (isWechat) {
+        document.getElementById('wechatMapTip').style.display = 'block';
+      }
+    }
+
+    // ========== BGM 控制 ==========
+    const bgmToggle = document.getElementById('bgmToggle');
+    const bgmIcon = document.getElementById('bgmIcon');
+    const bgmAudio = document.getElementById('bgmAudio');
+    let bgmPlaying = false;
+    let bgmUserInteracted = false;
+
+    bgmAudio.volume = 0.5;
+
+    function startBGM() {
+      var p = bgmAudio.play();
+      if (p) p.then(function() {
+        bgmPlaying = true;
+        bgmToggle.classList.add('playing');
+        bgmIcon.textContent = '🎵';
+      }).catch(function() {});
+    }
+
+    function stopBGM() {
+      bgmAudio.pause();
+      bgmPlaying = false;
+      bgmToggle.classList.remove('playing');
+      bgmIcon.textContent = '🎸';
+    }
+
+    bgmToggle.addEventListener('click', function() {
+      bgmUserInteracted = true;
+      if (bgmPlaying) {
+        stopBGM();
+      } else {
+        startBGM();
+      }
+    });
+
+    // 首次用户交互时自动播放（解决浏览器autoplay限制）
+    function bgmAutoStart() {
+      if (!bgmUserInteracted && bgmAudio.paused) {
+        startBGM();
+      }
+      document.removeEventListener('click', bgmAutoStart);
+      document.removeEventListener('touchstart', bgmAutoStart);
+    }
+    document.addEventListener('click', bgmAutoStart);
+    document.addEventListener('touchstart', bgmAutoStart);
+
+    // ========== Countdown Timer ==========
+    (function() {
+      function updateCountdown() {
+        var daysEl = document.getElementById('days');
+        var hoursEl = document.getElementById('hours');
+        var minutesEl = document.getElementById('minutes');
+        var secondsEl = document.getElementById('seconds');
+        if (!daysEl) return;
+        var weddingDate = new Date('2026-06-20T09:00:00');
+        var now = new Date();
+        var diff = weddingDate - now;
+
+        if (diff <= 0) {
+          daysEl.textContent = '00';
+          hoursEl.textContent = '00';
+          minutesEl.textContent = '00';
+          secondsEl.textContent = '00';
+          return;
+        }
+
+        var d = Math.floor(diff / (1000 * 60 * 60 * 24));
+        var h = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        var m = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+        var s = Math.floor((diff % (1000 * 60)) / 1000);
+
+        daysEl.textContent = String(d).padStart(2, '0');
+        hoursEl.textContent = String(h).padStart(2, '0');
+        minutesEl.textContent = String(m).padStart(2, '0');
+        secondsEl.textContent = String(s).padStart(2, '0');
+      }
+
+      updateCountdown();
+      setInterval(updateCountdown, 1000);
+    })();
+
+    // ========== Navigation Active State ==========
+    const navItems = document.querySelectorAll('.nav-item');
+    const sections = document.querySelectorAll('.section');
+
+    function updateActiveNav() {
+      let current = '';
+      sections.forEach(section => {
+        const sectionTop = section.offsetTop;
+        const sectionHeight = section.clientHeight;
+        if (scrollY >= sectionTop - 200) {
+          current = section.getAttribute('id');
+        }
+      });
+
+      navItems.forEach(item => {
+        item.classList.remove('active');
+        if (item.getAttribute('data-section') === current) {
+          item.classList.add('active');
+        }
+      });
+    }
+
+    window.addEventListener('scroll', updateActiveNav);
+
+    // ========== Intersection Observer ==========
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+        }
+      });
+    }, { threshold: 0.1 });
+
+    sections.forEach(section => {
+      observer.observe(section);
+    });
+
+    // ========== Form Submit & Load Comments ==========
+    // 等Supabase SDK加载后再初始化
+    function initComments() {
+      var commentForm = document.getElementById('commentForm');
+      var commentsList = document.getElementById('commentsList');
+      if (!commentForm || !commentsList) return;
+
+      var commentPage = 0;
+      var commentPageSize = 10;
+      var allComments = [];
+
+      async function loadComments() {
+        commentPage = 0;
+        allComments = [];
+
+        let localComments = JSON.parse(localStorage.getItem('comments') || '[]');
+
+        if (supabaseClient) {
+          try {
+            const { data, error } = await supabaseClient
+              .from('comments')
+              .select('*')
+              .not('content', 'like', '[UPLOAD:%')
+              .order('id', { ascending: true });
+            if (data && data.length > 0) {
+              allComments = data.map(c => ({ name: c.name, content: c.content, timestamp: c.created_at }));
+            }
+          } catch(err) {
+            console.error('Supabase load comments error:', err);
+          }
+        }
+
+        if (allComments.length === 0) allComments = localComments;
+        renderComments();
+      }
+
+      function renderComments() {
+        commentsList.innerHTML = '';
+        if (allComments.length === 0) {
+          commentsList.innerHTML = '<div class="empty-state"><div class="icon">💭</div><p>暂无留言，快来写第一条祝福吧！</p></div>';
+          return;
+        }
+
+        // 最新的在上面，分页从最新开始
+        var reversed = allComments.slice().reverse();
+        var end = (commentPage + 1) * commentPageSize;
+        var visible = reversed.slice(0, end);
+
+        visible.forEach(comment => {
+          const date = new Date(comment.timestamp);
+          const dateStr = date.getMonth() + 1 + '月' + date.getDate() + '日 ' + date.getHours() + ':' + String(date.getMinutes()).padStart(2, '0');
+          const card = document.createElement('div');
+          card.className = 'comment-card';
+          card.innerHTML = '<div class="comment-header"><span class="comment-author">' + escapeHtml(comment.name) + '</span><span class="comment-date">' + dateStr + '</span></div><p class="comment-content">' + escapeHtml(comment.content) + '</p>';
+          commentsList.appendChild(card);
+        });
+
+        // 加载更多按钮
+        var existing = document.getElementById('commentLoadMore');
+        if (existing) existing.remove();
+        if (end < reversed.length) {
+          var btn = document.createElement('div');
+          btn.id = 'commentLoadMore';
+          btn.style.cssText = 'text-align:center; padding:0.8rem;';
+          btn.innerHTML = '<button onclick="loadMoreComments()" style="background:#2abaaa;color:#fff;border:none;border-radius:20px;padding:8px 24px;font-size:14px;cursor:pointer;font-family:inherit;">🍃 查看更多祝福</button>';
+          commentsList.appendChild(btn);
+        }
+      }
+
+      window.loadMoreComments = function() {
+        commentPage++;
+        renderComments();
+      };
+
+      function escapeHtml(text) {
+        const div = document.createElement('div');
+        div.textContent = text;
+        return div.innerHTML;
+      }
+
+      commentForm.addEventListener('submit', async function(e) {
+        e.preventDefault();
+        var name = document.getElementById('commentName').value;
+        var content = document.getElementById('commentContent').value;
+        if (!name) { alert('请输入您的姓名'); return; }
+        if (!content) { alert('请输入祝福语'); return; }
+
+        var comment = { name: name, content: content, timestamp: new Date().toISOString() };
+
+        if (supabaseClient) {
+          try {
+            const { error } = await supabaseClient
+              .from('comments')
+              .insert([{ name: comment.name, content: comment.content }]);
+            if (error) console.error('Supabase comment error:', error);
+          } catch(err) {
+            console.error('Supabase comment error:', err);
+          }
+        }
+
+        var comments = JSON.parse(localStorage.getItem('comments') || '[]');
+        comments.push(comment);
+        localStorage.setItem('comments', JSON.stringify(comments));
+
+        commentForm.reset();
+        loadComments();
+      });
+
+      loadComments();
+    }
+
+    // 延迟初始化，确保Supabase SDK已加载
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', function() { setTimeout(initComments, 300); });
+    } else {
+      setTimeout(initComments, 300);
+    }
+    // 保底3秒后再试一次
+    setTimeout(function() {
+      if (!document.getElementById('commentForm')._initDone) {
+        document.getElementById('commentForm')._initDone = true;
+        initComments();
+      }
+    }, 3000);
+
+    // ========== Smooth scroll (已在内联script中实现) ==========
+  </script>
+
+  <!-- Lightbox -->
+  <div class="lightbox-overlay" id="lightbox" onclick="closeLightbox(event)">
+    <button class="lightbox-close" onclick="closeLightbox(event)">✕</button>
+    <button class="lightbox-nav prev" onclick="lightboxNav(-1, event)">‹</button>
+    <button class="lightbox-nav next" onclick="lightboxNav(1, event)">›</button>
+    <img id="lightboxImg" src="" alt="照片">
+    <div class="lightbox-actions">
+      <button class="btn-ac" onclick="downloadPhoto()" style="background: var(--ac-primary); border-color: var(--ac-primary-dark); box-shadow: 0 4px 0 var(--ac-primary-dark);">
+        💾 保存照片
+      </button>
+      <button class="btn-ac" onclick="closeLightbox(event)" style="background: var(--ac-app-red); border-color: #d45550; box-shadow: 0 4px 0 #d45550;">
+        ✕ 关闭
+      </button>
+    </div>
+    <div class="lightbox-counter" id="lightboxCounter"></div>
+  </div>
+
+  <script>
+    // Lightbox
+    var lightboxImages = [];
+    var lightboxIndex = 0;
+
+    function initLightbox() {
+      var items = document.querySelectorAll('.gallery-item.has-img');
+      lightboxImages = [];
+      items.forEach(function(item) {
+        var img = item.querySelector('img');
+        if (img) lightboxImages.push(img.src);
+      });
+    }
+
+    function openLightbox(src) {
+      initLightbox();
+      var idx = lightboxImages.indexOf(src);
+      lightboxIndex = idx >= 0 ? idx : 0;
+      showLightboxImage();
+      document.getElementById('lightbox').classList.add('active');
+      document.body.style.overflow = 'hidden';
+    }
+
+    function showLightboxImage() {
+      if (lightboxImages.length === 0) return;
+      document.getElementById('lightboxImg').src = lightboxImages[lightboxIndex];
+      document.getElementById('lightboxCounter').textContent = 
+        (lightboxIndex + 1) + ' / ' + lightboxImages.length;
+    }
+
+    function closeLightbox(e) {
+      if (e && e.target && (e.target.tagName === 'IMG' || e.target.closest('.lightbox-actions') || e.target.closest('.lightbox-nav'))) return;
+      document.getElementById('lightbox').classList.remove('active');
+      document.body.style.overflow = '';
+    }
+
+    function lightboxNav(dir, e) {
+      e.stopPropagation();
+      lightboxIndex = (lightboxIndex + dir + lightboxImages.length) % lightboxImages.length;
+      showLightboxImage();
+    }
+
+    function downloadPhoto() {
+      var src = lightboxImages[lightboxIndex];
+      var a = document.createElement('a');
+      a.href = src;
+      a.download = '婚礼记忆_' + (lightboxIndex + 1) + '.jpg';
+      a.target = '_blank';
+      fetch(src).then(function(r) { return r.blob(); }).then(function(blob) {
+        var url = URL.createObjectURL(blob);
+        a.href = url;
+        document.body.appendChild(a);
+        a.click();
+        document.body.removeChild(a);
+        URL.revokeObjectURL(url);
+      }).catch(function() {
+        window.open(src, '_blank');
+      });
+    }
+
+    document.addEventListener('keydown', function(e) {
+      var lb = document.getElementById('lightbox');
+      if (!lb.classList.contains('active')) return;
+      if (e.key === 'Escape') closeLightbox(e);
+      if (e.key === 'ArrowLeft') lightboxNav(-1, e);
+      if (e.key === 'ArrowRight') lightboxNav(1, e);
+    });
+
+    (function() {
+      var startX = 0;
+      var lb = document.getElementById('lightbox');
+      lb.addEventListener('touchstart', function(e) {
+        startX = e.changedTouches[0].screenX;
+      }, {passive: true});
+      lb.addEventListener('touchend', function(e) {
+        var diff = e.changedTouches[0].screenX - startX;
+        if (Math.abs(diff) > 60) {
+          lightboxNav(diff > 0 ? -1 : 1, e);
+        }
+      }, {passive: true});
+    })();
+  </script>
+
+  <!-- 视频播放 Modal -->
+  <div class="video-modal-overlay" id="videoModal">
+    <div class="video-modal-content">
+      <button class="video-modal-close" onclick="closeVideoModal()">✕</button>
+      <video id="videoModalPlayer" controls></video>
+    </div>
+  </div>
+
+  <!-- Toast 提示 -->
+  <div class="toast" id="toast"></div>
+
+  <!-- 有机形状照片预览 Modal -->
+  <div class="ac-modal-overlay" id="acPhotoModal" style="display:none" onclick="closeAcModal()">
+    <div class="ac-modal-container" style="width:min(90vw,420px)" onclick="event.stopPropagation()">
+      <div class="ac-modal-clipped">
+        <button class="ac-modal-close" onclick="closeAcModal()">✕</button>
+        <div class="ac-modal-title" id="acModalTitle">📸 照片预览</div>
+        <div class="ac-modal-body" id="acModalBody"></div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // ========== Animal Island UI: Typewriter 打字机 ==========
+    function typewriterEffect(el, text, speed, callback) {
+      speed = speed || 60;
+      var i = 0;
+      var cursor = document.createElement('span');
+      cursor.className = 'tw-cursor';
+      el.textContent = '';
+      el.appendChild(cursor);
+      var timer = setInterval(function() {
+        if (i < text.length) {
+          el.insertBefore(document.createTextNode(text.charAt(i)), cursor);
+          i++;
+        } else {
+          clearInterval(timer);
+          setTimeout(function() {
+            if (cursor.parentNode) cursor.parentNode.removeChild(cursor);
+            if (callback) callback();
+          }, 1200);
+        }
+      }, speed);
+      return timer;
+    }
+
+    // 西施惠对话气泡打字机
+    function initSpeechBubbles() {
+      var bubbles = document.querySelectorAll('.speech-bubble p');
+      bubbles.forEach(function(p) {
+        var text = p.textContent.trim();
+        if (!text || text.length < 5) return;
+        p.setAttribute('data-full-text', text);
+        p.setAttribute('data-typewriter-done', 'false');
+      });
+      // 用 IntersectionObserver 触发
+      if ('IntersectionObserver' in window) {
+        var obs = new IntersectionObserver(function(entries) {
+          entries.forEach(function(entry) {
+            if (entry.isIntersecting) {
+              var p = entry.target;
+              if (p.getAttribute('data-typewriter-done') === 'true') return;
+              p.setAttribute('data-typewriter-done', 'true');
+              var fullText = p.getAttribute('data-full-text');
+              p.textContent = '';
+              typewriterEffect(p, fullText, 55);
+              obs.unobserve(p);
+            }
+          });
+        }, { threshold: 0.5 });
+        bubbles.forEach(function(p) { obs.observe(p); });
+      }
+    }
+
+    // ========== 有机形状 Modal ==========
+    function openAcModal(title, contentHtml) {
+      var modal = document.getElementById('acPhotoModal');
+      document.getElementById('acModalTitle').textContent = title || '📸 照片预览';
+      document.getElementById('acModalBody').innerHTML = contentHtml || '';
+      modal.style.display = 'flex';
+      document.body.style.overflow = 'hidden';
+    }
+    function closeAcModal() {
+      var modal = document.getElementById('acPhotoModal');
+      modal.style.display = 'none';
+      document.body.style.overflow = '';
+    }
+
+    // 初始化
+    document.addEventListener('DOMContentLoaded', function() {
+      setTimeout(initSpeechBubbles, 800);
+    });
+  </script>
+</body>
+</html>
