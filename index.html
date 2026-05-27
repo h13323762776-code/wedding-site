@@ -1911,7 +1911,72 @@
     }
     .video-modal-close:hover {
       background: rgba(0,0,0,0.8);
+   
+    /* Admin Panel */
+    .admin-fab {
+      position: fixed; bottom: 20px; left: 20px; z-index: 9990;
+      width: 44px; height: 44px; border-radius: 50%; border: none;
+      background: rgba(60,60,60,0.5); color: #fff; font-size: 20px;
+      cursor: pointer; display: flex; align-items: center; justify-content: center;
+      transition: all 0.2s; backdrop-filter: blur(4px);
     }
+    .admin-fab:hover { background: rgba(60,60,60,0.8); transform: scale(1.1); }
+    .admin-panel-overlay {
+      display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+      background: rgba(0,0,0,0.6); z-index: 9995; backdrop-filter: blur(4px);
+    }
+    .admin-panel-overlay.active { display: flex; align-items: center; justify-content: center; }
+    .admin-panel {
+      background: #1a1a2e; border-radius: 16px; padding: 0; width: 92%; max-width: 480px;
+      max-height: 85vh; overflow: hidden; box-shadow: 0 20px 60px rgba(0,0,0,0.5);
+    }
+    .admin-header {
+      padding: 16px 20px; background: linear-gradient(135deg, #16213e, #1a1a2e);
+      display: flex; align-items: center; justify-content: space-between;
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+    }
+    .admin-header h3 { color: #e0e0e0; margin: 0; font-size: 16px; }
+    .admin-close { background: none; border: none; color: #888; font-size: 22px; cursor: pointer; padding: 4px 8px; }
+    .admin-close:hover { color: #fff; }
+    .admin-body { padding: 16px 20px; overflow-y: auto; max-height: calc(85vh - 60px); }
+    .admin-login { text-align: center; padding: 30px 0; }
+    .admin-login input {
+      width: 80%; padding: 10px 16px; border-radius: 8px; border: 1px solid #333;
+      background: #0f0f23; color: #e0e0e0; font-size: 15px; text-align: center;
+      margin-bottom: 12px; outline: none;
+    }
+    .admin-login input:focus { border-color: var(--ac-primary, #4CAF50); }
+    .admin-login button {
+      padding: 10px 32px; border-radius: 8px; border: none;
+      background: var(--ac-primary, #4CAF50); color: #fff; font-size: 15px; cursor: pointer;
+    }
+    .admin-tabs { display: flex; gap: 4px; margin-bottom: 16px; }
+    .admin-tab {
+      flex: 1; padding: 8px; border: none; border-radius: 8px;
+      background: rgba(255,255,255,0.05); color: #888; cursor: pointer; font-size: 13px;
+    }
+    .admin-tab.active { background: rgba(255,255,255,0.12); color: #e0e0e0; }
+    .admin-item {
+      display: flex; align-items: center; gap: 10px; padding: 10px 12px;
+      background: rgba(255,255,255,0.04); border-radius: 10px; margin-bottom: 8px;
+    }
+    .admin-item img { width: 48px; height: 48px; border-radius: 6px; object-fit: cover; }
+    .admin-item-info { flex: 1; min-width: 0; }
+    .admin-item-name { color: #ccc; font-size: 13px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+    .admin-item-date { color: #666; font-size: 11px; }
+    .admin-item-content { color: #999; font-size: 12px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; max-width: 200px; }
+    .admin-del-btn {
+      background: #c0392b; border: none; color: #fff; border-radius: 6px;
+      padding: 6px 12px; font-size: 12px; cursor: pointer; white-space: nowrap;
+    }
+    .admin-del-btn:hover { background: #e74c3c; }
+    .admin-stats { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 8px; margin-bottom: 16px; }
+    .admin-stat {
+      background: rgba(255,255,255,0.05); border-radius: 10px; padding: 12px; text-align: center;
+    }
+    .admin-stat-num { color: var(--ac-primary, #4CAF50); font-size: 22px; font-weight: bold; }
+    .admin-stat-label { color: #666; font-size: 11px; margin-top: 2px; }
+ }
 
     /* Toast 提示 */
     .toast {
@@ -3211,7 +3276,8 @@
 
     function openLightboxFromWall(src, type) {
       if (type === 'photo') {
-        initLightbox();
+        updateLightboxFromWall();
+        lightboxImages = wallImages.slice(); // use wall images
         var idx = wallImages.indexOf(src);
         lightboxIndex = idx >= 0 ? idx : 0;
         showLightboxImage();
@@ -4269,6 +4335,171 @@
     document.addEventListener('DOMContentLoaded', function() {
       setTimeout(initSpeechBubbles, 800);
     });
-  </script>
+  
+    // ========== Admin Panel ==========
+    var ADMIN_PWD = 'liamhzz2026';
+    var isAdmin = false;
+    var adminTab = 'photos';
+
+    function toggleAdminPanel() {
+      var overlay = document.getElementById('adminOverlay');
+      overlay.classList.toggle('active');
+      if (overlay.classList.contains('active') && isAdmin) {
+        loadAdminData();
+      }
+    }
+
+    function closeAdminPanel(e) {
+      if (e.target === e.currentTarget) {
+        document.getElementById('adminOverlay').classList.remove('active');
+      }
+    }
+
+    function adminAuth() {
+      var pwd = document.getElementById('adminPwd').value;
+      if (pwd === ADMIN_PWD) {
+        isAdmin = true;
+        document.getElementById('adminLogin').style.display = 'none';
+        document.getElementById('adminContent').style.display = 'block';
+        loadAdminData();
+      } else {
+        document.getElementById('adminPwd').value = '';
+        document.getElementById('adminPwd').placeholder = '密码错误';
+        setTimeout(function(){ document.getElementById('adminPwd').placeholder = '管理密码'; }, 2000);
+      }
+    }
+
+    function switchAdminTab(tab, btn) {
+      adminTab = tab;
+      document.querySelectorAll('.admin-tab').forEach(function(t){ t.classList.remove('active'); });
+      btn.classList.add('active');
+      loadAdminData();
+    }
+
+    async function loadAdminData() {
+      if (!supabaseClient) return;
+      var listEl = document.getElementById('adminList');
+      listEl.innerHTML = '<p style="color:#666;text-align:center;padding:20px">加载中...</p>';
+
+      try {
+        if (adminTab === 'photos') {
+          var { data } = await supabaseClient.from('comments').select('*').like('content','[UPLOAD:PHOTO]%').order('created_at',{ascending:false});
+          if (!data) data = [];
+          document.getElementById('statPhotos').textContent = data.length;
+          if (data.length === 0) {
+            listEl.innerHTML = '<p style="color:#666;text-align:center;padding:20px">暂无照片</p>';
+            return;
+          }
+          var html = '';
+          data.forEach(function(item) {
+            var thumb = item.content.replace('[UPLOAD:PHOTO]','');
+            html += '<div class="admin-item">' +
+              '<img src="' + thumb + '" alt="photo">' +
+              '<div class="admin-item-info">' +
+                '<div class="admin-item-name">' + escapeHtml(item.name || '匿名') + '</div>' +
+                '<div class="admin-item-date">' + new Date(item.created_at).toLocaleString('zh-CN') + '</div>' +
+              '</div>' +
+              '<button class="admin-del-btn" onclick="adminDelete(' + item.id + ',\'photo\')">删除</button>' +
+            '</div>';
+          });
+          listEl.innerHTML = html;
+        } else if (adminTab === 'videos') {
+          var { data } = await supabaseClient.from('comments').select('*').like('content','[UPLOAD:VIDEO]%').order('created_at',{ascending:false});
+          if (!data) data = [];
+          document.getElementById('statVideos').textContent = data.length;
+          if (data.length === 0) {
+            listEl.innerHTML = '<p style="color:#666;text-align:center;padding:20px">暂无视频</p>';
+            return;
+          }
+          var html = '';
+          data.forEach(function(item) {
+            var info = item.content.replace('[UPLOAD:VIDEO]','');
+            html += '<div class="admin-item">' +
+              '<div style="width:48px;height:48px;border-radius:6px;background:#222;display:flex;align-items:center;justify-content:center;font-size:20px">🎬</div>' +
+              '<div class="admin-item-info">' +
+                '<div class="admin-item-name">' + escapeHtml(item.name || '匿名') + '</div>' +
+                '<div class="admin-item-date">' + new Date(item.created_at).toLocaleString('zh-CN') + '</div>' +
+              '</div>' +
+              '<button class="admin-del-btn" onclick="adminDelete(' + item.id + ',\'video\')">删除</button>' +
+            '</div>';
+          });
+          listEl.innerHTML = html;
+        } else if (adminTab === 'comments') {
+          var { data } = await supabaseClient.from('comments').select('*').not('content','like','[UPLOAD:%').order('created_at',{ascending:false});
+          if (!data) data = [];
+          document.getElementById('statComments').textContent = data.length;
+          if (data.length === 0) {
+            listEl.innerHTML = '<p style="color:#666;text-align:center;padding:20px">暂无留言</p>';
+            return;
+          }
+          var html = '';
+          data.forEach(function(item) {
+            html += '<div class="admin-item">' +
+              '<div style="width:48px;height:48px;border-radius:6px;background:#222;display:flex;align-items:center;justify-content:center;font-size:20px">💬</div>' +
+              '<div class="admin-item-info">' +
+                '<div class="admin-item-name">' + escapeHtml(item.name || '匿名') + '</div>' +
+                '<div class="admin-item-content">' + escapeHtml(item.content || '') + '</div>' +
+                '<div class="admin-item-date">' + new Date(item.created_at).toLocaleString('zh-CN') + '</div>' +
+              '</div>' +
+              '<button class="admin-del-btn" onclick="adminDelete(' + item.id + ',\'comment\')">删除</button>' +
+            '</div>';
+          });
+          listEl.innerHTML = html;
+        }
+      } catch(err) {
+        listEl.innerHTML = '<p style="color:#c0392b;text-align:center;padding:20px">加载失败: ' + err.message + '</p>';
+      }
+    }
+
+    async function adminDelete(id, type) {
+      if (!confirm('确定要删除这条' + (type==='photo'?'照片':type==='video'?'视频':'留言') + '吗？')) return;
+      try {
+        const { error } = await supabaseClient.from('comments').delete().eq('id', id);
+        if (error) throw error;
+        showToast('✅ 已删除', 'success');
+        loadAdminData();
+        // Refresh the wall
+        if (type === 'photo') loadGuestPhotos();
+        else if (type === 'video') loadGuestVideos();
+        else loadComments();
+      } catch(err) {
+        showToast('❌ 删除失败: ' + err.message, 'error');
+      }
+    }
+
+</script>
+
+  <!-- Admin Panel -->
+  <button class="admin-fab" onclick="toggleAdminPanel()" title="管理后台">⚙️</button>
+  <div class="admin-panel-overlay" id="adminOverlay" onclick="closeAdminPanel(event)">
+    <div class="admin-panel" onclick="event.stopPropagation()">
+      <div class="admin-header">
+        <h3>🔧 管理后台</h3>
+        <button class="admin-close" onclick="document.getElementById('adminOverlay').classList.remove('active')">✕</button>
+      </div>
+      <div class="admin-body" id="adminBody">
+        <div class="admin-login" id="adminLogin">
+          <p style="color:#888;font-size:14px;margin-bottom:16px;">请输入管理密码</p>
+          <input type="password" id="adminPwd" placeholder="管理密码" onkeydown="if(event.key==='Enter')adminAuth()">
+          <br>
+          <button onclick="adminAuth()">登 录</button>
+        </div>
+        <div id="adminContent" style="display:none">
+          <div class="admin-stats">
+            <div class="admin-stat"><div class="admin-stat-num" id="statPhotos">0</div><div class="admin-stat-label">照片</div></div>
+            <div class="admin-stat"><div class="admin-stat-num" id="statVideos">0</div><div class="admin-stat-label">视频</div></div>
+            <div class="admin-stat"><div class="admin-stat-num" id="statComments">0</div><div class="admin-stat-label">留言</div></div>
+          </div>
+          <div class="admin-tabs">
+            <button class="admin-tab active" onclick="switchAdminTab('photos',this)">📷 照片</button>
+            <button class="admin-tab" onclick="switchAdminTab('videos',this)">🎬 视频</button>
+            <button class="admin-tab" onclick="switchAdminTab('comments',this)">💬 留言</button>
+          </div>
+          <div id="adminList"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
 </body>
 </html>
