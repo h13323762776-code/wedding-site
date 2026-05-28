@@ -24,7 +24,7 @@
   <link rel="preconnect" href="https://fonts.loli.net/gstatic" crossorigin>
   <link href="https://fonts.loli.net/css2?family=Nunito:wght@400;600;700;800;900&family=ZCOOL+KuaiLe&family=Noto+Sans+SC:wght@400;500;700;900&display=swap" rel="stylesheet">
   
-  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2" defer></script>
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
   <style>
     :root {
       --ac-primary: #2abaaa;
@@ -95,7 +95,7 @@
       background-position: top center;
       pointer-events: none;
       z-index: -1;
-      opacity: 0.25;
+      opacity: 0.15;
     }
 
     .section {
@@ -144,7 +144,7 @@
     /* Switch 容器 */
     #switch-mount {
       position: fixed;
-      bottom: 100px;
+      bottom: 160px;
       right: 18px;
       z-index: 998;
     }
@@ -325,7 +325,7 @@
     /* BGM 音乐按钮 */
     .bgm-toggle {
       position: fixed;
-      bottom: 20px;
+      bottom: 108px;
       right: 16px;
       width: 48px;
       height: 48px;
@@ -1912,70 +1912,82 @@
     .video-modal-close:hover {
       background: rgba(0,0,0,0.8);
    
-    /* Admin Panel */
+    /* Admin Panel - Animal Island 风格 */
     .admin-fab {
-      position: fixed; bottom: 20px; left: 20px; z-index: 9990;
-      width: 44px; height: 44px; border-radius: 50%; border: none;
-      background: rgba(60,60,60,0.5); color: #fff; font-size: 20px;
+      position: fixed; bottom: 80px; left: 50%; transform: translateX(-50%); z-index: 9990;
+      width: 32px; height: 32px; border-radius: 50%; border: none;
+      background: rgba(114,93,66,0.06); color: rgba(114,93,66,0.18); font-size: 14px;
       cursor: pointer; display: flex; align-items: center; justify-content: center;
-      transition: all 0.2s; backdrop-filter: blur(4px);
+      transition: all 0.3s; font-family: inherit;
     }
-    .admin-fab:hover { background: rgba(60,60,60,0.8); transform: scale(1.1); }
+    .admin-fab:hover { background: rgba(114,93,66,0.12); color: rgba(114,93,66,0.4); transform: translateX(-50%) scale(1.1); }
     .admin-panel-overlay {
       display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%;
-      background: rgba(0,0,0,0.6); z-index: 9995; backdrop-filter: blur(4px);
+      background: rgba(114,93,66,0.25); z-index: 9995; backdrop-filter: blur(6px);
     }
     .admin-panel-overlay.active { display: flex; align-items: center; justify-content: center; }
     .admin-panel {
-      background: #1a1a2e; border-radius: 16px; padding: 0; width: 92%; max-width: 480px;
-      max-height: 85vh; overflow: hidden; box-shadow: 0 20px 60px rgba(0,0,0,0.5);
+      background: linear-gradient(160deg, #fdfdf5 0%, #f7f3e7 50%, #f0ead8 100%);
+      border-radius: 20px; padding: 0; width: 92%; max-width: 440px;
+      max-height: 85vh; overflow: hidden;
+      box-shadow: 0 8px 32px rgba(114,93,66,0.2), inset 0 1px 0 rgba(255,255,255,0.6);
+      border: 2px solid rgba(114,93,66,0.15);
     }
     .admin-header {
-      padding: 16px 20px; background: linear-gradient(135deg, #16213e, #1a1a2e);
+      padding: 14px 20px;
+      background: linear-gradient(90deg, rgba(45,155,140,0.1), rgba(114,93,66,0.08));
       display: flex; align-items: center; justify-content: space-between;
-      border-bottom: 1px solid rgba(255,255,255,0.08);
+      border-bottom: 1.5px dashed rgba(114,93,66,0.2);
     }
-    .admin-header h3 { color: #e0e0e0; margin: 0; font-size: 16px; }
-    .admin-close { background: none; border: none; color: #888; font-size: 22px; cursor: pointer; padding: 4px 8px; }
-    .admin-close:hover { color: #fff; }
-    .admin-body { padding: 16px 20px; overflow-y: auto; max-height: calc(85vh - 60px); }
-    .admin-login { text-align: center; padding: 30px 0; }
+    .admin-header h3 { color: #725d42; margin: 0; font-size: 15px; font-weight: 700; letter-spacing: 1px; }
+    .admin-close { background: none; border: 2px solid rgba(114,93,66,0.15); color: #725d42; font-size: 14px; cursor: pointer; padding: 2px 8px; border-radius: 8px; font-family: inherit; }
+    .admin-close:hover { background: rgba(114,93,66,0.08); }
+    .admin-body { padding: 16px 20px; overflow-y: auto; max-height: calc(85vh - 56px); }
+    .admin-login { text-align: center; padding: 24px 0; }
     .admin-login input {
-      width: 80%; padding: 10px 16px; border-radius: 8px; border: 1px solid #333;
-      background: #0f0f23; color: #e0e0e0; font-size: 15px; text-align: center;
-      margin-bottom: 12px; outline: none;
+      width: 80%; padding: 10px 16px; border-radius: 12px;
+      border: 2px solid rgba(114,93,66,0.2); background: #fff;
+      color: #725d42; font-size: 15px; text-align: center; margin-bottom: 12px; outline: none;
+      font-family: inherit;
     }
-    .admin-login input:focus { border-color: var(--ac-primary, #4CAF50); }
+    .admin-login input:focus { border-color: #2d9b8c; }
     .admin-login button {
-      padding: 10px 32px; border-radius: 8px; border: none;
-      background: var(--ac-primary, #4CAF50); color: #fff; font-size: 15px; cursor: pointer;
+      padding: 10px 32px; border-radius: 12px; border: none;
+      background: #2d9b8c; color: #fff; font-size: 15px; cursor: pointer;
+      box-shadow: 0 3px 0 rgba(45,155,140,0.4); font-family: inherit;
+      transition: all 0.15s;
     }
-    .admin-tabs { display: flex; gap: 4px; margin-bottom: 16px; }
+    .admin-login button:active { transform: translateY(2px); box-shadow: 0 1px 0 rgba(45,155,140,0.4); }
+    .admin-tabs { display: flex; gap: 4px; margin-bottom: 14px; background: rgba(114,93,66,0.06); border-radius: 12px; padding: 3px; }
     .admin-tab {
-      flex: 1; padding: 8px; border: none; border-radius: 8px;
-      background: rgba(255,255,255,0.05); color: #888; cursor: pointer; font-size: 13px;
+      flex: 1; padding: 8px; border: none; border-radius: 9px;
+      background: transparent; color: #9a835a; cursor: pointer; font-size: 13px;
+      font-weight: 600; transition: all 0.2s; font-family: inherit;
     }
-    .admin-tab.active { background: rgba(255,255,255,0.12); color: #e0e0e0; }
+    .admin-tab.active { background: #fff; color: #725d42; box-shadow: 0 2px 6px rgba(114,93,66,0.1); }
     .admin-item {
       display: flex; align-items: center; gap: 10px; padding: 10px 12px;
-      background: rgba(255,255,255,0.04); border-radius: 10px; margin-bottom: 8px;
+      background: #fff; border-radius: 12px; margin-bottom: 8px;
+      border: 1.5px solid rgba(114,93,66,0.08);
     }
-    .admin-item img { width: 48px; height: 48px; border-radius: 6px; object-fit: cover; }
+    .admin-item img { width: 44px; height: 44px; border-radius: 8px; object-fit: cover; border: 1.5px solid rgba(114,93,66,0.1); }
     .admin-item-info { flex: 1; min-width: 0; }
-    .admin-item-name { color: #ccc; font-size: 13px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
-    .admin-item-date { color: #666; font-size: 11px; }
-    .admin-item-content { color: #999; font-size: 12px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; max-width: 200px; }
+    .admin-item-name { color: #5a4a38; font-size: 13px; font-weight: 600; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+    .admin-item-date { color: #9a835a; font-size: 11px; }
+    .admin-item-content { color: #9a835a; font-size: 12px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; max-width: 200px; }
     .admin-del-btn {
-      background: #c0392b; border: none; color: #fff; border-radius: 6px;
-      padding: 6px 12px; font-size: 12px; cursor: pointer; white-space: nowrap;
+      background: none; border: 1.5px solid #c0392b; color: #c0392b; border-radius: 8px;
+      padding: 5px 10px; font-size: 12px; cursor: pointer; white-space: nowrap;
+      font-family: inherit; transition: all 0.15s;
     }
-    .admin-del-btn:hover { background: #e74c3c; }
-    .admin-stats { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 8px; margin-bottom: 16px; }
+    .admin-del-btn:hover { background: #c0392b; color: #fff; }
+    .admin-stats { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 8px; margin-bottom: 14px; }
     .admin-stat {
-      background: rgba(255,255,255,0.05); border-radius: 10px; padding: 12px; text-align: center;
+      background: #fff; border-radius: 12px; padding: 10px 8px; text-align: center;
+      border: 1.5px solid rgba(114,93,66,0.08);
     }
-    .admin-stat-num { color: var(--ac-primary, #4CAF50); font-size: 22px; font-weight: bold; }
-    .admin-stat-label { color: #666; font-size: 11px; margin-top: 2px; }
+    .admin-stat-num { color: #2d9b8c; font-size: 22px; font-weight: bold; }
+    .admin-stat-label { color: #9a835a; font-size: 11px; margin-top: 2px; }
  }
 
     /* Toast 提示 */
@@ -2255,9 +2267,65 @@
     [data-theme="night"] .ac-footer-text {
       color: rgba(200, 200, 200, 0.5);
     }
+    /* 动森角色装饰 - 固定浮动 */
+    .ac-char-deco {
+      position: fixed;
+      font-size: 2.2rem;
+      opacity: 0;
+      pointer-events: none;
+      z-index: 99;
+      animation: charFloatIn 0.8s ease forwards, charBob 5s ease-in-out 0.8s infinite;
+      filter: drop-shadow(0 2px 6px rgba(0,0,0,0.1));
+    }
+    @keyframes charFloatIn {
+      from { opacity: 0; transform: translateY(30px) scale(0.8); }
+      to { opacity: 0.25; transform: translateY(0) scale(1); }
+    }
+    @keyframes charBob {
+      0%, 100% { transform: translateY(0) rotate(-3deg); }
+      50% { transform: translateY(-8px) rotate(3deg); }
+    }
+    /* 夜间模式角色更亮一点 */
+    [data-theme="night"] .ac-char-deco {
+      opacity: 0;
+      animation: charFloatInNight 0.8s ease forwards, charBob 5s ease-in-out 0.8s infinite;
+    }
+    @keyframes charFloatInNight {
+      from { opacity: 0; transform: translateY(30px) scale(0.8); }
+      to { opacity: 0.18; transform: translateY(0) scale(1); }
+    }
+
+    /* ========== NookPhone 官方图标 ========== */
+    .nook-icon {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      vertical-align: middle;
+      line-height: 1;
+    }
+    .nook-icon img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      image-rendering: auto;
+    }
+    .nook-icon-24 { width: 24px; height: 24px; }
+    .nook-icon-20 { width: 20px; height: 20px; }
+    .nook-icon-28 { width: 28px; height: 28px; }
+    .nook-icon-32 { width: 32px; height: 32px; }
+    .nook-icon-48 { width: 48px; height: 48px; }
+    
+    /* 导航栏专用 - NookPhone app icon 风格 */
+    .nav-item .nook-icon {
+      width: 28px;
+      height: 28px;
+    }
+    .nav-item.active .nook-icon img { 
+      filter: brightness(10) drop-shadow(0 0 2px rgba(255,255,255,0.5)); 
+    }
   </style>
 </head>
-<body class="ac-cursor">
+<body class="ac-cursor" data-theme="night">
   <!-- SVG clip-path 定义 (Animal Island Modal) -->
   <svg style="position:absolute;width:0;height:0" aria-hidden="true">
     <defs>
@@ -2286,14 +2354,14 @@
   
   <!-- 主题Switch -->
   <div id="switch-mount">
-    <div class="theme-switch" id="themeSwitch" onclick="toggleTheme()">
-      <span class="theme-switch-text" id="themeIcon">☀️</span>
+    <div class="theme-switch night" id="themeSwitch" onclick="toggleTheme()">
+      <span class="theme-switch-text" id="themeIcon">🌙</span>
     </div>
   </div>
 
   <!-- Section 1: Hero / Invitation -->
   <section id="invite" class="section hero-section">
-    <div class="float-deco" style="top: 8%; left: 8%;">🍃</div>
+    <div class="float-deco" style="top: 8%; left: 8%;"><span class="nook-icon nook-icon-28"><img src="assets/chars/nook_miles.png" alt="" loading="lazy"></span></div>
     <div class="float-deco" style="top: 15%; right: 10%; animation-delay: 1s;">🌿</div>
     <div class="float-deco" style="bottom: 15%; left: 15%; animation-delay: 2s;">🐚</div>
     <div class="float-deco" style="bottom: 25%; right: 8%; animation-delay: 0.5s;">🌴</div>
@@ -2340,7 +2408,7 @@
       <div style="font-size:12px;letter-spacing:4px;color:#9a835a;font-weight:700;margin-bottom:2px;">WELCOME TO</div>
       <div style="font-size:22px;font-weight:900;color:#725d42;letter-spacing:3px;margin-bottom:14px;">🏝️ 无人岛</div>
       <div style="font-size:13px;color:#794f27;line-height:1.8;font-weight:500;">
-        欢迎登机！请系好安全带<br>我们即将飞往幸福的彼岸～✈️
+        欢迎登机！请系好安全带<br>我们即将飞往幸福的彼岸～<span class="nook-icon nook-icon-20"><img src="assets/chars/nook_passport.png" alt="" loading="lazy"></span>
       </div>
       <!-- 底部装饰 -->
       <div style="margin-top:14px;display:flex;align-items:center;justify-content:center;gap:8px;">
@@ -2352,60 +2420,65 @@
       <div style="position:absolute;inset:10px;border:1.5px dashed rgba(114,93,66,0.2);border-radius:16px;pointer-events:none;"></div>
     </div>
 
-    <!-- 婚礼邀请函图片 - 可点击查看大图 -->
+    <!-- 邀请函 / 视频 选项卡切换 -->
     <div style="margin: 1.5rem 0;">
-      <div style="background: #f7f3e7; border-radius: 16px; padding: 12px; box-shadow: 0 6px 20px rgba(0,0,0,0.1);">
-        <img src="assets/invite.jpg" alt="婚礼邀请函" style="width: 100%; border-radius: 12px; display: block; cursor: pointer;" onclick="openInviteModal()" />
+      <div style="display:flex; gap:0; margin-bottom:12px; background:rgba(114,93,66,0.08); border-radius:12px; padding:4px; border:1.5px solid rgba(114,93,66,0.15);">
+        <button id="inviteTabBtn" onclick="switchInviteTab('card')" style="flex:1; padding:10px 0; border:none; border-radius:9px; font-size:0.95rem; font-weight:700; cursor:pointer; transition:all 0.25s; background:var(--ac-app-green, #2d9b8c); color:#fff; box-shadow:0 3px 0 rgba(45,155,140,0.4); font-family:inherit;">📜 邀请函</button>
+        <button id="inviteVideoTabBtn" onclick="switchInviteTab('video')" style="flex:1; padding:10px 0; border:none; border-radius:9px; font-size:0.95rem; font-weight:700; cursor:pointer; transition:all 0.25s; background:transparent; color:#725d42; font-family:inherit;"><span class="nook-icon nook-icon-20"><img src="assets/chars/nook_hhn.png" alt="" loading="lazy"></span> 视频</button>
       </div>
-    </div>
-
-    <!-- 婚礼视频 -->
-    <div style="margin: 1.5rem 0;">
-      <div style="background: #2a2420; border-radius: 16px; padding: 12px; box-shadow: 0 6px 20px rgba(0,0,0,0.15); position: relative; overflow: hidden;">
-        <div style="display:flex; justify-content:space-between; padding: 4px 8px; margin-bottom: 8px;">
-          <div style="display:flex; gap:6px;">
-            <div style="width:8px;height:8px;border-radius:2px;background:#4a4035;"></div>
-            <div style="width:8px;height:8px;border-radius:2px;background:#4a4035;"></div>
-            <div style="width:8px;height:8px;border-radius:2px;background:#4a4035;"></div>
-          </div>
-          <span style="color:#8a7a6a;font-size:0.7rem;font-family:'Nunito',sans-serif;">REC ●</span>
-          <div style="display:flex; gap:6px;">
-            <div style="width:8px;height:8px;border-radius:2px;background:#4a4035;"></div>
-            <div style="width:8px;height:8px;border-radius:2px;background:#4a4035;"></div>
-            <div style="width:8px;height:8px;border-radius:2px;background:#4a4035;"></div>
-          </div>
-        </div>
-        <div onclick="openHeroVideo()" style="cursor:pointer; border-radius:12px; overflow:hidden; position:relative; background:linear-gradient(135deg,#1a1a2e,#16213e,#0f3460); aspect-ratio:16/9; display:flex; align-items:center; justify-content:center;">
-          <div style="text-align:center; color:#fff;">
-            <div style="font-size:3rem; margin-bottom:0.5rem; animation: pulse 2s ease-in-out infinite;">▶</div>
-            <div style="font-size:1rem; font-weight:600;">来自无人岛的视频信</div>
-            <div style="font-size:0.75rem; opacity:0.7; margin-top:4px;">点击播放</div>
-          </div>
-        </div>
-        <div style="display:flex; justify-content:space-between; padding: 4px 8px; margin-top: 8px;">
-          <div style="display:flex; gap:6px;">
-            <div style="width:8px;height:8px;border-radius:2px;background:#4a4035;"></div>
-            <div style="width:8px;height:8px;border-radius:2px;background:#4a4035;"></div>
-            <div style="width:8px;height:8px;border-radius:2px;background:#4a4035;"></div>
-          </div>
-          <span style="color:#8a7a6a;font-size:0.65rem;font-family:'Nunito',sans-serif;">2026.06.20</span>
-          <div style="display:flex; gap:6px;">
-            <div style="width:8px;height:8px;border-radius:2px;background:#4a4035;"></div>
-            <div style="width:8px;height:8px;border-radius:2px;background:#4a4035;"></div>
-            <div style="width:8px;height:8px;border-radius:2px;background:#4a4035;"></div>
-          </div>
+      <!-- Tab: 邀请函 -->
+      <div id="inviteTabCard">
+        <div style="background: #f7f3e7; border-radius: 16px; padding: 12px; box-shadow: 0 6px 20px rgba(0,0,0,0.1);">
+          <img src="assets/invite.jpg" alt="婚礼邀请函" style="width: 100%; border-radius: 12px; display: block; cursor: pointer;" onclick="openInviteModal()" />
         </div>
       </div>
-      <!-- 视频操作按钮 -->
-      <div style="margin-top: 12px; display: flex; gap: 10px; flex-wrap: wrap;">
-        <a href="https://weixin.qq.com/sph/AoDJybFr0L" target="_blank" class="btn-ac" style="display: inline-flex; text-decoration: none; align-items: center; gap: 6px; font-size: 0.85rem; padding: 8px 14px;">
-          📺 前往视频号观看
-        </a>
-        <button class="btn-ac" style="background: var(--ac-app-orange); border-color: #c47030; box-shadow: 0 4px 0 #c47030; display: inline-flex; align-items: center; gap: 6px; font-size: 0.85rem; padding: 8px 14px;" onclick="copyVideoLink()">
-          📋 复制视频号链接
-        </button>
+      <!-- Tab: 视频 -->
+      <div id="inviteTabVideo" style="display:none;">
+        <div style="background: #2a2420; border-radius: 16px; padding: 12px; box-shadow: 0 6px 20px rgba(0,0,0,0.15); position: relative; overflow: hidden;">
+          <div style="display:flex; justify-content:space-between; padding: 4px 8px; margin-bottom: 8px;">
+            <div style="display:flex; gap:6px;">
+              <div style="width:8px;height:8px;border-radius:2px;background:#4a4035;"></div>
+              <div style="width:8px;height:8px;border-radius:2px;background:#4a4035;"></div>
+              <div style="width:8px;height:8px;border-radius:2px;background:#4a4035;"></div>
+            </div>
+            <span style="color:#8a7a6a;font-size:0.7rem;font-family:'Nunito',sans-serif;">REC ●</span>
+            <div style="display:flex; gap:6px;">
+              <div style="width:8px;height:8px;border-radius:2px;background:#4a4035;"></div>
+              <div style="width:8px;height:8px;border-radius:2px;background:#4a4035;"></div>
+              <div style="width:8px;height:8px;border-radius:2px;background:#4a4035;"></div>
+            </div>
+          </div>
+          <div onclick="openHeroVideo()" style="cursor:pointer; border-radius:12px; overflow:hidden; position:relative; background:linear-gradient(135deg,#1a1a2e,#16213e,#0f3460); aspect-ratio:16/9; display:flex; align-items:center; justify-content:center;">
+            <div style="text-align:center; color:#fff;">
+              <div style="margin-bottom:0.5rem; animation: pulse 2s ease-in-out infinite;"><span class="nook-icon nook-icon-48"><img src="assets/chars/nook_hhn.png" alt="" loading="lazy"></span></div>
+              <div style="font-size:1rem; font-weight:600;">来自无人岛的视频信</div>
+              <div style="font-size:0.75rem; opacity:0.7; margin-top:4px;">点击播放</div>
+            </div>
+          </div>
+          <div style="display:flex; justify-content:space-between; padding: 4px 8px; margin-top: 8px;">
+            <div style="display:flex; gap:6px;">
+              <div style="width:8px;height:8px;border-radius:2px;background:#4a4035;"></div>
+              <div style="width:8px;height:8px;border-radius:2px;background:#4a4035;"></div>
+              <div style="width:8px;height:8px;border-radius:2px;background:#4a4035;"></div>
+            </div>
+            <span style="color:#8a7a6a;font-size:0.65rem;font-family:'Nunito',sans-serif;">2026.06.20</span>
+            <div style="display:flex; gap:6px;">
+              <div style="width:8px;height:8px;border-radius:2px;background:#4a4035;"></div>
+              <div style="width:8px;height:8px;border-radius:2px;background:#4a4035;"></div>
+              <div style="width:8px;height:8px;border-radius:2px;background:#4a4035;"></div>
+            </div>
+          </div>
+        </div>
+        <div style="margin-top: 12px; display: flex; gap: 10px; flex-wrap: wrap;">
+          <a href="https://weixin.qq.com/sph/AoDJybFr0L" target="_blank" class="btn-ac" style="display: inline-flex; text-decoration: none; align-items: center; gap: 6px; font-size: 0.85rem; padding: 8px 14px;">
+            📺 前往视频号观看
+          </a>
+          <button class="btn-ac" style="background: var(--ac-app-orange); border-color: #c47030; box-shadow: 0 4px 0 #c47030; display: inline-flex; align-items: center; gap: 6px; font-size: 0.85rem; padding: 8px 14px;" onclick="copyVideoLink()">
+            📋 复制视频号链接
+          </button>
+        </div>
+        <p style="margin-top: 0.6rem; font-size: 0.8rem; color: var(--ac-text-light);">💡 提示：在微信中打开链接可直接播放视频</p>
       </div>
-      <p style="margin-top: 0.6rem; font-size: 0.8rem; color: var(--ac-text-light);">💡 提示：在微信中打开链接可直接播放视频</p>
     </div>
 
     <!-- Divider -->
@@ -2416,144 +2489,11 @@
         <span class="emoji">🐕</span>
         <span>西施惠 Isabelle</span>
       </div>
-      <p style="margin-top: 0.5rem;">亲爱的岛民们～婚礼邀请函来啦！快来参加胡泽洲  王雨的婚礼吧，期待在无人岛上见到你们哦！🍃</p>
+      <p style="margin-top: 0.5rem;">亲爱的岛民们～婚礼邀请函来啦！快来参加胡泽洲  王雨的婚礼吧，期待在无人岛上见到你们哦！<span class="nook-icon nook-icon-20"><img src="assets/chars/nook_miles.png" alt="" loading="lazy"></span></p>
     </div>
   </section>
 
-  <!-- Section 2: Flight / Timeline -->
-  <section id="flight" class="section">
-    <div class="animal-banner" style="cursor: pointer;" onclick="openCharacterModal('wilbur')">
-      <span class="emoji">🦫</span>
-      <div class="info">
-        <span class="name">渡渡鸟 Wilbur</span>
-        <span class="role">Dodo Airlines</span>
-      </div>
-    </div>
-    
-    <div class="flight-card">
-      <div class="flight-header">
-        <h3>✈️ Dodo Airlines</h3>
-        <span class="flight-number">AC-2026-0620</span>
-      </div>
-      <div class="flight-body">
-        <div class="flight-route">
-          <div class="route-point">
-            <span class="label">出发地</span>
-            <span class="city">你所在城市</span>
-          </div>
-          <div class="route-line"></div>
-          <div class="route-point">
-            <span class="label">目的地</span>
-            <span class="city">信阳市</span>
-          </div>
-        </div>
-        
-        <div class="timeline">
-          <div class="timeline-item">
-            <span class="time">09:00</span>
-            <span class="desc">🏠 签到入场</span>
-          </div>
-          <div class="timeline-item">
-            <span class="time">11:00</span>
-            <span class="desc">💒 婚礼仪式</span>
-          </div>
-          <div class="timeline-item">
-            <span class="time">11:30</span>
-            <span class="desc">📸 合照时间</span>
-          </div>
-          <div class="timeline-item">
-            <span class="time">12:00</span>
-            <span class="desc">🍽️ 午宴开始</span>
-          </div>
-        </div>
-        
-        <div class="speech-bubble" style="margin-top: 1rem;">
-          <div class="animal-char">
-            <span class="emoji">🦫</span>
-            <span>渡渡鸟 Wilbur</span>
-          </div>
-
-        </div>
-        
-        <div class="ticket-tear">
-          <div class="barcode">
-            <span></span><span></span><span></span><span></span><span></span>
-            <span></span><span></span><span></span><span></span><span></span>
-            <span></span><span></span><span></span><span></span><span></span>
-            <span></span><span></span><span></span><span></span><span></span>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Divider -->
-  <div class="ac-divider"><svg viewBox="0 0 400 20" preserveAspectRatio="xMidYMid meet"><path d="M0 10 Q25 2 50 10 T100 10 T150 10 T200 10 T250 10 T300 10 T350 10 T400 10" fill="none" stroke="rgba(114,93,66,0.25)" stroke-width="2"/><circle cx="200" cy="10" r="4" fill="rgba(114,93,66,0.2)"/><circle cx="175" cy="10" r="2.5" fill="rgba(25,200,185,0.3)"/><circle cx="225" cy="10" r="2.5" fill="rgba(25,200,185,0.3)"/></svg></div>
-
-  <!-- Section 3: Video -->
-  <section id="video" class="section">
-    <div class="animal-banner">
-      <span class="emoji">🎸</span>
-      <div class="info">
-        <span class="name">K.K. Slider</span>
-        <span class="role">Music Island</span>
-      </div>
-    </div>
-    
-    <div class="video-card">
-      <div style="aspect-ratio: 16/9; display: flex; align-items: center; justify-content: center; border-radius: 12px; background: var(--ac-cream-dark); border: 2px dashed var(--ac-sand);">
-        <div style="text-align: center; color: var(--ac-text-light);">
-          <div style="font-size: 3rem; margin-bottom: 0.5rem;">🎬</div>
-          <div style="font-size: 1rem; font-weight: 600;">婚礼视频</div>
-          <div style="font-size: 0.85rem; margin-top: 0.3rem; opacity: 0.7;">婚礼后由新人补充</div>
-        </div>
-      </div>
-    </div>
-
-    <!-- 视频上传区域 -->
-    <div class="upload-card" id="videoUploadCard">
-      <div class="upload-title">🎬 上传你的婚礼视频</div>
-      <div class="upload-dropzone" id="videoDropzone" onclick="document.getElementById('videoInput').click()">
-        <div class="drop-icon">🎥</div>
-        <div class="drop-text">点击或拖拽上传视频</div>
-        <div class="drop-hint">支持 MP4/AVI/MOV，最大 200MB</div>
-      </div>
-      <input type="file" id="videoInput" class="upload-input" accept="video/*">
-      <div class="upload-preview" id="videoPreview">
-        <video id="videoPreviewVideo" controls></video>
-        <button class="preview-remove" onclick="removeVideoPreview()">✕ 移除视频</button>
-      </div>
-      <div class="upload-name-input">
-        <input type="text" id="videoUploaderName" placeholder="你的名字（选填，默认"匿名岛民"）">
-      </div>
-      <button class="upload-btn" id="videoUploadBtn" onclick="uploadVideo()">📤 上传视频</button>
-      <div class="upload-progress" id="videoProgress">
-        <div class="upload-progress-bar">
-          <div class="upload-progress-fill" id="videoProgressFill"></div>
-        </div>
-        <div class="upload-progress-text" id="videoProgressText">上传中...</div>
-      </div>
-    </div>
-
-    <!-- 宾客视频展示区 -->
-    <div class="guest-video-wall" id="guestVideoWall">
-      <div class="video-wall-header">📹 宾客视频 · <span id="videoCount">0</span> 个</div>
-      <div class="video-wall-grid" id="videoWallGrid">
-        <div class="video-wall-empty">
-          <div class="icon">⏳</div>
-          <div>等待宾客上传...</div>
-        </div>
-      </div>
-      <div id="videoLoadMore" style="display:none; text-align:center; padding:0.8rem;">
-        <button onclick="loadMoreVideos()" style="background:#2abaaa;color:#fff;border:none;border-radius:20px;padding:8px 24px;font-size:14px;cursor:pointer;font-family:inherit;">🍃 加载更多视频</button>
-      </div>
-    </div>
-  </section>
-
-  <!-- Divider -->
-  <div class="ac-divider"><svg viewBox="0 0 400 20" preserveAspectRatio="xMidYMid meet"><path d="M0 10 Q25 2 50 10 T100 10 T150 10 T200 10 T250 10 T300 10 T350 10 T400 10" fill="none" stroke="rgba(114,93,66,0.25)" stroke-width="2"/><circle cx="200" cy="10" r="4" fill="rgba(114,93,66,0.2)"/><circle cx="175" cy="10" r="2.5" fill="rgba(25,200,185,0.3)"/><circle cx="225" cy="10" r="2.5" fill="rgba(25,200,185,0.3)"/></svg></div>
-
-  <!-- Section 4: Location -->
+  <!-- Section 3: Location -->
   <section id="location" class="section">
     <div class="animal-banner">
       <span class="emoji">🦉</span>
@@ -2565,7 +2505,7 @@
     
     <div class="location-card">
       <div class="location-header">
-        <div class="location-icon">🏡</div>
+        <div class="location-icon"><span class="nook-icon nook-icon-32"><img src="assets/chars/nook_map.png" alt="" loading="lazy"></span></div>
         <div class="location-info">
           <h3>竹溪庄园木亭</h3>
           <p>信阳市 · 户外婚礼场地</p>
@@ -2575,46 +2515,45 @@
       <!-- Tabs 导航 -->
       <div class="location-tabs">
         <div class="tabs-nav">
-          <button class="tabs-tab active" data-tab="交通" onclick="switchTab(this)">🚌 交通</button>
-          <button class="tabs-tab" data-tab="住宿" onclick="switchTab(this)">🏨 住宿</button>
-          <button class="tabs-tab" data-tab="流程" onclick="switchTab(this)">📋 流程</button>
+          <button class="tabs-tab active" data-tab="流程" onclick="switchTab(this)">📋 流程</button>
+          <button class="tabs-tab" data-tab="交通" onclick="switchTab(this)">🚌 交通</button>
+          <button class="tabs-tab" data-tab="住宿" onclick="switchTab(this)"><span class="nook-icon nook-icon-20"><img src="assets/chars/nook_hhn.png" alt="" loading="lazy"></span> 住宿</button>
         </div>
         <div class="tabs-content" id="tabsContent">
-🚗 自驾：导航至"信阳市竹溪庄园"，场地有免费停车位
-🚄 高铁：到达信阳东站后打车约30分钟</div>
+<div style="display:flex;flex-direction:column;gap:12px;padding:4px 0;"><div style="display:flex;align-items:center;gap:12px;padding:8px 12px;background:rgba(45,155,140,0.08);border-radius:12px;"><span style="min-width:58px;font-size:1.15rem;font-weight:700;color:var(--ac-primary);">09:00</span><span style="font-size:1rem;"><span class="nook-icon nook-icon-20"><img src="assets/chars/nook_passport.png" alt="" loading="lazy"></span> 签到入场</span></div><div style="display:flex;align-items:center;gap:12px;padding:8px 12px;background:rgba(45,155,140,0.08);border-radius:12px;"><span style="min-width:58px;font-size:1.15rem;font-weight:700;color:var(--ac-primary);">11:00</span><span style="font-size:1rem;"><span class="nook-icon nook-icon-20"><img src="assets/chars/nook_passport.png" alt="" loading="lazy"></span> 婚礼仪式</span></div><div style="display:flex;align-items:center;gap:12px;padding:8px 12px;background:rgba(45,155,140,0.08);border-radius:12px;"><span style="min-width:58px;font-size:1.15rem;font-weight:700;color:var(--ac-primary);">11:30</span><span style="font-size:1rem;"><span class="nook-icon nook-icon-20"><img src="assets/chars/nook_camera.png" alt="" loading="lazy"></span> 合照时间</span></div><div style="display:flex;align-items:center;gap:12px;padding:8px 12px;background:rgba(45,155,140,0.08);border-radius:12px;"><span style="min-width:58px;font-size:1.15rem;font-weight:700;color:var(--ac-primary);">12:00</span><span style="font-size:1rem;"><span class="nook-icon nook-icon-20"><img src="assets/chars/nook_shopping.png" alt="" loading="lazy"></span> 午宴开始</span></div></div></div>
       </div>
       
       <div class="info-list">
         <div class="info-item">
-          <span class="icon">💒</span>
+          <span class="icon"><span class="nook-icon nook-icon-24"><img src="assets/chars/nook_passport.png" alt="" loading="lazy"></span></span>
           <div class="text">
             <span class="label">婚礼仪式</span>
             <span class="value">信阳市竹溪庄园 · 木亭区</span>
           </div>
         </div>
         <div class="info-item">
-          <span class="icon">🕐</span>
+          <span class="icon"><span class="nook-icon nook-icon-24"><img src="assets/chars/nook_miles.png" alt="" loading="lazy"></span></span>
           <div class="text">
             <span class="label">仪式时间</span>
             <span class="value">2026年6月20日 周六 09:00~14:00</span>
           </div>
         </div>
         <div class="info-item">
-          <span class="icon">🏨</span>
+          <span class="icon"><span class="nook-icon nook-icon-24"><img src="assets/chars/nook_hhn.png" alt="" loading="lazy"></span></span>
           <div class="text">
             <span class="label">住宿</span>
             <span class="value">信阳毛尖酒店</span>
           </div>
         </div>
         <div class="info-item">
-          <span class="icon">📍</span>
+          <span class="icon"><span class="nook-icon nook-icon-24"><img src="assets/chars/nook_map.png" alt="" loading="lazy"></span></span>
           <div class="text">
             <span class="label">酒店地址</span>
             <span class="value">河南省信阳市平桥区新七大道与新十四街交叉口百花之声东门</span>
           </div>
         </div>
         <div class="info-item">
-          <span class="icon">📞</span>
+          <span class="icon"><span class="nook-icon nook-icon-24"><img src="assets/chars/nook_map.png" alt="" loading="lazy"></span></span>
           <div class="text">
             <span class="label">联系电话</span>
             <span class="value"><a href="tel:18860304685">18860304685</a></span>
@@ -2625,19 +2564,19 @@
       <!-- 婚礼场地导航 -->
       <div style="margin-top: 1rem;">
         <div style="background: var(--ac-cream-dark); border-radius: 12px; padding: 12px; margin-bottom: 10px;">
-          <div style="font-weight: 700; font-size: 0.85rem; color: var(--ac-text-dark); margin-bottom: 6px;">💒 婚礼仪式 — 竹溪庄园木亭</div>
+          <div style="font-weight: 700; font-size: 0.85rem; color: var(--ac-text-dark); margin-bottom: 6px;"><span class="nook-icon nook-icon-20"><img src="assets/chars/nook_passport.png" alt="" loading="lazy"></span> 婚礼仪式 — 竹溪庄园木亭</div>
           <div style="font-size: 0.8rem; color: var(--ac-text-light); margin-bottom: 8px;">信阳市竹溪庄园</div>
           <div style="display: flex; gap: 8px; flex-wrap: wrap;">
             <a href="javascript:void(0)" onclick="openMapApp('32.13','114.06','信阳市竹溪庄园','amap')" class="btn-ac" style="display: inline-flex; text-decoration: none; align-items: center; gap: 6px; font-size: 0.8rem; padding: 7px 12px;">🧭 高德导航</a>
-            <a href="javascript:void(0)" onclick="openMapApp('32.13','114.06','信阳市竹溪庄园','tencent')" class="btn-ac" style="display: inline-flex; text-decoration: none; align-items: center; gap: 6px; font-size: 0.8rem; padding: 7px 12px; background: var(--ac-app-blue); border-color: #5a7ab8; box-shadow: 0 4px 0 #5a7ab8;">📍 腾讯导航</a>
+            <a href="javascript:void(0)" onclick="openMapApp('32.13','114.06','信阳市竹溪庄园','tencent')" class="btn-ac" style="display: inline-flex; text-decoration: none; align-items: center; gap: 6px; font-size: 0.8rem; padding: 7px 12px; background: var(--ac-app-blue); border-color: #5a7ab8; box-shadow: 0 4px 0 #5a7ab8;"><span class="nook-icon nook-icon-20"><img src="assets/chars/nook_map.png" alt="" loading="lazy"></span> 腾讯导航</a>
           </div>
         </div>
         <div style="background: var(--ac-cream-dark); border-radius: 12px; padding: 12px;">
-          <div style="font-weight: 700; font-size: 0.85rem; color: var(--ac-text-dark); margin-bottom: 6px;">🏨 住宿 — 信阳毛尖酒店</div>
+          <div style="font-weight: 700; font-size: 0.85rem; color: var(--ac-text-dark); margin-bottom: 6px;"><span class="nook-icon nook-icon-20"><img src="assets/chars/nook_hhn.png" alt="" loading="lazy"></span> 住宿 — 信阳毛尖酒店</div>
           <div style="font-size: 0.8rem; color: var(--ac-text-light); margin-bottom: 8px;">河南省信阳市平桥区新七大道与新十四街交叉口百花之声东门</div>
           <div style="display: flex; gap: 8px; flex-wrap: wrap;">
             <a href="javascript:void(0)" onclick="openMapApp('32.15','114.05','河南省信阳市平桥区新七大道与新十四街交叉口百花之声东门','amap')" class="btn-ac" style="display: inline-flex; text-decoration: none; align-items: center; gap: 6px; font-size: 0.8rem; padding: 7px 12px;">🧭 高德导航</a>
-            <a href="javascript:void(0)" onclick="openMapApp('32.15','114.05','河南省信阳市平桥区新七大道与新十四街交叉口百花之声东门','tencent')" class="btn-ac" style="display: inline-flex; text-decoration: none; align-items: center; gap: 6px; font-size: 0.8rem; padding: 7px 12px; background: var(--ac-app-blue); border-color: #5a7ab8; box-shadow: 0 4px 0 #5a7ab8;">📍 腾讯导航</a>
+            <a href="javascript:void(0)" onclick="openMapApp('32.15','114.05','河南省信阳市平桥区新七大道与新十四街交叉口百花之声东门','tencent')" class="btn-ac" style="display: inline-flex; text-decoration: none; align-items: center; gap: 6px; font-size: 0.8rem; padding: 7px 12px; background: var(--ac-app-blue); border-color: #5a7ab8; box-shadow: 0 4px 0 #5a7ab8;"><span class="nook-icon nook-icon-20"><img src="assets/chars/nook_map.png" alt="" loading="lazy"></span> 腾讯导航</a>
           </div>
         </div>
         <div id="wechatMapTip" style="display:none; margin-top: 10px; background: #fff3cd; border-radius: 12px; padding: 10px; font-size: 0.8rem; color: #856404; text-align: center;">
@@ -2658,7 +2597,7 @@
   <!-- Divider -->
   <div class="ac-divider"><svg viewBox="0 0 400 20" preserveAspectRatio="xMidYMid meet"><path d="M0 10 Q25 2 50 10 T100 10 T150 10 T200 10 T250 10 T300 10 T350 10 T400 10" fill="none" stroke="rgba(114,93,66,0.25)" stroke-width="2"/><circle cx="200" cy="10" r="4" fill="rgba(114,93,66,0.2)"/><circle cx="175" cy="10" r="2.5" fill="rgba(25,200,185,0.3)"/><circle cx="225" cy="10" r="2.5" fill="rgba(25,200,185,0.3)"/></svg></div>
 
-  <!-- Section 5: Gallery -->
+  <!-- Section 4: Gallery -->
   <section id="gallery" class="section">
     <div class="animal-banner">
       <span class="emoji">🐱</span>
@@ -2669,42 +2608,42 @@
     </div>
     
     <div class="section-title">
-      <h2>📸 婚礼记忆</h2>
+      <h2><span class="nook-icon nook-icon-28"><img src="assets/chars/nook_camera.png" alt="" loading="lazy"></span> 婚礼记忆</h2>
       <p>美好的瞬间将被记录</p>
     </div>
     
     <div class="gallery-grid">
       <div class="gallery-item">
-        <span class="icon">🍃</span>
+        <span class="icon"><span class="nook-icon nook-icon-24"><img src="assets/chars/nook_miles.png" alt="" loading="lazy"></span></span>
         <span class="text">照片即将上传</span>
       </div>
       <div class="gallery-item">
-        <span class="icon">🍃</span>
+        <span class="icon"><span class="nook-icon nook-icon-24"><img src="assets/chars/nook_miles.png" alt="" loading="lazy"></span></span>
         <span class="text">照片即将上传</span>
       </div>
       <div class="gallery-item">
-        <span class="icon">🍃</span>
+        <span class="icon"><span class="nook-icon nook-icon-24"><img src="assets/chars/nook_miles.png" alt="" loading="lazy"></span></span>
         <span class="text">照片即将上传</span>
       </div>
       <div class="gallery-item">
-        <span class="icon">🍃</span>
+        <span class="icon"><span class="nook-icon nook-icon-24"><img src="assets/chars/nook_miles.png" alt="" loading="lazy"></span></span>
         <span class="text">照片即将上传</span>
       </div>
       <div class="gallery-item">
-        <span class="icon">🍃</span>
+        <span class="icon"><span class="nook-icon nook-icon-24"><img src="assets/chars/nook_miles.png" alt="" loading="lazy"></span></span>
         <span class="text">照片即将上传</span>
       </div>
       <div class="gallery-item">
-        <span class="icon">🍃</span>
+        <span class="icon"><span class="nook-icon nook-icon-24"><img src="assets/chars/nook_miles.png" alt="" loading="lazy"></span></span>
         <span class="text">照片即将上传</span>
       </div>
     </div>
 
     <!-- 照片上传区域 -->
     <div class="upload-card" id="photoUploadCard">
-      <div class="upload-title">📷 上传你的婚礼照片</div>
+      <div class="upload-title"><span class="nook-icon nook-icon-24"><img src="assets/chars/nook_camera.png" alt="" loading="lazy"></span> 上传你的婚礼照片</div>
       <div class="upload-dropzone" id="photoDropzone" onclick="document.getElementById('photoInput').click()">
-        <div class="drop-icon">📸</div>
+        <div class="drop-icon"><span class="nook-icon nook-icon-32"><img src="assets/chars/nook_camera.png" alt="" loading="lazy"></span></div>
         <div class="drop-text">点击或拖拽上传照片</div>
         <div class="drop-hint">支持 JPG/PNG/GIF，最大 5MB</div>
       </div>
@@ -2716,7 +2655,7 @@
       <div class="upload-name-input">
         <input type="text" id="photoUploaderName" placeholder="你的名字（选填，默认"匿名岛民"）">
       </div>
-      <button class="upload-btn" id="photoUploadBtn" onclick="uploadPhoto()">📤 上传照片</button>
+      <button class="upload-btn" id="photoUploadBtn" onclick="uploadPhoto()"><span class="nook-icon nook-icon-20"><img src="assets/chars/nook_camera.png" alt="" loading="lazy"></span> 上传照片</button>
       <div class="upload-progress" id="photoProgress">
         <div class="upload-progress-bar">
           <div class="upload-progress-fill" id="photoProgressFill"></div>
@@ -2727,7 +2666,7 @@
 
     <!-- 宾客照片墙 -->
     <div class="guest-photo-wall" id="guestPhotoWall">
-      <div class="photo-wall-header">📸 宾客照片墙 · <span id="photoCount">0</span> 张</div>
+      <div class="photo-wall-header"><span class="nook-icon nook-icon-20"><img src="assets/chars/nook_camera.png" alt="" loading="lazy"></span> 宾客照片墙 · <span id="photoCount">0</span> 张</div>
       <div class="photo-wall-grid" id="photoWallGrid">
         <div class="photo-wall-empty">
           <div class="icon">⏳</div>
@@ -2735,7 +2674,7 @@
         </div>
       </div>
       <div id="photoLoadMore" style="display:none; text-align:center; padding:0.8rem;">
-        <button onclick="loadMorePhotos()" style="background:#2abaaa;color:#fff;border:none;border-radius:20px;padding:8px 24px;font-size:14px;cursor:pointer;font-family:inherit;">🍃 加载更多照片</button>
+        <button onclick="loadMorePhotos()" style="background:#2abaaa;color:#fff;border:none;border-radius:20px;padding:8px 24px;font-size:14px;cursor:pointer;font-family:inherit;"><span class="nook-icon nook-icon-20"><img src="assets/chars/nook_miles.png" alt="" loading="lazy"></span> 加载更多照片</button>
       </div>
     </div>
     
@@ -2753,6 +2692,69 @@
   <!-- Divider -->
   <div class="ac-divider"><svg viewBox="0 0 400 20" preserveAspectRatio="xMidYMid meet"><path d="M0 10 Q25 2 50 10 T100 10 T150 10 T200 10 T250 10 T300 10 T350 10 T400 10" fill="none" stroke="rgba(114,93,66,0.25)" stroke-width="2"/><circle cx="200" cy="10" r="4" fill="rgba(114,93,66,0.2)"/><circle cx="175" cy="10" r="2.5" fill="rgba(25,200,185,0.3)"/><circle cx="225" cy="10" r="2.5" fill="rgba(25,200,185,0.3)"/></svg></div>
 
+  <!-- Section 5: Video -->
+  <section id="video" class="section">
+    <div class="animal-banner">
+      <span class="emoji">🎸</span>
+      <div class="info">
+        <span class="name">K.K. Slider</span>
+        <span class="role">Music Island</span>
+      </div>
+    </div>
+    
+    <div class="video-card">
+      <div style="aspect-ratio: 16/9; display: flex; align-items: center; justify-content: center; border-radius: 12px; background: var(--ac-cream-dark); border: 2px dashed var(--ac-sand);">
+        <div style="text-align: center; color: var(--ac-text-light);">
+          <div style="margin-bottom: 0.5rem;"><span class="nook-icon nook-icon-48"><img src="assets/chars/nook_hhn.png" alt="" loading="lazy"></span></div>
+          <div style="font-size: 1rem; font-weight: 600;">婚礼视频</div>
+          <div style="font-size: 0.85rem; margin-top: 0.3rem; opacity: 0.7;">婚礼后由新人补充</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 视频上传区域 -->
+    <div class="upload-card" id="videoUploadCard">
+      <div class="upload-title"><span class="nook-icon nook-icon-24"><img src="assets/chars/nook_hhn.png" alt="" loading="lazy"></span> 上传你的婚礼视频</div>
+      <div class="upload-dropzone" id="videoDropzone" onclick="document.getElementById('videoInput').click()">
+        <div class="drop-icon"><span class="nook-icon nook-icon-32"><img src="assets/chars/nook_hhn.png" alt="" loading="lazy"></span></div>
+        <div class="drop-text">点击或拖拽上传视频</div>
+        <div class="drop-hint">支持 MP4/AVI/MOV，最大 200MB</div>
+      </div>
+      <input type="file" id="videoInput" class="upload-input" accept="video/*">
+      <div class="upload-preview" id="videoPreview">
+        <video id="videoPreviewVideo" controls></video>
+        <button class="preview-remove" onclick="removeVideoPreview()">✕ 移除视频</button>
+      </div>
+      <div class="upload-name-input">
+        <input type="text" id="videoUploaderName" placeholder="你的名字（选填，默认"匿名岛民"）">
+      </div>
+      <button class="upload-btn" id="videoUploadBtn" onclick="uploadVideo()"><span class="nook-icon nook-icon-20"><img src="assets/chars/nook_hhn.png" alt="" loading="lazy"></span> 上传视频</button>
+      <div class="upload-progress" id="videoProgress">
+        <div class="upload-progress-bar">
+          <div class="upload-progress-fill" id="videoProgressFill"></div>
+        </div>
+        <div class="upload-progress-text" id="videoProgressText">上传中...</div>
+      </div>
+    </div>
+
+    <!-- 宾客视频展示区 -->
+    <div class="guest-video-wall" id="guestVideoWall">
+      <div class="video-wall-header">📹 宾客视频 · <span id="videoCount">0</span> 个</div>
+      <div class="video-wall-grid" id="videoWallGrid">
+        <div class="video-wall-empty">
+          <div class="icon">⏳</div>
+          <div>等待宾客上传...</div>
+        </div>
+      </div>
+      <div id="videoLoadMore" style="display:none; text-align:center; padding:0.8rem;">
+        <button onclick="loadMoreVideos()" style="background:#2abaaa;color:#fff;border:none;border-radius:20px;padding:8px 24px;font-size:14px;cursor:pointer;font-family:inherit;"><span class="nook-icon nook-icon-20"><img src="assets/chars/nook_miles.png" alt="" loading="lazy"></span> 加载更多视频</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- Divider -->
+  <div class="ac-divider"><svg viewBox="0 0 400 20" preserveAspectRatio="xMidYMid meet"><path d="M0 10 Q25 2 50 10 T100 10 T150 10 T200 10 T250 10 T300 10 T350 10 T400 10" fill="none" stroke="rgba(114,93,66,0.25)" stroke-width="2"/><circle cx="200" cy="10" r="4" fill="rgba(114,93,66,0.2)"/><circle cx="175" cy="10" r="2.5" fill="rgba(25,200,185,0.3)"/><circle cx="225" cy="10" r="2.5" fill="rgba(25,200,185,0.3)"/></svg></div>
+
   <!-- Section 6: FAQ -->
   <section id="faq" class="section">
     <div class="animal-banner">
@@ -2764,7 +2766,7 @@
     </div>
     
     <div class="section-title">
-      <h2>❓ 常见问题</h2>
+      <h2><span class="nook-icon nook-icon-28"><img src="assets/chars/nook_critterpedia.png" alt="" loading="lazy"></span> 常见问题</h2>
       <p>有问题？来这里找答案～</p>
     </div>
     
@@ -2793,7 +2795,7 @@
       <div class="faq-item">
         <div class="faq-header" onclick="toggleFaq(this)">
           <span class="faq-icon-circle">+</span>
-          <span>🚗 有停车位吗？</span>
+          <span><span class="nook-icon nook-icon-20"><img src="assets/chars/nook_shopping.png" alt="" loading="lazy"></span> 有停车位吗？</span>
           <span class="faq-leaf"><svg viewBox="0 0 24 24" width="18" height="18"><path fill="currentColor" d="M17,8C8,10 5.9,16.17 3.82,21.34L5.71,22L6.66,19.7C7.14,19.87 7.64,20 8,20C19,20 22,3 22,3C21,5 14,5.25 9,6.25C4,7.25 2,11.5 2,13.5C2,15.5 3.75,17.25 3.75,17.25C7,8 17,8 17,8Z"/></svg></span>
         </div>
         <div class="faq-content"><div class="faq-content-inner">
@@ -2803,7 +2805,7 @@
       <div class="faq-item">
         <div class="faq-header" onclick="toggleFaq(this)">
           <span class="faq-icon-circle">+</span>
-          <span>🏨 住宿怎么安排？</span>
+          <span><span class="nook-icon nook-icon-20"><img src="assets/chars/nook_hhn.png" alt="" loading="lazy"></span> 住宿怎么安排？</span>
           <span class="faq-leaf"><svg viewBox="0 0 24 24" width="18" height="18"><path fill="currentColor" d="M17,8C8,10 5.9,16.17 3.82,21.34L5.71,22L6.66,19.7C7.14,19.87 7.64,20 8,20C19,20 22,3 22,3C21,5 14,5.25 9,6.25C4,7.25 2,11.5 2,13.5C2,15.5 3.75,17.25 3.75,17.25C7,8 17,8 17,8Z"/></svg></span>
         </div>
         <div class="faq-content"><div class="faq-content-inner">
@@ -2813,17 +2815,7 @@
       <div class="faq-item">
         <div class="faq-header" onclick="toggleFaq(this)">
           <span class="faq-icon-circle">+</span>
-          <span>🎁 可以送礼物吗？</span>
-          <span class="faq-leaf"><svg viewBox="0 0 24 24" width="18" height="18"><path fill="currentColor" d="M17,8C8,10 5.9,16.17 3.82,21.34L5.71,22L6.66,19.7C7.14,19.87 7.64,20 8,20C19,20 22,3 22,3C21,5 14,5.25 9,6.25C4,7.25 2,11.5 2,13.5C2,15.5 3.75,17.25 3.75,17.25C7,8 17,8 17,8Z"/></svg></span>
-        </div>
-        <div class="faq-content"><div class="faq-content-inner">
-          你们能来就是最好的礼物！如需送礼，礼金请在新郎处登记，或直接微信转账给新人。感谢祝福！
-        </div></div>
-      </div>
-      <div class="faq-item">
-        <div class="faq-header" onclick="toggleFaq(this)">
-          <span class="faq-icon-circle">+</span>
-          <span>🌧️ 如果下雨怎么办？</span>
+          <span><span class="nook-icon nook-icon-20"><img src="assets/chars/nook_rescue.png" alt="" loading="lazy"></span> 如果下雨怎么办？</span>
           <span class="faq-leaf"><svg viewBox="0 0 24 24" width="18" height="18"><path fill="currentColor" d="M17,8C8,10 5.9,16.17 3.82,21.34L5.71,22L6.66,19.7C7.14,19.87 7.64,20 8,20C19,20 22,3 22,3C21,5 14,5.25 9,6.25C4,7.25 2,11.5 2,13.5C2,15.5 3.75,17.25 3.75,17.25C7,8 17,8 17,8Z"/></svg></span>
         </div>
         <div class="faq-content"><div class="faq-content-inner">
@@ -2847,7 +2839,7 @@
     </div>
     
     <div class="section-title">
-      <h2>💬 祝福留言</h2>
+      <h2><span class="nook-icon nook-icon-28"><img src="assets/chars/nook_chat.png" alt="" loading="lazy"></span> 祝福留言</h2>
       <p>写下你的祝福吧～</p>
     </div>
     
@@ -2863,7 +2855,7 @@
           <textarea id="commentContent" class="form-input" placeholder="写下对新人的祝福..." required></textarea>
         </div>
         
-        <button type="submit" class="btn-ac" style="width: 100%;">🍃 发送祝福</button>
+        <button type="submit" class="btn-ac" style="width: 100%;"><span class="nook-icon nook-icon-20"><img src="assets/chars/nook_miles.png" alt="" loading="lazy"></span> 发送祝福</button>
       </form>
       
       <div class="speech-bubble" style="margin-top: 1rem;">
@@ -2871,7 +2863,7 @@
           <span class="emoji">🐕</span>
           <span>西施惠 Isabelle</span>
         </div>
-        <p style="margin-top: 0.5rem;">写点祝福吧～新人会很开心的哦！🍃</p>
+        <p style="margin-top: 0.5rem;">写点祝福吧～新人会很开心的哦！<span class="nook-icon nook-icon-20"><img src="assets/chars/nook_miles.png" alt="" loading="lazy"></span></p>
       </div>
     </div>
     
@@ -2904,7 +2896,7 @@
   <div class="modal-overlay" id="modalOverlay" onclick="closeModal(event)">
     <div class="modal-content" onclick="event.stopPropagation()">
       <div class="modal-header">
-        <h3 id="modalTitle">🍃 标题</h3>
+        <h3 id="modalTitle"><span class="nook-icon nook-icon-20"><img src="assets/chars/nook_miles.png" alt="" loading="lazy"></span> 标题</h3>
         <button class="modal-close" onclick="closeModal()">✕</button>
       </div>
       <div class="modal-body" id="modalBody">
@@ -2919,23 +2911,23 @@
   <!-- Bottom Navigation -->
   <nav class="nookphone-nav" id="bottomNav">
     <a href="#invite" class="nav-item active" data-section="invite">
-      <span>✈️</span>
+      <span class="nook-icon nook-icon-28"><img src="assets/chars/nook_passport.png" alt="" loading="lazy"></span>
       <span>邀请</span>
     </a>
-    <a href="#video" class="nav-item" data-section="video">
-      <span>🎬</span>
-      <span>视频</span>
-    </a>
     <a href="#location" class="nav-item" data-section="location">
-      <span>📍</span>
+      <span class="nook-icon nook-icon-28"><img src="assets/chars/nook_map.png" alt="" loading="lazy"></span>
       <span>指引</span>
     </a>
     <a href="#gallery" class="nav-item" data-section="gallery">
-      <span>📸</span>
+      <span class="nook-icon nook-icon-28"><img src="assets/chars/nook_camera.png" alt="" loading="lazy"></span>
       <span>相册</span>
     </a>
+    <a href="#video" class="nav-item" data-section="video">
+      <span class="nook-icon nook-icon-28"><img src="assets/chars/nook_hhn.png" alt="" loading="lazy"></span>
+      <span>视频</span>
+    </a>
     <a href="#comments" class="nav-item" data-section="comments">
-      <span>💬</span>
+      <span class="nook-icon nook-icon-28"><img src="assets/chars/nook_chat.png" alt="" loading="lazy"></span>
       <span>留言</span>
     </a>
   </nav>
@@ -2969,49 +2961,25 @@
     const SUPABASE_URL = 'https://pefbwpausoavvuwyaabf.supabase.co';
     const SUPABASE_ANON_KEY = 'sb_publishable_fsURzYizU3Qx07IKjR0cGg_n8H0j0Ba';
     let supabaseClient = null;
-    let useGuestTable = false; // 是否使用 guest_uploads 表
-    let useStorage = false; // 是否使用 Supabase Storage
-    if (SUPABASE_URL && SUPABASE_ANON_KEY && window.supabase) {
-      try { 
-        supabaseClient = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY); 
-        // 尝试检查 guest_uploads 表是否存在
-        checkGuestUploadsTable();
-      } catch(e) { console.warn('Supabase init failed:', e); }
-    }
+    let useGuestTable = true; // guest_uploads 表已创建
+    let useStorage = true; // Storage bucket 已就绪
 
-    // 检查 guest_uploads 表是否存在
-    async function checkGuestUploadsTable() {
-      if (!supabaseClient) return;
-      try {
-        const { data, error } = await supabaseClient
-          .from('guest_uploads')
-          .select('id')
-          .limit(1);
-        if (error && error.code === '42P01') {
-          console.log('guest_uploads 表不存在，将使用 comments 表作为临时存储');
-          useGuestTable = false;
-        } else {
-          useGuestTable = true;
-          console.log('guest_uploads 表已存在');
+    // 初始化 Supabase（等待 SDK 加载完成）
+    function initSupabase() {
+      if (window.supabase) {
+        try {
+          supabaseClient = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+          console.log('Supabase initialized successfully');
+        } catch(e) {
+          console.warn('Supabase init failed:', e);
         }
-      } catch(e) {
-        useGuestTable = false;
-        console.log('使用 comments 表作为临时存储');
-      }
-      // 检查 Storage bucket
-      try {
-        const { data, error } = await supabaseClient.storage.getBucket('guest-uploads');
-        if (!error && data) {
-          useStorage = true;
-          console.log('guest-uploads Storage bucket 已就绪');
-        } else {
-          useStorage = false;
-          console.log('Storage bucket 不可用，将使用数据库存储');
-        }
-      } catch(e) {
-        useStorage = false;
+      } else {
+        // SDK 还没加载完，100ms 后重试
+        console.log('Waiting for Supabase SDK...');
+        setTimeout(initSupabase, 100);
       }
     }
+    initSupabase();
 
     // ========== Toast 提示 ==========
     function showToast(msg, type = '') {
@@ -3113,33 +3081,52 @@
             progressFill.style.width = '70%';
             progressText.textContent = '保存到服务器...';
             
-            if (useGuestTable) {
+            if (useGuestTable && useStorage) {
+              // 最佳方案：上传到 Storage，数据库只存 URL
+              var photoFileName = 'photos/' + Date.now() + '_' + Math.random().toString(36).substr(2,6) + '.jpg';
+              var blob = await (await fetch(base64Data)).blob();
+              const { error: storageErr } = await supabaseClient.storage
+                .from('guest-uploads')
+                .upload(photoFileName, blob, { contentType: 'image/jpeg', cacheControl: '3600' });
+              if (!storageErr) {
+                var photoUrl = SUPABASE_URL + '/storage/v1/object/public/guest-uploads/' + photoFileName;
+                const { error } = await supabaseClient
+                  .from('guest_uploads')
+                  .insert([{ type: 'photo', name: name, file_url: photoUrl }]);
+                if (!error) { success = true; }
+              } else {
+                console.warn('Storage upload failed, fallback to base64 in DB:', storageErr);
+                const { error } = await supabaseClient
+                  .from('guest_uploads')
+                  .insert([{ type: 'photo', name: name, content: base64Data }]);
+                if (!error) { success = true; }
+              }
+            } else if (useGuestTable) {
               const { error } = await supabaseClient
                 .from('guest_uploads')
                 .insert([{ type: 'photo', name: name, content: base64Data }]);
-              if (!error) {
-                success = true;
-                localStorage.setItem('guest_photos_' + Date.now(), JSON.stringify(uploadData));
-              }
+              if (!error) { success = true; }
             } else {
-              // 使用 comments 表存储
+              // 兼容旧方案：comments 表
               const { error } = await supabaseClient
                 .from('comments')
                 .insert([{ name: name, content: '[UPLOAD:PHOTO]' + base64Data }]);
-              if (!error) {
-                success = true;
-                localStorage.setItem('guest_photos_' + Date.now(), JSON.stringify(uploadData));
-              }
+              if (!error) { success = true; }
+            }
+            if (success) {
+              localStorage.setItem('guest_photos_' + Date.now(), JSON.stringify(uploadData));
             }
           } catch(err) {
             console.error('Upload error:', err);
-            // fallback 到本地存储
+            showToast('❌ 网络上传失败，已保存到本地', 'error');
             localStorage.setItem('guest_photos_' + Date.now(), JSON.stringify(uploadData));
             success = true;
           }
         } else {
-          // 无网络，完全使用本地存储
+          // Supabase 不可用，保存到本地
+          console.warn('Supabase not available, saving locally');
           localStorage.setItem('guest_photos_' + Date.now(), JSON.stringify(uploadData));
+          showToast('⚠️ 服务器未连接，照片仅保存在本地', 'error');
           success = true;
         }
         
@@ -3214,7 +3201,8 @@
               .range(from, to);
             if (count !== null && count !== undefined) photoTotal = count;
             if (data) data.forEach(function(item) {
-              photos.push({ type:'photo', name:item.name, data:item.content, timestamp:item.created_at });
+              var imgSrc = item.file_url || item.content;
+              photos.push({ type:'photo', name:item.name, data:imgSrc, timestamp:item.created_at });
             });
           } else {
             const { data, count } = await supabaseClient
@@ -3390,7 +3378,7 @@
           if (useGuestTable) {
             const { error } = await supabaseClient
               .from('guest_uploads')
-              .insert([{ type: 'video', name: name, content: fileUrl, thumbnail: thumbnailData }]);
+              .insert([{ type: 'video', name: name, content: thumbnailData, file_url: fileUrl }]);
             if (!error) success = true;
           } else {
             var storageData = JSON.stringify({ thumbnail: thumbnailData, url: fileUrl });
@@ -3428,7 +3416,7 @@
           if (useGuestTable) {
             const { error } = await supabaseClient
               .from('guest_uploads')
-              .insert([{ type: 'video', name: name, content: base64Result, thumbnail: thumbnailData }]);
+              .insert([{ type: 'video', name: name, content: thumbnailData, file_url: base64Result }]);
             if (!error) success = true;
           } else {
             var storageData = JSON.stringify({ thumbnail: thumbnailData });
@@ -3439,9 +3427,11 @@
           }
         } catch(err) {
           console.error('Upload error:', err);
+          showToast('❌ 视频上传失败', 'error');
         }
       } else {
-        // 无网络，本地存储（仅小视频）
+        // Supabase 不可用，本地存储（仅小视频）
+        console.warn('Supabase not available, saving video locally');
         var reader = new FileReader();
         var base64Result = await new Promise(function(resolve) {
           reader.onload = function(e) { resolve(e.target.result); };
@@ -3450,6 +3440,7 @@
         localStorage.setItem('guest_videos_' + Date.now(), JSON.stringify({
           type: 'video', name: name, data: base64Result, thumbnail: thumbnailData, timestamp: new Date().toISOString()
         }));
+        showToast('⚠️ 服务器未连接，视频仅保存在本地', 'error');
         success = true;
       }
       
@@ -3525,7 +3516,7 @@
               .range(from, to);
             if (count !== null && count !== undefined) videoTotal = count;
             if (data) data.forEach(function(item) {
-              videos.push({ type:'video', name:item.name, data:item.content, thumbnail:item.thumbnail||'', timestamp:item.created_at });
+              videos.push({ type:'video', name:item.name, data:item.file_url || item.content, thumbnail:item.content||'', timestamp:item.created_at });
             });
           } else {
             const { data, count } = await supabaseClient
@@ -3655,8 +3646,83 @@
 
     // ========== 初始化上传数据 ==========
     function initGuestUploads() {
+      // 先迁移 localStorage 里的历史数据到服务器
+      migrateLocalToCloud();
       loadGuestPhotos();
       loadGuestVideos();
+    }
+
+    // ========== 迁移 localStorage 历史数据到 Supabase ==========
+    async function migrateLocalToCloud() {
+      if (!supabaseClient) return;
+      
+      var migrated = JSON.parse(localStorage.getItem('migrated_to_cloud') || '[]');
+      var hasNew = false;
+
+      // 迁移照片
+      for (var i = 0; i < localStorage.length; i++) {
+        var key = localStorage.key(i);
+        if (key && key.startsWith('guest_photos_') && migrated.indexOf(key) === -1) {
+          try {
+            var photo = JSON.parse(localStorage.getItem(key));
+            if (photo && photo.type === 'photo' && photo.data) {
+              // 上传到 Storage
+              var photoFileName = 'photos/migrated_' + key.replace('guest_photos_','') + '.jpg';
+              var blob = await (await fetch(photo.data)).blob();
+              var storageErr = null;
+              try {
+                const { error } = await supabaseClient.storage
+                  .from('guest-uploads')
+                  .upload(photoFileName, blob, { contentType: 'image/jpeg', cacheControl: '3600', upsert: true });
+                storageErr = error;
+              } catch(e) { storageErr = e; }
+              
+              if (!storageErr) {
+                var photoUrl = SUPABASE_URL + '/storage/v1/object/public/guest-uploads/' + photoFileName;
+                const { error } = await supabaseClient
+                  .from('guest_uploads')
+                  .insert([{ type: 'photo', name: photo.name || '匿名岛民', file_url: photoUrl }]);
+                if (!error) {
+                  migrated.push(key);
+                  hasNew = true;
+                  console.log('Migrated photo:', key);
+                }
+              } else {
+                // Storage 失败，fallback 存 base64 到数据库
+                const { error } = await supabaseClient
+                  .from('guest_uploads')
+                  .insert([{ type: 'photo', name: photo.name || '匿名岛民', content: photo.data }]);
+                if (!error) {
+                  migrated.push(key);
+                  hasNew = true;
+                  console.log('Migrated photo (base64):', key);
+                }
+              }
+            }
+          } catch(e) { console.warn('Migration failed for', key, e); }
+        }
+      }
+
+      // 迁移视频
+      for (var i = 0; i < localStorage.length; i++) {
+        var key = localStorage.key(i);
+        if (key && key.startsWith('guest_videos_') && migrated.indexOf(key) === -1) {
+          try {
+            var video = JSON.parse(localStorage.getItem(key));
+            if (video && video.type === 'video') {
+              // 视频base64太大不迁移到数据库，只标记（视频需重新上传）
+              migrated.push(key);
+              hasNew = true;
+              console.log('Skipped video migration (too large):', key);
+            }
+          } catch(e) { console.warn('Migration failed for', key, e); }
+        }
+      }
+
+      if (hasNew) {
+        localStorage.setItem('migrated_to_cloud', JSON.stringify(migrated));
+        console.log('Migration complete, migrated', migrated.length, 'items');
+      }
     }
 
     // 延迟初始化
@@ -3718,14 +3784,15 @@
     
     function initTheme() {
       var savedTheme = localStorage.getItem('theme');
-      if (savedTheme === 'night') {
-        document.body.setAttribute('data-theme', 'night');
-        themeSwitch.classList.add('night');
-        themeIcon.textContent = '🌙';
-      } else {
+      // 默认夜间模式
+      if (savedTheme === 'day') {
         document.body.removeAttribute('data-theme');
         themeSwitch.classList.remove('night');
         themeIcon.textContent = '☀️';
+      } else {
+        document.body.setAttribute('data-theme', 'night');
+        themeSwitch.classList.add('night');
+        themeIcon.textContent = '🌙';
       }
     }
     
@@ -3748,16 +3815,27 @@
 
     // ========== Tabs 切换 ==========
     var tabContents = {
+      '流程': '⏰ 09:00 签到入场\n⏰ 11:00 婚礼仪式\n⏰ 11:30 合照时间\n⏰ 12:00 午宴开始',
       '交通': '🚗 自驾：导航至"信阳市竹溪庄园"，场地有免费停车位\n🚄 高铁：到达信阳东站后打车约30分钟',
-      '住宿': '🏨 信阳毛尖酒店\n📍 河南省信阳市平桥区新七大道与新十四街交叉口百花之声东门\n☎️ 联系电话：18860304685',
-      '流程': '⏰ 09:00 签到入场\n⏰ 11:00 婚礼仪式\n⏰ 11:30 合照时间\n⏰ 12:00 午宴开始'
+      '住宿': '🏨 信阳毛尖酒店\n📍 河南省信阳市平桥区新七大道与新十四街交叉口百花之声东门\n☎️ 联系电话：18860304685'
     };
     
     function switchTab(btn) {
       var tabs = document.querySelectorAll('.tabs-tab');
       tabs.forEach(function(t) { t.classList.remove('active'); });
       btn.classList.add('active');
-      document.getElementById('tabsContent').innerText = tabContents[btn.dataset.tab] || '';
+      var tab = btn.dataset.tab;
+      var el = document.getElementById('tabsContent');
+      if (tab === '流程') {
+        el.innerHTML = '<div style="display:flex;flex-direction:column;gap:12px;padding:4px 0;">' +
+          '<div style="display:flex;align-items:center;gap:12px;padding:8px 12px;background:rgba(45,155,140,0.08);border-radius:12px;"><span style="min-width:58px;font-size:1.15rem;font-weight:700;color:var(--ac-primary);">09:00</span><span style="font-size:1rem;"><span class="nook-icon nook-icon-20"><img src="assets/chars/nook_passport.png" alt="" loading="lazy"></span> 签到入场</span></div>' +
+          '<div style="display:flex;align-items:center;gap:12px;padding:8px 12px;background:rgba(45,155,140,0.08);border-radius:12px;"><span style="min-width:58px;font-size:1.15rem;font-weight:700;color:var(--ac-primary);">11:00</span><span style="font-size:1rem;"><span class="nook-icon nook-icon-20"><img src="assets/chars/nook_passport.png" alt="" loading="lazy"></span> 婚礼仪式</span></div>' +
+          '<div style="display:flex;align-items:center;gap:12px;padding:8px 12px;background:rgba(45,155,140,0.08);border-radius:12px;"><span style="min-width:58px;font-size:1.15rem;font-weight:700;color:var(--ac-primary);">11:30</span><span style="font-size:1rem;"><span class="nook-icon nook-icon-20"><img src="assets/chars/nook_camera.png" alt="" loading="lazy"></span> 合照时间</span></div>' +
+          '<div style="display:flex;align-items:center;gap:12px;padding:8px 12px;background:rgba(45,155,140,0.08);border-radius:12px;"><span style="min-width:58px;font-size:1.15rem;font-weight:700;color:var(--ac-primary);">12:00</span><span style="font-size:1rem;"><span class="nook-icon nook-icon-20"><img src="assets/chars/nook_shopping.png" alt="" loading="lazy"></span> 午宴开始</span></div>' +
+          '</div>';
+      } else {
+        el.innerText = tabContents[tab] || '';
+      }
     }
 
     // ========== FAQ 折叠 ==========
@@ -3813,6 +3891,33 @@
       
       document.getElementById('modalOverlay').classList.add('active');
       document.body.style.overflow = 'hidden';
+    }
+
+    // ========== 邀请函/视频 Tab 切换 ==========
+    function switchInviteTab(tab) {
+      var cardEl = document.getElementById('inviteTabCard');
+      var videoEl = document.getElementById('inviteTabVideo');
+      var cardBtn = document.getElementById('inviteTabBtn');
+      var videoBtn = document.getElementById('inviteVideoTabBtn');
+      if (tab === 'card') {
+        cardEl.style.display = '';
+        videoEl.style.display = 'none';
+        cardBtn.style.background = 'var(--ac-app-green, #2d9b8c)';
+        cardBtn.style.color = '#fff';
+        cardBtn.style.boxShadow = '0 3px 0 rgba(45,155,140,0.4)';
+        videoBtn.style.background = 'transparent';
+        videoBtn.style.color = '#725d42';
+        videoBtn.style.boxShadow = 'none';
+      } else {
+        cardEl.style.display = 'none';
+        videoEl.style.display = '';
+        videoBtn.style.background = 'var(--ac-app-orange, #e0933b)';
+        videoBtn.style.color = '#fff';
+        videoBtn.style.boxShadow = '0 3px 0 rgba(196,112,48,0.4)';
+        cardBtn.style.background = 'transparent';
+        cardBtn.style.color = '#725d42';
+        cardBtn.style.boxShadow = 'none';
+      }
     }
 
     function openInviteModal() {
@@ -4338,6 +4443,7 @@
   
     // ========== Admin Panel ==========
     var ADMIN_PWD = 'liamhzz2026';
+    var adminClient = null;
     var isAdmin = false;
     var adminTab = 'photos';
 
@@ -4359,6 +4465,7 @@
       var pwd = document.getElementById('adminPwd').value;
       if (pwd === ADMIN_PWD) {
         isAdmin = true;
+        try { adminClient = window.supabase.createClient(SUPABASE_URL, 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InBlZmJ3cGF1c29hdnZ1d3lhYWJmIiwicm9sZSI6InNlcnZpY2Vfcm9sZSIsImlhdCI6MTc3OTYyNzQ4NiwiZXhwIjoyMDk1MjAzNDg2fQ.rHQEoIyQUJo0E1mFDZ7UhqE1V9sgISAMSVVYxPQA6eI'); } catch(e) { console.warn('Admin client failed:', e); }
         document.getElementById('adminLogin').style.display = 'none';
         document.getElementById('adminContent').style.display = 'block';
         loadAdminData();
@@ -4383,7 +4490,7 @@
 
       try {
         if (adminTab === 'photos') {
-          var { data } = await supabaseClient.from('comments').select('*').like('content','[UPLOAD:PHOTO]%').order('created_at',{ascending:false});
+          var { data } = await supabaseClient.from('guest_uploads').select('*').eq('type','photo').order('created_at',{ascending:false});
           if (!data) data = [];
           document.getElementById('statPhotos').textContent = data.length;
           if (data.length === 0) {
@@ -4392,9 +4499,9 @@
           }
           var html = '';
           data.forEach(function(item) {
-            var thumb = item.content.replace('[UPLOAD:PHOTO]','');
+            var thumb = item.file_url || item.content;
             html += '<div class="admin-item">' +
-              '<img src="' + thumb + '" alt="photo">' +
+              '<img src="' + thumb + '" alt="photo" style="object-fit:cover">' +
               '<div class="admin-item-info">' +
                 '<div class="admin-item-name">' + escapeHtml(item.name || '匿名') + '</div>' +
                 '<div class="admin-item-date">' + new Date(item.created_at).toLocaleString('zh-CN') + '</div>' +
@@ -4404,7 +4511,7 @@
           });
           listEl.innerHTML = html;
         } else if (adminTab === 'videos') {
-          var { data } = await supabaseClient.from('comments').select('*').like('content','[UPLOAD:VIDEO]%').order('created_at',{ascending:false});
+          var { data } = await supabaseClient.from('guest_uploads').select('*').eq('type','video').order('created_at',{ascending:false});
           if (!data) data = [];
           document.getElementById('statVideos').textContent = data.length;
           if (data.length === 0) {
@@ -4413,7 +4520,6 @@
           }
           var html = '';
           data.forEach(function(item) {
-            var info = item.content.replace('[UPLOAD:VIDEO]','');
             html += '<div class="admin-item">' +
               '<div style="width:48px;height:48px;border-radius:6px;background:#222;display:flex;align-items:center;justify-content:center;font-size:20px">🎬</div>' +
               '<div class="admin-item-info">' +
@@ -4454,11 +4560,26 @@
     async function adminDelete(id, type) {
       if (!confirm('确定要删除这条' + (type==='photo'?'照片':type==='video'?'视频':'留言') + '吗？')) return;
       try {
-        const { error } = await supabaseClient.from('comments').delete().eq('id', id);
-        if (error) throw error;
+        if (type === 'photo' || type === 'video') {
+          // 先获取记录，用于删除 Storage 文件
+          var client = adminClient || supabaseClient;
+          const { data: record } = await client.from('guest_uploads').select('file_url').eq('id', id).single();
+          // 删除数据库记录
+          const { error } = await client.from('guest_uploads').delete().eq('id', id);
+          if (error) throw error;
+          // 删除 Storage 文件
+          if (record && record.file_url && record.file_url.includes('/guest-uploads/')) {
+            try {
+              var filePath = record.file_url.split('/guest-uploads/')[1];
+              if (filePath) await client.storage.from('guest-uploads').remove([filePath]);
+            } catch(e) { console.warn('Storage delete failed:', e); }
+          }
+        } else {
+          const { error } = await client.from('comments').delete().eq('id', id);
+          if (error) throw error;
+        }
         showToast('✅ 已删除', 'success');
         loadAdminData();
-        // Refresh the wall
         if (type === 'photo') loadGuestPhotos();
         else if (type === 'video') loadGuestVideos();
         else loadComments();
@@ -4469,30 +4590,30 @@
 
 </script>
 
-  <!-- Admin Panel -->
-  <button class="admin-fab" onclick="toggleAdminPanel()" title="管理后台">⚙️</button>
+  <!-- Admin Panel - Animal Island 风格 -->
+  <button class="admin-fab" onclick="toggleAdminPanel()" title="管理后台">🔧</button>
   <div class="admin-panel-overlay" id="adminOverlay" onclick="closeAdminPanel(event)">
     <div class="admin-panel" onclick="event.stopPropagation()">
       <div class="admin-header">
-        <h3>🔧 管理后台</h3>
+        <h3>🏝️ 岛主管理台</h3>
         <button class="admin-close" onclick="document.getElementById('adminOverlay').classList.remove('active')">✕</button>
       </div>
       <div class="admin-body" id="adminBody">
         <div class="admin-login" id="adminLogin">
-          <p style="color:#888;font-size:14px;margin-bottom:16px;">请输入管理密码</p>
+          <p style="color:#9a835a;font-size:13px;margin-bottom:14px;">🌿 请输入岛主密码</p>
           <input type="password" id="adminPwd" placeholder="管理密码" onkeydown="if(event.key==='Enter')adminAuth()">
           <br>
           <button onclick="adminAuth()">登 录</button>
         </div>
         <div id="adminContent" style="display:none">
           <div class="admin-stats">
-            <div class="admin-stat"><div class="admin-stat-num" id="statPhotos">0</div><div class="admin-stat-label">照片</div></div>
-            <div class="admin-stat"><div class="admin-stat-num" id="statVideos">0</div><div class="admin-stat-label">视频</div></div>
-            <div class="admin-stat"><div class="admin-stat-num" id="statComments">0</div><div class="admin-stat-label">留言</div></div>
+            <div class="admin-stat"><div class="admin-stat-num" id="statPhotos">0</div><div class="admin-stat-label">📸 照片</div></div>
+            <div class="admin-stat"><div class="admin-stat-num" id="statVideos">0</div><div class="admin-stat-label"><span class="nook-icon nook-icon-20"><img src="assets/chars/nook_hhn.png" alt="" loading="lazy"></span> 视频</div></div>
+            <div class="admin-stat"><div class="admin-stat-num" id="statComments">0</div><div class="admin-stat-label">💬 留言</div></div>
           </div>
           <div class="admin-tabs">
             <button class="admin-tab active" onclick="switchAdminTab('photos',this)">📷 照片</button>
-            <button class="admin-tab" onclick="switchAdminTab('videos',this)">🎬 视频</button>
+            <button class="admin-tab" onclick="switchAdminTab('videos',this)"><span class="nook-icon nook-icon-20"><img src="assets/chars/nook_hhn.png" alt="" loading="lazy"></span> 视频</button>
             <button class="admin-tab" onclick="switchAdminTab('comments',this)">💬 留言</button>
           </div>
           <div id="adminList"></div>
@@ -4500,6 +4621,14 @@
       </div>
     </div>
   </div>
+
+  <!-- 动森角色装饰 - 固定浮动在页面四周 -->
+  <img class="ac-char-deco" src="assets/chars/isabelle.png" alt="西施惠" style="top:8%; left:2%; width:60px; animation-delay:0s;">
+  <img class="ac-char-deco" src="assets/chars/tomnook.png" alt="狸克" style="top:30%; right:1%; width:55px; animation-delay:1.2s;">
+  <img class="ac-char-deco" src="assets/chars/blathers.png" alt="傅达" style="top:55%; left:1%; width:50px; animation-delay:2.4s;">
+  <img class="ac-char-deco" src="assets/chars/kk.png" alt="K.K." style="top:75%; right:2%; width:50px; animation-delay:0.6s;">
+  <img class="ac-char-deco" src="assets/chars/isabelle.png" alt="西施惠" style="top:45%; left:3%; width:45px; animation-delay:3s; opacity:0.6;">
+  <img class="ac-char-deco" src="assets/chars/tomnook.png" alt="狸克" style="top:15%; right:3%; width:50px; animation-delay:1.8s;">
 
 </body>
 </html>
